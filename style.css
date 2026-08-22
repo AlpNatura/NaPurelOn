@@ -3,3 +3,58 @@ Theme Name: NaPurelOn
 Template: astra
 Version: 1.0.0
 */
+
+.napurelon-lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.napurelon-lang-switcher__item {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.napurelon-lang-switcher__item a {
+    display: block;
+    padding: 2px;
+    border-radius: 3px;
+    opacity: 0.55;
+    transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.napurelon-lang-switcher__item a:hover,
+.napurelon-lang-switcher__item a:focus {
+    opacity: 1;
+}
+
+.napurelon-lang-switcher__item a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.napurelon-lang-switcher__item.is-current a {
+    opacity: 1;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.napurelon-lang-switcher__item img {
+    display: block;
+    width: 24px;
+    height: auto;
+}
+
+.napurelon-lang-switcher-menu-item > .napurelon-lang-switcher {
+    padding: 0 10px;
+}
+
+@media (max-width: 921px) {
+    .napurelon-lang-switcher-menu-item > .napurelon-lang-switcher {
+        justify-content: center;
+        padding: 10px;
+    }
+}
