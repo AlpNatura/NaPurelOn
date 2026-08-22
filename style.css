@@ -42,10 +42,18 @@ Version: 1.0.0
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
-.napurelon-lang-switcher__item img {
+.napurelon-lang-switcher__item img,
+.napurelon-lang-switcher__item .napurelon-flag {
     display: block;
     width: 24px;
     height: auto;
+    border-radius: 2px;
+}
+
+.napurelon-lang-switcher__code {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
 }
 
 .napurelon-lang-switcher-menu-item > .napurelon-lang-switcher {
