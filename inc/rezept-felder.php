@@ -21,6 +21,12 @@ defined( 'ABSPATH' ) || exit;
  */
 function napurelon_get_rezept_fields() {
     return array(
+        'napurelon_einleitung'        => array(
+            'label'       => 'Einleitung',
+            'type'        => 'textarea',
+            'optional'    => true,
+            'description' => 'Kurzer Einstiegstext, erscheint vor der Zubereitung.',
+        ),
         'napurelon_zutaten'           => array(
             'label'       => 'Zutaten',
             'type'        => 'textarea',

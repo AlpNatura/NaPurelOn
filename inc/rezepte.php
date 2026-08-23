@@ -52,10 +52,17 @@ function napurelon_register_rezepte_post_type() {
         'show_in_rest' => true, // Gutenberg, Elementor und REST API.
         'menu_icon'    => 'dashicons-carrot',
         'menu_position'=> 5,
-        'supports'     => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions' ),
+        'supports'     => array( 'title', 'editor', 'thumbnail', 'author', 'comments', 'revisions' ),
         'rewrite'      => array(
             'slug'       => 'rezepte',
             'with_front' => false,
+        ),
+        // Startvorlage: Platzhalter im Inhaltsbereich, in den die Zubereitung geschrieben wird.
+        'template'     => array(
+            array(
+                'core/paragraph',
+                array( 'placeholder' => 'Zubereitung: Schritte hier eintragen …' ),
+            ),
         ),
     );
 
@@ -63,6 +70,19 @@ function napurelon_register_rezepte_post_type() {
 }
 
 add_action( 'init', 'napurelon_register_rezepte_post_type' );
+
+/**
+ * Ersetzt den Platzhalter im Titelfeld des Rezept-Editors.
+ *
+ * @param string  $text Vorgabetext.
+ * @param WP_Post $post Aktueller Beitrag.
+ * @return string
+ */
+function napurelon_rezept_title_placeholder( $text, $post ) {
+    return ( isset( $post->post_type ) && 'rezepte' === $post->post_type ) ? 'Rezepttitel hinzufügen' : $text;
+}
+
+add_filter( 'enter_title_here', 'napurelon_rezept_title_placeholder', 10, 2 );
 
 /**
  * Registriert die hierarchische Taxonomie "Rezeptkategorien".
