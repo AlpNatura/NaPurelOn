@@ -87,17 +87,18 @@ function napurelon_language_switcher() {
 add_shortcode( 'napurelon_language_switcher', 'napurelon_language_switcher' );
 
 /**
- * Append the switcher to the Astra primary menu so the flags show up in the header
- * without any theme option or page builder change.
+ * Optional: append the switcher to the primary menu. Off by default — the menu is
+ * not rendered on every language/template, and it competes for space with the menu
+ * items. Place [napurelon_language_switcher] in an Astra header HTML element instead.
  *
- * Disable with: add_filter( 'napurelon_language_switcher_in_menu', '__return_false' );
+ * Enable with: add_filter( 'napurelon_language_switcher_in_menu', '__return_true' );
  */
 add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
     if ( empty( $args->theme_location ) || 'primary' !== $args->theme_location ) {
         return $items;
     }
 
-    if ( ! apply_filters( 'napurelon_language_switcher_in_menu', true ) ) {
+    if ( ! apply_filters( 'napurelon_language_switcher_in_menu', false ) ) {
         return $items;
     }
 
