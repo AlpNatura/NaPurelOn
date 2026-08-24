@@ -119,6 +119,29 @@
 		} );
 	}
 
+	// Galerie: Miniatur anklicken tauscht das grosse Bild.
+	var galerie = document.querySelector( '[data-napurelon-galerie]' );
+
+	if ( galerie ) {
+		var hauptbild = galerie.querySelector( '[data-napurelon-galerie-haupt]' );
+
+		galerie.addEventListener( 'click', function ( event ) {
+			var miniatur = event.target.closest( '.napurelon-miniatur' );
+
+			if ( ! miniatur || ! hauptbild ) {
+				return;
+			}
+
+			hauptbild.src = miniatur.getAttribute( 'data-voll' );
+			hauptbild.srcset = miniatur.getAttribute( 'data-srcset' ) || '';
+			hauptbild.alt = miniatur.getAttribute( 'data-alt' ) || '';
+
+			galerie.querySelectorAll( '.napurelon-miniatur' ).forEach( function ( knopf ) {
+				knopf.classList.toggle( 'is-active', knopf === miniatur );
+			} );
+		} );
+	}
+
 	// Drucken.
 	var druckButton = document.querySelector( '[data-napurelon-drucken]' );
 

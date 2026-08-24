@@ -15,10 +15,44 @@
 	display: block;
 }
 
-.napurelon-rezept__bild img {
+.napurelon-rezept__bild-haupt {
+	margin: 0;
+}
+
+.napurelon-rezept__bild-haupt img {
 	display: block;
 	width: 100%;
 	height: auto;
+	object-fit: cover;
+}
+
+/* Miniaturen der Galerie. */
+.napurelon-rezept__miniaturen {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0.6rem 0 0;
+	padding: 0;
+}
+
+.napurelon-miniatur {
+	padding: 0;
+	border: 2px solid transparent;
+	background: none;
+	line-height: 0;
+	cursor: pointer;
+}
+
+.napurelon-miniatur.is-active,
+.napurelon-miniatur:hover {
+	border-color: var(--napurelon-akzent);
+}
+
+.napurelon-miniatur img {
+	display: block;
+	width: 80px;
+	height: 80px;
 	object-fit: cover;
 }
 
@@ -197,6 +231,7 @@
 /* Druckansicht. */
 @media print {
 	.napurelon-rezept__aktionen,
+	.napurelon-rezept__miniaturen,
 	.comments-area,
 	.site-header,
 	.site-footer {

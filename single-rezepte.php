@@ -33,11 +33,40 @@ while ( have_posts() ) :
 <article id="rezept-<?php echo esc_attr( $post_id ); ?>" <?php post_class( 'napurelon-rezept' ); ?>>
 
 	<header class="napurelon-rezept__kopf">
-		<div class="napurelon-rezept__bild">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<?php the_post_thumbnail( 'full' ); ?>
-			<?php endif; ?>
-		</div>
+		<?php
+		// Galerie: Rezeptbild zuerst, danach die Bilder aus der Metabox.
+		$bild_ids = napurelon_get_galerie_ids( $post_id );
+
+		if ( has_post_thumbnail() ) {
+			array_unshift( $bild_ids, (int) get_post_thumbnail_id( $post_id ) );
+		}
+
+		$bild_ids = array_values( array_unique( array_filter( $bild_ids ) ) );
+
+		if ( ! empty( $bild_ids ) ) :
+			?>
+			<div class="napurelon-rezept__bild" data-napurelon-galerie>
+				<figure class="napurelon-rezept__bild-haupt">
+					<?php echo wp_get_attachment_image( $bild_ids[0], 'full', false, array( 'data-napurelon-galerie-haupt' => 'true' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Ausgabe von wp_get_attachment_image(). ?>
+				</figure>
+
+				<?php if ( count( $bild_ids ) > 1 ) : ?>
+					<ul class="napurelon-rezept__miniaturen">
+						<?php foreach ( $bild_ids as $index => $bild_id ) : ?>
+							<li>
+								<button type="button"
+									class="napurelon-miniatur<?php echo 0 === $index ? ' is-active' : ''; ?>"
+									data-voll="<?php echo esc_url( (string) wp_get_attachment_image_url( $bild_id, 'full' ) ); ?>"
+									data-srcset="<?php echo esc_attr( (string) wp_get_attachment_image_srcset( $bild_id, 'full' ) ); ?>"
+									data-alt="<?php echo esc_attr( (string) get_post_meta( $bild_id, '_wp_attachment_image_alt', true ) ); ?>">
+									<?php echo wp_get_attachment_image( $bild_id, 'thumbnail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Ausgabe von wp_get_attachment_image(). ?>
+								</button>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
 
 		<div class="napurelon-rezept__karte">
 			<h1 class="napurelon-rezept__titel"><?php the_title(); ?></h1>
@@ -48,49 +77,32 @@ while ( have_posts() ) :
 				</div>
 			<?php endif; ?>
 
-			<?php if ( $aktiv || $kochzeit ) : ?>
+			<?php
+			// Zeiten: nur die Werte, ohne Feldbezeichnung.
+			$zeiten = array_filter( array( $aktiv, $kochzeit ) );
+
+			if ( ! empty( $zeiten ) ) :
+				?>
 				<p class="napurelon-rezept__zeile">
 					<?php echo napurelon_rezept_icon( 'zeit' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Festes Inline-SVG. ?>
-					<span>
-						<?php
-						$zeiten = array();
-
-						if ( $aktiv ) {
-							$zeiten[] = 'Aktiv: ' . $aktiv;
-						}
-
-						if ( $kochzeit ) {
-							$zeiten[] = 'Kochzeit: ' . $kochzeit;
-						}
-
-						echo esc_html( implode( ' | ', $zeiten ) );
-						?>
-					</span>
+					<span><?php echo esc_html( implode( ' | ', $zeiten ) ); ?></span>
 				</p>
 			<?php endif; ?>
 
-			<?php if ( $portionen || $menge || $haltbarkeit ) : ?>
+			<?php
+			$angaben = array_filter(
+				array(
+					$portionen ? $portionen . ' Portionen' : '',
+					$menge,
+					$haltbarkeit,
+				)
+			);
+
+			if ( ! empty( $angaben ) ) :
+				?>
 				<p class="napurelon-rezept__zeile">
 					<?php echo napurelon_rezept_icon( 'info' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Festes Inline-SVG. ?>
-					<span>
-						<?php
-						$angaben = array();
-
-						if ( $portionen ) {
-							$angaben[] = $portionen . ' Portionen';
-						}
-
-						if ( $menge ) {
-							$angaben[] = $menge;
-						}
-
-						if ( $haltbarkeit ) {
-							$angaben[] = 'Haltbar: ' . $haltbarkeit;
-						}
-
-						echo esc_html( implode( ' | ', $angaben ) );
-						?>
-					</span>
+					<span><?php echo esc_html( implode( ' | ', $angaben ) ); ?></span>
 				</p>
 			<?php endif; ?>
 
