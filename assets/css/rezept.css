@@ -67,12 +67,19 @@
 		width: 68%;
 	}
 
+	/* Karte vertikal auf der Bildmitte ausrichten. */
 	.napurelon-rezept__karte {
 		position: absolute;
 		right: 0;
-		bottom: 12%;
+		top: 50%;
+		transform: translateY(-50%);
 		width: 40%;
 		box-shadow: 0 2px 18px rgba(0, 0, 0, 0.08);
+	}
+
+	/* Miniaturenleiste aus der Rechnung nehmen, damit die Mitte das Bild meint. */
+	.napurelon-rezept__kopf:has(.napurelon-rezept__miniaturen) .napurelon-rezept__karte {
+		margin-top: -3rem;
 	}
 }
 
@@ -214,10 +221,15 @@
 	border-bottom: 1px solid var(--napurelon-rahmen);
 }
 
+/* "Gut zu wissen" steht als eingerahmter Kasten unter der Zubereitung. */
 .napurelon-rezept__wissen {
-	margin: 3rem 0;
-	padding-top: 2rem;
-	border-top: 1px solid var(--napurelon-rahmen);
+	margin-top: 2.5rem;
+	padding: 1.6rem 1.8rem;
+	border: 1px solid var(--napurelon-rahmen);
+}
+
+.napurelon-rezept__wissen .napurelon-rezept__abschnitt {
+	margin-top: 0;
 }
 
 .napurelon-rezept__wissen-block + .napurelon-rezept__wissen-block {
@@ -240,6 +252,7 @@
 
 	.napurelon-rezept__karte {
 		position: static;
+		transform: none;
 		width: 100%;
 		border: 0;
 		padding: 0;
