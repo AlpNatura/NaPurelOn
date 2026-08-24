@@ -90,11 +90,12 @@ while ( have_posts() ) :
 			<?php endif; ?>
 
 			<?php
+			// Menge und Haltbarkeit nur, wenn keine Zeiten hinterlegt sind – die Zeiten haben Vorrang.
 			$angaben = array_filter(
 				array(
 					$portionen ? $portionen . ' Portionen' : '',
-					$menge,
-					$haltbarkeit,
+					empty( $zeiten ) ? $menge : '',
+					empty( $zeiten ) ? $haltbarkeit : '',
 				)
 			);
 
