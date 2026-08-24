@@ -30,12 +30,24 @@ function napurelon_get_rezept_fields() {
         'napurelon_zutaten'           => array(
             'label'       => 'Zutaten',
             'type'        => 'textarea',
-            'description' => 'Eine Zutat pro Zeile.',
+            'description' => 'Eine Zutat pro Zeile. Eine Zeile, die mit ":" endet, wird als Zwischenüberschrift ausgegeben (z. B. "Teig:").',
+        ),
+        'napurelon_ausbacken'         => array(
+            'label'       => 'Ausbacken',
+            'type'        => 'textarea',
+            'optional'    => true,
+            'description' => 'Angaben zum Backen bzw. Erhitzen, erscheinen unter den Zutaten.',
         ),
         'napurelon_zubereitungszeit'  => array(
             'label'       => 'Zubereitungszeit',
             'type'        => 'number',
-            'description' => 'Angabe in Minuten.',
+            'description' => 'Aktive Arbeitszeit in Minuten.',
+        ),
+        'napurelon_kochzeit'          => array(
+            'label'       => 'Kochzeit',
+            'type'        => 'number',
+            'optional'    => true,
+            'description' => 'Koch- bzw. Backzeit in Minuten.',
         ),
         'napurelon_portionen'         => array(
             'label' => 'Portionen',
