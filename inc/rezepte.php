@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
  * Version der Rewrite-Regeln. Bei jeder Änderung an Slugs oder
  * Rewrite-Optionen erhöhen, damit die Permalinks neu geschrieben werden.
  */
-define( 'NAPURELON_REZEPTE_REWRITE_VERSION', '1.0.0' );
+define( 'NAPURELON_REZEPTE_REWRITE_VERSION', '1.1.0' );
 
 /**
  * Registriert den Custom Post Type "Rezepte".
