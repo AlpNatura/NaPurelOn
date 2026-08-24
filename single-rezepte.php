@@ -90,12 +90,11 @@ while ( have_posts() ) :
 			<?php endif; ?>
 
 			<?php
-			// Menge und Haltbarkeit nur, wenn keine Zeiten hinterlegt sind – die Zeiten haben Vorrang.
 			$angaben = array_filter(
 				array(
 					$portionen ? $portionen . ' Portionen' : '',
-					empty( $zeiten ) ? $menge : '',
-					empty( $zeiten ) ? $haltbarkeit : '',
+					$menge,
+					$haltbarkeit,
 				)
 			);
 
@@ -177,53 +176,53 @@ while ( have_posts() ) :
 		<div class="napurelon-rezept__zubereitung">
 			<h2 class="napurelon-rezept__abschnitt">Schritt für Schritt</h2>
 			<div class="napurelon-rezept__text"><?php the_content(); ?></div>
+
+			<?php
+			// Weitere Angaben stehen als eingerahmter Kasten unter der Zubereitung.
+			$weitere = array(
+				'Anwendung'            => napurelon_rezept_meta( $post_id, 'napurelon_anwendung' ),
+				'Einsatzgebiete'       => napurelon_rezept_meta( $post_id, 'napurelon_einsatzgebiete' ),
+				'Tipps & Empfehlungen' => napurelon_rezept_meta( $post_id, 'napurelon_tipps' ),
+				'Vorteile'             => napurelon_rezept_meta( $post_id, 'napurelon_vorteile' ),
+				'Nachteile'            => napurelon_rezept_meta( $post_id, 'napurelon_nachteile' ),
+				'Warnhinweise'         => napurelon_rezept_meta( $post_id, 'napurelon_hinweise' ),
+				'Quellen'              => napurelon_rezept_meta( $post_id, 'napurelon_quellen' ),
+			);
+
+			$weitere = array_filter( $weitere );
+			$video   = napurelon_rezept_meta( $post_id, 'napurelon_video_url' );
+
+			if ( ! empty( $weitere ) || '' !== $video ) :
+				?>
+				<section class="napurelon-rezept__wissen">
+					<h2 class="napurelon-rezept__abschnitt">Gut zu wissen</h2>
+
+					<?php foreach ( $weitere as $label => $wert ) : ?>
+						<div class="napurelon-rezept__wissen-block">
+							<h3 class="napurelon-rezept__gruppe"><?php echo esc_html( $label ); ?></h3>
+							<div class="napurelon-rezept__text"><?php echo wp_kses_post( wpautop( $wert ) ); ?></div>
+						</div>
+					<?php endforeach; ?>
+
+					<?php
+					if ( '' !== $video ) :
+						$einbettung = wp_oembed_get( $video );
+						?>
+						<div class="napurelon-rezept__video">
+							<?php
+							if ( $einbettung ) {
+								echo wp_kses_post( $einbettung );
+							} else {
+								printf( '<a href="%1$s">%1$s</a>', esc_url( $video ) );
+							}
+							?>
+						</div>
+					<?php endif; ?>
+				</section>
+			<?php endif; ?>
 		</div>
 
 	</div>
-
-	<?php
-	// Weitere Angaben, die nicht in die beiden Spalten gehören.
-	$weitere = array(
-		'Anwendung'           => napurelon_rezept_meta( $post_id, 'napurelon_anwendung' ),
-		'Einsatzgebiete'      => napurelon_rezept_meta( $post_id, 'napurelon_einsatzgebiete' ),
-		'Tipps & Empfehlungen' => napurelon_rezept_meta( $post_id, 'napurelon_tipps' ),
-		'Vorteile'            => napurelon_rezept_meta( $post_id, 'napurelon_vorteile' ),
-		'Nachteile'           => napurelon_rezept_meta( $post_id, 'napurelon_nachteile' ),
-		'Warnhinweise'        => napurelon_rezept_meta( $post_id, 'napurelon_hinweise' ),
-		'Quellen'             => napurelon_rezept_meta( $post_id, 'napurelon_quellen' ),
-	);
-
-	$weitere = array_filter( $weitere );
-	$video   = napurelon_rezept_meta( $post_id, 'napurelon_video_url' );
-	?>
-
-	<?php if ( ! empty( $weitere ) || '' !== $video ) : ?>
-		<section class="napurelon-rezept__wissen">
-			<h2 class="napurelon-rezept__abschnitt">Gut zu wissen</h2>
-
-			<?php foreach ( $weitere as $label => $wert ) : ?>
-				<div class="napurelon-rezept__wissen-block">
-					<h3 class="napurelon-rezept__gruppe"><?php echo esc_html( $label ); ?></h3>
-					<div class="napurelon-rezept__text"><?php echo wp_kses_post( wpautop( $wert ) ); ?></div>
-				</div>
-			<?php endforeach; ?>
-
-			<?php
-			if ( '' !== $video ) :
-				$einbettung = wp_oembed_get( $video );
-				?>
-				<div class="napurelon-rezept__video">
-					<?php
-					if ( $einbettung ) {
-						echo wp_kses_post( $einbettung );
-					} else {
-						printf( '<a href="%1$s">%1$s</a>', esc_url( $video ) );
-					}
-					?>
-				</div>
-			<?php endif; ?>
-		</section>
-	<?php endif; ?>
 
 	<?php
 	if ( comments_open() || get_comments_number() ) {
