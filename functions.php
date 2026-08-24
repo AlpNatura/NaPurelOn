@@ -4,6 +4,7 @@ require_once get_stylesheet_directory() . '/inc/rezepte.php';
 require_once get_stylesheet_directory() . '/inc/rezept-felder.php';
 require_once get_stylesheet_directory() . '/inc/rezept-tags.php';
 require_once get_stylesheet_directory() . '/inc/rezept-duplikate.php';
+require_once get_stylesheet_directory() . '/inc/rezept-galerie.php';
 require_once get_stylesheet_directory() . '/inc/rezept-ansicht.php';
 
 add_action( 'wp_enqueue_scripts', function () {
