@@ -6,6 +6,7 @@ require_once get_stylesheet_directory() . '/inc/rezept-tags.php';
 require_once get_stylesheet_directory() . '/inc/rezept-duplikate.php';
 require_once get_stylesheet_directory() . '/inc/rezept-galerie.php';
 require_once get_stylesheet_directory() . '/inc/rezept-ansicht.php';
+require_once get_stylesheet_directory() . '/inc/bilder.php';
 
 add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style( 'astra-parent', get_template_directory_uri() . '/style.css' );
