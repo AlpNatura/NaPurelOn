@@ -21,6 +21,12 @@ defined( 'ABSPATH' ) || exit;
  */
 function napurelon_get_rezept_fields() {
     return array(
+        'napurelon_untertitel'        => array(
+            'label'       => 'Untertitel',
+            'type'        => 'text',
+            'optional'    => true,
+            'description' => 'Erscheint direkt unter dem Rezepttitel.',
+        ),
         'napurelon_einleitung'        => array(
             'label'       => 'Einleitung',
             'type'        => 'textarea',

@@ -24,6 +24,7 @@ while ( have_posts() ) :
 	$portionen   = napurelon_rezept_meta( $post_id, 'napurelon_portionen' );
 	$menge       = napurelon_rezept_meta( $post_id, 'napurelon_menge' );
 	$haltbarkeit = napurelon_rezept_meta( $post_id, 'napurelon_haltbarkeit' );
+	$untertitel  = napurelon_rezept_meta( $post_id, 'napurelon_untertitel' );
 	$einleitung  = napurelon_rezept_meta( $post_id, 'napurelon_einleitung' );
 	$zutaten     = napurelon_parse_zutaten( napurelon_rezept_meta( $post_id, 'napurelon_zutaten' ) );
 	$ausbacken   = napurelon_rezept_meta( $post_id, 'napurelon_ausbacken' );
@@ -70,6 +71,10 @@ while ( have_posts() ) :
 
 		<div class="napurelon-rezept__karte">
 			<h1 class="napurelon-rezept__titel"><?php the_title(); ?></h1>
+
+			<?php if ( '' !== $untertitel ) : ?>
+				<p class="napurelon-rezept__untertitel"><?php echo esc_html( $untertitel ); ?></p>
+			<?php endif; ?>
 
 			<?php if ( $kategorien && ! is_wp_error( $kategorien ) ) : ?>
 				<div class="napurelon-rezept__kategorien">
