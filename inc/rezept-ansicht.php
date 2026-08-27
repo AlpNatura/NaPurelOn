@@ -52,24 +52,63 @@ function napurelon_enqueue_rezept_assets() {
 add_action( 'wp_enqueue_scripts', 'napurelon_enqueue_rezept_assets' );
 
 /**
+ * Sperrfrist zwischen zwei Likes desselben Besuchers für dasselbe Rezept.
+ */
+define( 'NAPURELON_LIKE_SPERRE', 12 * HOUR_IN_SECONDS );
+
+/**
+ * Bildet einen Besucher auf eine anonyme Kennung ab.
+ *
+ * Es wird nur ein Hash gespeichert, keine IP-Adresse im Klartext.
+ *
+ * @param int $post_id Beitrags-ID.
+ * @return string Transient-Schlüssel.
+ */
+function napurelon_like_sperrschluessel( $post_id ) {
+	$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+
+	return 'napurelon_like_' . md5( $post_id . '|' . $ip . '|' . wp_salt( 'nonce' ) );
+}
+
+/**
  * Erhöht den Like-Zähler eines Rezepts.
  *
- * Der Endpunkt ist bewusst auch für Gäste erreichbar; eine Mehrfachzählung
- * verhindert das Skript im Browser (localStorage).
+ * Der Endpunkt ist bewusst auch für Gäste erreichbar. Serverseitig wird pro
+ * Besucher und Rezept nur eine Stimme innerhalb der Sperrfrist gezählt, damit
+ * der Zähler nicht durch wiederholte Aufrufe manipuliert werden kann.
  */
 function napurelon_ajax_rezept_like() {
 	check_ajax_referer( 'napurelon_rezept_like', 'nonce' );
 
 	$post_id = isset( $_POST['post_id'] ) ? absint( wp_unslash( $_POST['post_id'] ) ) : 0;
+	$post    = $post_id ? get_post( $post_id ) : null;
 
-	if ( ! $post_id || 'rezepte' !== get_post_type( $post_id ) ) {
+	if ( ! $post instanceof WP_Post || 'rezepte' !== $post->post_type || 'publish' !== $post->post_status ) {
 		wp_send_json_error( array( 'message' => 'Unbekanntes Rezept.' ), 400 );
 	}
+
+	$sperre = napurelon_like_sperrschluessel( $post_id );
+
+	if ( get_transient( $sperre ) ) {
+		wp_send_json_success(
+			array(
+				'likes'    => (int) get_post_meta( $post_id, NAPURELON_LIKES_META_KEY, true ),
+				'gezaehlt' => false,
+			)
+		);
+	}
+
+	set_transient( $sperre, 1, NAPURELON_LIKE_SPERRE );
 
 	$likes = (int) get_post_meta( $post_id, NAPURELON_LIKES_META_KEY, true ) + 1;
 	update_post_meta( $post_id, NAPURELON_LIKES_META_KEY, $likes );
 
-	wp_send_json_success( array( 'likes' => $likes ) );
+	wp_send_json_success(
+		array(
+			'likes'    => $likes,
+			'gezaehlt' => true,
+		)
+	);
 }
 
 add_action( 'wp_ajax_napurelon_rezept_like', 'napurelon_ajax_rezept_like' );
