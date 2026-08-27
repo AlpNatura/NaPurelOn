@@ -5,6 +5,7 @@
 .napurelon-rezept {
 	--napurelon-akzent: #7a9a3f;
 	--napurelon-rahmen: #e4e4e0;
+	--napurelon-akzent-warm: #f9a61a;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -215,6 +216,7 @@
 	font-size: 1.05rem;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
+	color: var(--napurelon-akzent-warm);
 }
 
 .napurelon-rezept__liste {
