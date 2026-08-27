@@ -80,7 +80,7 @@ function napurelon_beispiel_kategorie( array $pfad ) {
  * @param string[] $benutzt  Bereits verwendete Bild-URLs.
  * @return array{url:string,titel:string,urheber:string,lizenz:string,quelle:string}|null
  */
-function napurelon_beispiel_bild_suchen( $suche, array $benutzt ) {
+function napurelon_beispiel_bild_abfrage( $suche, array $benutzt ) {
 	$url = add_query_arg(
 		array(
 			'q'            => $suche,
@@ -123,6 +123,66 @@ function napurelon_beispiel_bild_suchen( $suche, array $benutzt ) {
 }
 
 /**
+ * Sucht ein Bild und kürzt den Suchbegriff schrittweise, bis Treffer kommen.
+ *
+ * Lange Begriffe wie "citrus vinegar cleaner spray bottle" liefern bei
+ * Openverse oft null Treffer; "citrus vinegar" dagegen schon.
+ *
+ * @param string   $suche   Suchbegriff.
+ * @param string[] $benutzt Bereits verwendete Bild-URLs.
+ * @return array|null
+ */
+function napurelon_beispiel_bild_suchen( $suche, array $benutzt ) {
+	$woerter = preg_split( '/\s+/', trim( $suche ), -1, PREG_SPLIT_NO_EMPTY );
+
+	if ( ! $woerter ) {
+		return null;
+	}
+
+	while ( $woerter ) {
+		$bild = napurelon_beispiel_bild_abfrage( implode( ' ', $woerter ), $benutzt );
+
+		if ( $bild ) {
+			return $bild;
+		}
+
+		array_pop( $woerter );
+	}
+
+	return null;
+}
+
+/**
+ * Lädt ein passendes Bild und setzt es als Beitragsbild.
+ *
+ * @param int      $post_id Beitrags-ID.
+ * @param string   $titel   Rezepttitel.
+ * @param string   $suche   Suchbegriff.
+ * @param string[] $benutzt Bereits verwendete Bild-URLs (per Referenz).
+ * @return string Bildnachweis oder leerer String.
+ */
+function napurelon_beispiel_bild_zuweisen( $post_id, $titel, $suche, array &$benutzt ) {
+	$bild = napurelon_beispiel_bild_suchen( $suche, $benutzt );
+
+	if ( ! $bild ) {
+		WP_CLI::warning( $titel . ': kein Bild gefunden für "' . $suche . '".' );
+		return '';
+	}
+
+	$benutzt[] = $bild['url'];
+	$anhang_id = media_sideload_image( $bild['url'], $post_id, $titel, 'id' );
+
+	if ( is_wp_error( $anhang_id ) ) {
+		WP_CLI::warning( $titel . ' (Bild): ' . $anhang_id->get_error_message() );
+		return '';
+	}
+
+	set_post_thumbnail( $post_id, $anhang_id );
+
+	return 'Bild: ' . trim( $bild['titel'] . ' – ' . $bild['urheber'] . ' (' . $bild['lizenz'] . ') ' . $bild['quelle'] );
+}
+
+/**
  * Wandelt die Schritte in Editor-Inhalt (Absätze) um.
  *
  * @param string[] $schritte Zubereitungsschritte.
@@ -141,6 +201,7 @@ function napurelon_beispiel_inhalt( array $schritte ) {
 $napurelon_benutzte_bilder = array();
 $napurelon_angelegt        = 0;
 $napurelon_uebersprungen   = 0;
+$napurelon_nachgeruestet   = 0;
 
 foreach ( $napurelon_daten as $rezept ) {
 	if ( empty( $rezept['titel'] ) || empty( $rezept['kategorie'] ) ) {
@@ -161,6 +222,25 @@ foreach ( $napurelon_daten as $rezept ) {
 	);
 
 	if ( $vorhanden ) {
+		$post_id = (int) $vorhanden[0];
+
+		// Fehlt dem bereits vorhandenen Rezept nur das Bild, wird es nachgeholt.
+		if ( $napurelon_bilder && ! empty( $rezept['bildsuche'] ) && ! has_post_thumbnail( $post_id ) ) {
+			$nachweis = napurelon_beispiel_bild_zuweisen( $post_id, $titel, (string) $rezept['bildsuche'], $napurelon_benutzte_bilder );
+
+			if ( '' !== $nachweis ) {
+				update_post_meta(
+					$post_id,
+					'napurelon_quellen',
+					trim( (string) get_post_meta( $post_id, 'napurelon_quellen', true ) . "\n" . $nachweis )
+				);
+
+				WP_CLI::log( 'Bild ergänzt: ' . $titel );
+				++$napurelon_nachgeruestet;
+				continue;
+			}
+		}
+
 		WP_CLI::log( 'Übersprungen (existiert bereits): ' . $titel );
 		++$napurelon_uebersprungen;
 		continue;
@@ -194,22 +274,10 @@ foreach ( $napurelon_daten as $rezept ) {
 	$quellen = isset( $rezept['felder']['napurelon_quellen'] ) ? (string) $rezept['felder']['napurelon_quellen'] : '';
 
 	if ( $napurelon_bilder && ! empty( $rezept['bildsuche'] ) ) {
-		$bild = napurelon_beispiel_bild_suchen( (string) $rezept['bildsuche'], $napurelon_benutzte_bilder );
+		$nachweis = napurelon_beispiel_bild_zuweisen( $post_id, $titel, (string) $rezept['bildsuche'], $napurelon_benutzte_bilder );
 
-		if ( $bild ) {
-			$napurelon_benutzte_bilder[] = $bild['url'];
-			$anhang_id                   = media_sideload_image( $bild['url'], $post_id, $titel, 'id' );
-
-			if ( is_wp_error( $anhang_id ) ) {
-				WP_CLI::warning( $titel . ' (Bild): ' . $anhang_id->get_error_message() );
-			} else {
-				set_post_thumbnail( $post_id, $anhang_id );
-
-				$nachweis = trim( $bild['titel'] . ' – ' . $bild['urheber'] . ' (' . $bild['lizenz'] . ') ' . $bild['quelle'] );
-				$quellen  = trim( $quellen . "\n" . 'Bild: ' . $nachweis );
-			}
-		} else {
-			WP_CLI::warning( $titel . ': kein Bild gefunden für "' . $rezept['bildsuche'] . '".' );
+		if ( '' !== $nachweis ) {
+			$quellen = trim( $quellen . "\n" . $nachweis );
 		}
 	}
 
@@ -225,4 +293,11 @@ foreach ( $napurelon_daten as $rezept ) {
 	++$napurelon_angelegt;
 }
 
-WP_CLI::success( sprintf( '%d Rezepte angelegt, %d übersprungen.', $napurelon_angelegt, $napurelon_uebersprungen ) );
+WP_CLI::success(
+	sprintf(
+		'%d Rezepte angelegt, %d Bilder nachgetragen, %d übersprungen.',
+		$napurelon_angelegt,
+		$napurelon_nachgeruestet,
+		$napurelon_uebersprungen
+	)
+);
