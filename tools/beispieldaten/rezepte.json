@@ -1,0 +1,1045 @@
+[
+	{
+		"titel": "Sauerteigbrot mit Roggen",
+		"kategorie": [ "Lebensmittel", "Brotrezepte" ],
+		"tags": [ "vegan", "Sauerteig" ],
+		"bildsuche": "sourdough rye bread",
+		"schritte": [
+			"Sauerteig, Mehl, Wasser und Salz zu einem weichen Teig verkneten und 30 Minuten ruhen lassen.",
+			"Den Teig dreimal im Abstand von 30 Minuten dehnen und falten, danach 4 Stunden bei Raumtemperatur gehen lassen.",
+			"Rund wirken, im bemehlten Gärkorb über Nacht im Kühlschrank reifen lassen.",
+			"Im vorgeheizten Topf bei 250 °C 20 Minuten mit Deckel, danach 25 Minuten ohne Deckel backen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Kräftiges Mischbrot mit langer, kalter Gare",
+			"napurelon_einleitung": "Ein bodenständiges Brot, das seinen Geschmack allein aus Mehl, Wasser, Salz und Zeit zieht.",
+			"napurelon_zutaten": "Teig:\n300 g Roggenmehl 1150\n200 g Weizenmehl 1050\n350 ml lauwarmes Wasser\n120 g aktiver Sauerteig\n12 g Salz\nZum Bearbeiten:\nRoggenmehl zum Bemehlen",
+			"napurelon_ausbacken": "Gusseisernen Topf 45 Minuten auf 250 °C vorheizen, Brot im heißen Topf backen.",
+			"napurelon_zubereitungszeit": 40,
+			"napurelon_kochzeit": 45,
+			"napurelon_portionen": 12,
+			"napurelon_menge": "1 Laib (ca. 950 g)",
+			"napurelon_haltbarkeit": "5 Tage im Leinenbeutel",
+			"napurelon_anwendung": "In Scheiben schneiden und frisch oder getoastet servieren.",
+			"napurelon_einsatzgebiete": "Frühstück, herzhafte Brotzeit, Suppenbeilage.",
+			"napurelon_tipps": "Erst nach vollständigem Auskühlen anschneiden, sonst wird die Krume klitschig.",
+			"napurelon_vorteile": "Lange Gare macht das Brot bekömmlicher und länger frisch.",
+			"napurelon_nachteile": "Braucht Planung: insgesamt rund 18 Stunden Reifezeit.",
+			"napurelon_hinweise": "Vorsicht beim Umgang mit dem heißen Topf.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Dinkelvollkornbrot ohne Kneten",
+		"kategorie": [ "Lebensmittel", "Brotrezepte" ],
+		"tags": [ "vegan", "Vollkorn" ],
+		"bildsuche": "whole grain spelt bread loaf",
+		"schritte": [
+			"Alle Zutaten mit einem Löffel zu einem klebrigen Teig verrühren.",
+			"Abgedeckt 12 Stunden bei Raumtemperatur stehen lassen.",
+			"Teig in eine gefettete Kastenform füllen und 45 Minuten gehen lassen.",
+			"Bei 200 °C 50 Minuten backen und auf einem Gitter auskühlen lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Saftiges Kastenbrot mit Übernachtgare",
+			"napurelon_einleitung": "Das einfachste Vollkornbrot: anrühren, warten, backen.",
+			"napurelon_zutaten": "Teig:\n500 g Dinkelvollkornmehl\n400 ml Wasser\n10 g Salz\n3 g Trockenhefe\n2 EL Sonnenblumenkerne",
+			"napurelon_ausbacken": "Ofen auf 200 °C Ober-/Unterhitze vorheizen, Form auf mittlerer Schiene.",
+			"napurelon_zubereitungszeit": 15,
+			"napurelon_kochzeit": 50,
+			"napurelon_portionen": 12,
+			"napurelon_menge": "1 Kastenbrot (ca. 900 g)",
+			"napurelon_haltbarkeit": "4 Tage, gut in Scheiben einfrierbar",
+			"napurelon_anwendung": "Für Butterbrote, Aufstriche und Käseplatten.",
+			"napurelon_einsatzgebiete": "Alltagsbrot für Frühstück und Abendessen.",
+			"napurelon_tipps": "Die Kerne vorher kurz rösten, das verstärkt das Aroma.",
+			"napurelon_vorteile": "Kein Kneten, keine Küchenmaschine nötig.",
+			"napurelon_nachteile": "Die Krume bleibt kompakter als bei geknetetem Teig.",
+			"napurelon_hinweise": "",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Fladenbrot aus der Pfanne",
+		"kategorie": [ "Lebensmittel", "Brotrezepte" ],
+		"tags": [ "schnell", "vegetarisch" ],
+		"bildsuche": "flatbread pan bread",
+		"schritte": [
+			"Mehl, Joghurt, Backpulver und Salz zu einem glatten Teig kneten.",
+			"Teig 20 Minuten abgedeckt ruhen lassen und in acht Portionen teilen.",
+			"Jede Portion dünn ausrollen.",
+			"In der trockenen, heißen Pfanne pro Seite 2 Minuten backen, bis Blasen entstehen."
+		],
+		"felder": {
+			"napurelon_untertitel": "In 30 Minuten fertig, ganz ohne Ofen",
+			"napurelon_einleitung": "Weiches Fladenbrot für spontane Gäste – gebacken wird in der Pfanne.",
+			"napurelon_zutaten": "Teig:\n300 g Weizenmehl 550\n200 g Naturjoghurt\n1 TL Backpulver\n1 TL Salz",
+			"napurelon_ausbacken": "Beschichtete Pfanne ohne Fett stark erhitzen.",
+			"napurelon_zubereitungszeit": 20,
+			"napurelon_kochzeit": 16,
+			"napurelon_portionen": 8,
+			"napurelon_menge": "8 Fladen",
+			"napurelon_haltbarkeit": "Am selben Tag genießen",
+			"napurelon_anwendung": "Warm servieren, zum Dippen oder Füllen.",
+			"napurelon_einsatzgebiete": "Zu Suppen, Aufstrichen und Grillgerichten.",
+			"napurelon_tipps": "Fertige Fladen in einem Tuch stapeln, so bleiben sie weich.",
+			"napurelon_vorteile": "Sehr schnell und ohne Hefe.",
+			"napurelon_nachteile": "Schmeckt nur frisch wirklich gut.",
+			"napurelon_hinweise": "",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Klassisches Sauerkraut im Steintopf",
+		"kategorie": [ "Lebensmittel", "Eingelegtes & Fermentiertes" ],
+		"tags": [ "fermentiert", "vegan" ],
+		"bildsuche": "sauerkraut fermentation jar",
+		"schritte": [
+			"Kohl fein hobeln, mit Salz vermengen und 10 Minuten kräftig kneten, bis Saft austritt.",
+			"Kohl mit Gewürzen schichtweise fest in das Gefäß drücken.",
+			"Mit Gewicht beschweren, bis alles unter der Lake steht.",
+			"5 Tage bei Raumtemperatur, danach 4 Wochen kühl fermentieren lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Milchsauer eingelegter Weißkohl",
+			"napurelon_einleitung": "Sauerkraut braucht nur zwei Zutaten – Kohl und Salz – und etwas Geduld.",
+			"napurelon_zutaten": "Grundansatz:\n2 kg Weißkohl\n40 g unraffiniertes Meersalz\n1 TL Wacholderbeeren\n1 TL Kümmel",
+			"napurelon_zubereitungszeit": 45,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 20,
+			"napurelon_menge": "ca. 2 Liter",
+			"napurelon_haltbarkeit": "6 Monate kühl und dunkel",
+			"napurelon_anwendung": "Roh als Salat oder kurz erwärmt als Beilage verwenden.",
+			"napurelon_einsatzgebiete": "Wintergemüse, Beilage, Zutat für Eintöpfe.",
+			"napurelon_tipps": "Das Kraut muss immer vollständig mit Lake bedeckt sein.",
+			"napurelon_vorteile": "Enthält lebendige Milchsäurebakterien und viel Vitamin C.",
+			"napurelon_nachteile": "Der Geruch während der Gärung ist intensiv.",
+			"napurelon_hinweise": "Bei Schimmel auf der Oberfläche den gesamten Ansatz entsorgen.",
+			"napurelon_quellen": "Eigene Fermentationspraxis"
+		}
+	},
+	{
+		"titel": "Eingelegte Salzgurken",
+		"kategorie": [ "Lebensmittel", "Eingelegtes & Fermentiertes" ],
+		"tags": [ "fermentiert", "vegan" ],
+		"bildsuche": "pickled cucumbers jar",
+		"schritte": [
+			"Gurken waschen und die Blütenansätze großzügig abschneiden.",
+			"Salz in Wasser vollständig auflösen.",
+			"Gurken mit Dill, Knoblauch und Gewürzen in das Glas schichten und mit Lake auffüllen.",
+			"Beschwert 7 Tage bei Raumtemperatur fermentieren, danach kühl stellen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Knackig durch reine Salzlake",
+			"napurelon_einleitung": "Ohne Essig, ganz milchsauer: so bleiben die Gurken knackig und lebendig.",
+			"napurelon_zutaten": "Lake:\n1 l Wasser\n30 g Salz\nEinlage:\n1 kg kleine Einlegegurken\n1 Bund Dill\n4 Knoblauchzehen\n1 TL Senfkörner",
+			"napurelon_zubereitungszeit": 30,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 10,
+			"napurelon_menge": "1 Glas à 2 Liter",
+			"napurelon_haltbarkeit": "3 Monate im Kühlschrank",
+			"napurelon_anwendung": "Als Beilage servieren oder klein geschnitten in Salate geben.",
+			"napurelon_einsatzgebiete": "Brotzeit, Kartoffelgerichte, Sandwiches.",
+			"napurelon_tipps": "Ein Kirsch- oder Weinblatt im Glas hält die Gurken besonders fest.",
+			"napurelon_vorteile": "Sehr einfach und ohne Einkochen haltbar.",
+			"napurelon_nachteile": "Bei zu warmer Lagerung werden die Gurken weich.",
+			"napurelon_hinweise": "Nur unbeschädigte, feste Gurken verwenden.",
+			"napurelon_quellen": "Eigene Fermentationspraxis"
+		}
+	},
+	{
+		"titel": "Fermentierte Karottensticks mit Ingwer",
+		"kategorie": [ "Lebensmittel", "Eingelegtes & Fermentiertes" ],
+		"tags": [ "fermentiert", "vegan", "schnell" ],
+		"bildsuche": "fermented carrot sticks jar",
+		"schritte": [
+			"Karotten in fingerdicke Stifte schneiden.",
+			"Salz im Wasser auflösen.",
+			"Karotten mit Ingwer senkrecht ins Glas stellen und mit Lake bedecken.",
+			"5 Tage bei Raumtemperatur fermentieren, dann kühl lagern."
+		],
+		"felder": {
+			"napurelon_untertitel": "Ein Einsteigerrezept für die erste Fermentation",
+			"napurelon_einleitung": "Karotten verzeihen viel und sind deshalb ideal für den Fermentationseinstieg.",
+			"napurelon_zutaten": "Grundansatz:\n600 g Karotten\n500 ml Wasser\n15 g Salz\n20 g frischer Ingwer, in Scheiben",
+			"napurelon_zubereitungszeit": 20,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 6,
+			"napurelon_menge": "1 Glas à 1 Liter",
+			"napurelon_haltbarkeit": "2 Monate im Kühlschrank",
+			"napurelon_anwendung": "Direkt aus dem Glas als Snack essen.",
+			"napurelon_einsatzgebiete": "Snack, Bowl-Topping, Beilage zu Reisgerichten.",
+			"napurelon_tipps": "Das Glas täglich kurz öffnen, damit Gärgase entweichen können.",
+			"napurelon_vorteile": "Gelingt fast immer und ist nach fünf Tagen fertig.",
+			"napurelon_nachteile": "Die Karotten verlieren etwas von ihrer Süße.",
+			"napurelon_hinweise": "Trübe Lake ist normal, ein fauliger Geruch nicht.",
+			"napurelon_quellen": "Eigene Fermentationspraxis"
+		}
+	},
+	{
+		"titel": "Pfefferminz-Melissen-Tee",
+		"kategorie": [ "Getränke", "Kräutertees" ],
+		"tags": [ "Kräuter", "koffeinfrei" ],
+		"bildsuche": "peppermint herbal tea cup",
+		"schritte": [
+			"Getrocknete Kräuter mischen und in einer Dose dunkel aufbewahren.",
+			"Einen gehäuften Teelöffel pro Tasse mit 90 °C heißem Wasser übergießen.",
+			"Abgedeckt 7 Minuten ziehen lassen und abseihen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Beruhigende Hausmischung für den Abend",
+			"napurelon_einleitung": "Zwei Klassiker aus dem Kräutergarten, die sich hervorragend ergänzen.",
+			"napurelon_zutaten": "Mischung:\n40 g getrocknete Pfefferminzblätter\n40 g getrocknete Zitronenmelisse\n20 g getrocknete Kamillenblüten",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 40,
+			"napurelon_menge": "100 g Teemischung",
+			"napurelon_haltbarkeit": "12 Monate trocken und dunkel",
+			"napurelon_anwendung": "Als Aufguss trinken, bei Bedarf mit Honig süßen.",
+			"napurelon_einsatzgebiete": "Abendritual, nach schweren Mahlzeiten.",
+			"napurelon_tipps": "Abgedeckt ziehen lassen, damit die ätherischen Öle im Tee bleiben.",
+			"napurelon_vorteile": "Koffeinfrei und aus dem eigenen Garten machbar.",
+			"napurelon_nachteile": "Pfefferminze überdeckt feinere Aromen schnell.",
+			"napurelon_hinweise": "Bei Reflux kann Pfefferminze Beschwerden verstärken.",
+			"napurelon_quellen": "Eigene Kräuterpraxis"
+		}
+	},
+	{
+		"titel": "Kamille-Fenchel-Tee für den Magen",
+		"kategorie": [ "Getränke", "Kräutertees" ],
+		"tags": [ "Kräuter", "koffeinfrei" ],
+		"bildsuche": "chamomile flowers tea",
+		"schritte": [
+			"Fenchelsamen im Mörser leicht anquetschen.",
+			"Alle Zutaten mischen.",
+			"Einen Teelöffel mit 200 ml kochendem Wasser übergießen und 8 Minuten ziehen lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Milde Mischung für empfindliche Tage",
+			"napurelon_einleitung": "Eine klassische Hausmischung, die vor allem nach dem Essen guttut.",
+			"napurelon_zutaten": "Mischung:\n50 g Kamillenblüten\n30 g Fenchelsamen\n20 g Anis",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 40,
+			"napurelon_menge": "100 g Teemischung",
+			"napurelon_haltbarkeit": "12 Monate trocken und dunkel",
+			"napurelon_anwendung": "Zwei bis drei Tassen täglich, langsam und warm trinken.",
+			"napurelon_einsatzgebiete": "Nach dem Essen, bei Völlegefühl.",
+			"napurelon_tipps": "Fenchel erst kurz vor dem Aufguss anquetschen, das schont das Aroma.",
+			"napurelon_vorteile": "Sehr mild und auch für Kinder geeignet.",
+			"napurelon_nachteile": "Das Anisaroma mag nicht jeder.",
+			"napurelon_hinweise": "Bei Korbblütlerallergie auf Kamille verzichten.",
+			"napurelon_quellen": "Eigene Kräuterpraxis"
+		}
+	},
+	{
+		"titel": "Brennnessel-Tee aus eigener Ernte",
+		"kategorie": [ "Getränke", "Kräutertees" ],
+		"tags": [ "Kräuter", "Wildpflanzen" ],
+		"bildsuche": "nettle leaves tea",
+		"schritte": [
+			"Junge Brennnesselblätter mit Handschuhen ernten und locker ausbreiten.",
+			"An einem luftigen, schattigen Ort trocknen, bis die Blätter rascheln.",
+			"Zwei Teelöffel mit 250 ml kochendem Wasser übergießen und 10 Minuten ziehen lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Wildkräutertee mit herbem Charakter",
+			"napurelon_einleitung": "Brennnessel wächst überall und ergibt getrocknet einen kräftigen, grasigen Tee.",
+			"napurelon_zutaten": "Zutaten:\n100 g junge Brennnesselblätter\n1 TL getrocknete Zitronenschale (optional)",
+			"napurelon_zubereitungszeit": 25,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 20,
+			"napurelon_menge": "ca. 25 g getrocknete Blätter",
+			"napurelon_haltbarkeit": "12 Monate trocken und dunkel",
+			"napurelon_anwendung": "Als Aufguss trinken oder abgekühlt mit Zitrone servieren.",
+			"napurelon_einsatzgebiete": "Frühjahrskur, Wildkräuterküche.",
+			"napurelon_tipps": "Nur an sauberen Standorten fernab von Straßen sammeln.",
+			"napurelon_vorteile": "Kostenlos und regional verfügbar.",
+			"napurelon_nachteile": "Der Geschmack ist deutlich herber als bei Minztee.",
+			"napurelon_hinweise": "Bei Nierenerkrankungen vorher ärztlich abklären.",
+			"napurelon_quellen": "Eigene Kräuterpraxis"
+		}
+	},
+	{
+		"titel": "Holunderblütensirup",
+		"kategorie": [ "Getränke", "Sirups" ],
+		"tags": [ "Sommer", "vegan" ],
+		"bildsuche": "elderflower syrup bottle",
+		"schritte": [
+			"Blütendolden vorsichtig ausschütteln, nicht waschen.",
+			"Wasser, Zucker und Zitronensäure aufkochen und leicht abkühlen lassen.",
+			"Dolden und Zitronenscheiben zugeben und 24 Stunden abgedeckt ziehen lassen.",
+			"Abseihen, kurz aufkochen und heiß in sterile Flaschen füllen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Der Klassiker für den Sommer",
+			"napurelon_einleitung": "Aus wenigen Dolden entsteht ein Sirup, der den ganzen Sommer über hält.",
+			"napurelon_zutaten": "Ansatz:\n25 Holunderblütendolden\n2 l Wasser\n1,5 kg Zucker\n40 g Zitronensäure\n3 Bio-Zitronen, in Scheiben",
+			"napurelon_zubereitungszeit": 30,
+			"napurelon_kochzeit": 10,
+			"napurelon_portionen": 60,
+			"napurelon_menge": "ca. 2,5 Liter Sirup",
+			"napurelon_haltbarkeit": "12 Monate ungeöffnet, geöffnet 4 Wochen im Kühlschrank",
+			"napurelon_anwendung": "Im Verhältnis 1:8 mit stillem oder sprudelndem Wasser mischen.",
+			"napurelon_einsatzgebiete": "Erfrischungsgetränk, Dessertsauce, Aroma für Sekt.",
+			"napurelon_tipps": "Nur an trockenen, sonnigen Vormittagen ernten, dann duften die Blüten am stärksten.",
+			"napurelon_vorteile": "Sehr ergiebig und ein schönes Geschenk.",
+			"napurelon_nachteile": "Hoher Zuckeranteil.",
+			"napurelon_hinweise": "Dolden sicher bestimmen und keine Zwergholunder verwenden.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Löwenzahnsirup",
+		"kategorie": [ "Getränke", "Sirups" ],
+		"tags": [ "Wildpflanzen", "vegan" ],
+		"bildsuche": "dandelion flowers syrup",
+		"schritte": [
+			"Blütenblätter vom grünen Kelch zupfen.",
+			"Mit Wasser und Zitronenscheiben aufkochen und über Nacht ziehen lassen.",
+			"Abseihen, Zucker zugeben und 1,5 Stunden offen einkochen, bis der Sirup zähflüssig ist.",
+			"Heiß in sterile Gläser füllen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Goldgelbe Alternative zu Honig",
+			"napurelon_einleitung": "Löwenzahnsirup erinnert im Geschmack an Blütenhonig und ist rein pflanzlich.",
+			"napurelon_zutaten": "Ansatz:\n300 g Löwenzahnblütenblätter\n1 l Wasser\n1 kg Zucker\n2 Bio-Zitronen, in Scheiben",
+			"napurelon_zubereitungszeit": 60,
+			"napurelon_kochzeit": 90,
+			"napurelon_portionen": 40,
+			"napurelon_menge": "ca. 700 ml",
+			"napurelon_haltbarkeit": "12 Monate ungeöffnet",
+			"napurelon_anwendung": "Aufs Brot streichen oder Tee damit süßen.",
+			"napurelon_einsatzgebiete": "Brotaufstrich, Süßungsmittel, Geschenk aus der Küche.",
+			"napurelon_tipps": "Nur die gelben Blütenblätter verwenden, Grünanteile machen den Sirup bitter.",
+			"napurelon_vorteile": "Vegane Honigalternative aus heimischen Pflanzen.",
+			"napurelon_nachteile": "Das Zupfen der Blüten dauert lange.",
+			"napurelon_hinweise": "Nicht an gedüngten Wiesen oder Hundewegen sammeln.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Ingwer-Zitronen-Sirup",
+		"kategorie": [ "Getränke", "Sirups" ],
+		"tags": [ "Winter", "schnell" ],
+		"bildsuche": "ginger lemon syrup",
+		"schritte": [
+			"Ingwer in dünne Scheiben schneiden.",
+			"Mit Wasser 20 Minuten leise köcheln lassen.",
+			"Zucker und Zitronensaft zugeben und weitere 15 Minuten einkochen.",
+			"Abseihen und heiß in Flaschen füllen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Wärmender Sirup für die kalte Jahreszeit",
+			"napurelon_einleitung": "Scharf, sauer, süß: dieser Sirup wärmt als Heißgetränk und erfrischt als Limonade.",
+			"napurelon_zutaten": "Ansatz:\n200 g frischer Ingwer\n500 ml Wasser\n400 g Zucker\nSaft von 3 Zitronen",
+			"napurelon_zubereitungszeit": 15,
+			"napurelon_kochzeit": 35,
+			"napurelon_portionen": 25,
+			"napurelon_menge": "ca. 600 ml",
+			"napurelon_haltbarkeit": "3 Monate im Kühlschrank",
+			"napurelon_anwendung": "2 EL mit heißem Wasser aufgießen oder mit Sprudel mischen.",
+			"napurelon_einsatzgebiete": "Heißgetränk, Limonade, Zutat für Marinaden.",
+			"napurelon_tipps": "Bio-Ingwer ungeschält verwenden, das bringt mehr Aroma.",
+			"napurelon_vorteile": "Schnell gemacht und ganzjährig verfügbar.",
+			"napurelon_nachteile": "Für empfindliche Mägen recht scharf.",
+			"napurelon_hinweise": "",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Heilerde-Maske für unreine Haut",
+		"kategorie": [ "Naturkosmetik", "Hautpflege", "Gesichtsmasken" ],
+		"tags": [ "Gesichtspflege", "ohne Konservierung" ],
+		"bildsuche": "clay face mask bowl",
+		"schritte": [
+			"Heilerde und Wasser in einer Schale zu einer streichfähigen Paste rühren.",
+			"Teebaumöl einrühren.",
+			"Auf das gereinigte Gesicht auftragen, Augenpartie aussparen.",
+			"10 Minuten einwirken lassen und mit lauwarmem Wasser abnehmen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Klärende Maske aus zwei Zutaten",
+			"napurelon_einleitung": "Heilerde bindet überschüssigen Talg und beruhigt gereizte Haut.",
+			"napurelon_zutaten": "Für eine Anwendung:\n2 TL Heilerde\n2 TL abgekochtes Wasser\n1 Tropfen Teebaumöl",
+			"napurelon_zubereitungszeit": 5,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "für eine Anwendung",
+			"napurelon_haltbarkeit": "Frisch anrühren, nicht aufbewahren",
+			"napurelon_anwendung": "Dünn auftragen und abnehmen, bevor die Maske vollständig austrocknet.",
+			"napurelon_einsatzgebiete": "Fettige Haut, T-Zone, gelegentliche Unreinheiten.",
+			"napurelon_tipps": "Nach der Maske eine leichte Feuchtigkeitspflege auftragen.",
+			"napurelon_vorteile": "Sehr günstig und ohne Konservierungsstoffe.",
+			"napurelon_nachteile": "Kann trockene Haut zusätzlich austrocknen.",
+			"napurelon_hinweise": "Ätherische Öle vorher in der Armbeuge testen. Nicht in der Schwangerschaft anwenden.",
+			"napurelon_quellen": "Eigene Rezeptur"
+		}
+	},
+	{
+		"titel": "Honig-Joghurt-Maske für trockene Haut",
+		"kategorie": [ "Naturkosmetik", "Hautpflege", "Gesichtsmasken" ],
+		"tags": [ "Gesichtspflege", "schnell" ],
+		"bildsuche": "honey yogurt face mask",
+		"schritte": [
+			"Joghurt und Honig glatt rühren.",
+			"Mandelöl unterheben.",
+			"Auf das Gesicht auftragen und 15 Minuten einwirken lassen.",
+			"Mit lauwarmem Wasser abspülen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Feuchtigkeitsspender aus der Küche",
+			"napurelon_einleitung": "Eine sanfte Maske, die spröde Haut nach dem Winter wieder geschmeidig macht.",
+			"napurelon_zutaten": "Für eine Anwendung:\n1 EL Naturjoghurt\n1 TL Honig\n0,5 TL Mandelöl",
+			"napurelon_zubereitungszeit": 5,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "für eine Anwendung",
+			"napurelon_haltbarkeit": "Sofort verwenden",
+			"napurelon_anwendung": "Gleichmäßig auftragen und ruhen lassen.",
+			"napurelon_einsatzgebiete": "Trockene, spannende Haut.",
+			"napurelon_tipps": "Ein warmes Tuch vor der Maske öffnet die Poren.",
+			"napurelon_vorteile": "Nur Lebensmittel, sofort verfügbar.",
+			"napurelon_nachteile": "Klebt beim Auftragen.",
+			"napurelon_hinweise": "Nicht bei Honigallergie anwenden.",
+			"napurelon_quellen": "Eigene Rezeptur"
+		}
+	},
+	{
+		"titel": "Haferflocken-Peelingmaske",
+		"kategorie": [ "Naturkosmetik", "Hautpflege", "Gesichtsmasken" ],
+		"tags": [ "Gesichtspflege", "Peeling" ],
+		"bildsuche": "oatmeal scrub bowl",
+		"schritte": [
+			"Haferflocken fein mahlen.",
+			"Mit warmem Wasser und Honig zu einem Brei verrühren und 5 Minuten quellen lassen.",
+			"In kreisenden Bewegungen auf das feuchte Gesicht auftragen.",
+			"5 Minuten einwirken lassen und abspülen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Sanftes Peeling für empfindliche Haut",
+			"napurelon_einleitung": "Fein gemahlener Hafer reinigt, ohne die Hautbarriere zu verletzen.",
+			"napurelon_zutaten": "Für eine Anwendung:\n2 EL zarte Haferflocken\n2 EL warmes Wasser\n1 TL Honig",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "für eine Anwendung",
+			"napurelon_haltbarkeit": "Frisch anrühren",
+			"napurelon_anwendung": "Mit leichtem Druck einmassieren, nicht schrubben.",
+			"napurelon_einsatzgebiete": "Empfindliche Haut, Rötungen, raue Stellen.",
+			"napurelon_tipps": "Reste eignen sich auch für die Hände.",
+			"napurelon_vorteile": "Deutlich milder als Peelings mit Salz oder Zucker.",
+			"napurelon_nachteile": "Kann den Abfluss verstopfen – Reste im Sieb auffangen.",
+			"napurelon_hinweise": "",
+			"napurelon_quellen": "Eigene Rezeptur"
+		}
+	},
+	{
+		"titel": "Roggenmehl-Shampoo",
+		"kategorie": [ "Naturkosmetik", "Haarpflege", "Shampoo" ],
+		"tags": [ "Haarpflege", "ohne Tenside" ],
+		"bildsuche": "rye flour hair wash",
+		"schritte": [
+			"Roggenmehl in eine Schale sieben.",
+			"Wasser langsam einrühren, bis eine glatte, dünnflüssige Paste entsteht.",
+			"10 Minuten quellen lassen.",
+			"Auf die Kopfhaut auftragen, einmassieren und gründlich ausspülen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Waschen ganz ohne Tenside",
+			"napurelon_einleitung": "Roggenmehl reinigt mild und liegt im hautfreundlichen pH-Bereich.",
+			"napurelon_zutaten": "Für eine Anwendung:\n4 EL Roggenmehl Type 1150\n6 EL lauwarmes Wasser\n2 Tropfen Lavendelöl (optional)",
+			"napurelon_zubereitungszeit": 15,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "für eine Haarwäsche (mittellanges Haar)",
+			"napurelon_haltbarkeit": "Frisch anrühren",
+			"napurelon_anwendung": "Auf die Kopfhaut, nicht in die Längen auftragen und sehr gründlich ausspülen.",
+			"napurelon_einsatzgebiete": "Umstellung auf naturnahe Haarpflege, empfindliche Kopfhaut.",
+			"napurelon_tipps": "Nur Roggenmehl verwenden – Weizenmehl verklebt das Haar.",
+			"napurelon_vorteile": "Ohne Plastikverpackung und sehr günstig.",
+			"napurelon_nachteile": "Die Umstellungsphase kann einige Wochen dauern.",
+			"napurelon_hinweise": "Nicht bei Getreideallergie anwenden.",
+			"napurelon_quellen": "Eigene Rezeptur"
+		}
+	},
+	{
+		"titel": "Shampoo mit Seifenkraut",
+		"kategorie": [ "Naturkosmetik", "Haarpflege", "Shampoo" ],
+		"tags": [ "Haarpflege", "Kräuter" ],
+		"bildsuche": "soapwort plant root",
+		"schritte": [
+			"Seifenkrautwurzel mit Wasser aufkochen und 15 Minuten köcheln lassen.",
+			"Kräuter zugeben und den Sud 20 Minuten ziehen lassen.",
+			"Abseihen und abkühlen lassen.",
+			"In eine Flasche füllen und vor jeder Anwendung schütteln."
+		],
+		"felder": {
+			"napurelon_untertitel": "Flüssiges Shampoo aus Pflanzensaponinen",
+			"napurelon_einleitung": "Seifenkraut enthält natürliche Saponine, die leicht schäumen und mild reinigen.",
+			"napurelon_zutaten": "Sud:\n30 g getrocknete Seifenkrautwurzel\n500 ml Wasser\n1 EL getrocknete Brennnessel\n1 EL getrocknete Kamille",
+			"napurelon_zubereitungszeit": 15,
+			"napurelon_kochzeit": 35,
+			"napurelon_portionen": 5,
+			"napurelon_menge": "ca. 400 ml",
+			"napurelon_haltbarkeit": "1 Woche im Kühlschrank",
+			"napurelon_anwendung": "Auf das nasse Haar geben, kurz einwirken lassen und ausspülen.",
+			"napurelon_einsatzgebiete": "Normales bis fettiges Haar.",
+			"napurelon_tipps": "In kleinen Portionen einfrieren, dann bleibt der Sud länger frisch.",
+			"napurelon_vorteile": "Vollständig biologisch abbaubar.",
+			"napurelon_nachteile": "Schäumt kaum – das ist normal, aber ungewohnt.",
+			"napurelon_hinweise": "Nicht in die Augen bringen, Saponine reizen die Schleimhäute.",
+			"napurelon_quellen": "Eigene Rezeptur"
+		}
+	},
+	{
+		"titel": "Trockenshampoo aus Heilerde und Stärke",
+		"kategorie": [ "Naturkosmetik", "Haarpflege", "Shampoo" ],
+		"tags": [ "Haarpflege", "schnell" ],
+		"bildsuche": "dry shampoo powder jar",
+		"schritte": [
+			"Alle Pulver in einem Glas gründlich mischen.",
+			"Mit einem Pinsel sparsam auf den Haaransatz auftragen.",
+			"2 Minuten einwirken lassen und gründlich ausbürsten."
+		],
+		"felder": {
+			"napurelon_untertitel": "Sofortlösung für den zweiten Tag",
+			"napurelon_einleitung": "Ein Pulver, das überschüssiges Fett aufnimmt, wenn keine Zeit zum Waschen bleibt.",
+			"napurelon_zutaten": "Mischung:\n4 EL Maisstärke\n1 EL Heilerde\n1 TL Kakaopulver (für dunkles Haar)",
+			"napurelon_zubereitungszeit": 5,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 10,
+			"napurelon_menge": "ca. 60 g",
+			"napurelon_haltbarkeit": "6 Monate trocken",
+			"napurelon_anwendung": "Sparsam am Ansatz einarbeiten und vollständig ausbürsten.",
+			"napurelon_einsatzgebiete": "Reisen, schnelle Auffrischung zwischendurch.",
+			"napurelon_tipps": "Bei hellem Haar das Kakaopulver weglassen.",
+			"napurelon_vorteile": "Kein Treibgas, keine Aluminiumdose.",
+			"napurelon_nachteile": "Ersetzt keine richtige Haarwäsche.",
+			"napurelon_hinweise": "Pulver nicht einatmen.",
+			"napurelon_quellen": "Eigene Rezeptur"
+		}
+	},
+	{
+		"titel": "Olivenöl-Seife nach Kaltverfahren",
+		"kategorie": [ "Seifen & Reinigung", "Seifenrezepte" ],
+		"tags": [ "Seife", "Kaltverfahren" ],
+		"bildsuche": "handmade olive oil soap bars",
+		"schritte": [
+			"Schutzbrille und Handschuhe anlegen. Natronlauge im Freien oder bei offenem Fenster vorsichtig in das Wasser einrühren – niemals umgekehrt.",
+			"Lauge und Öle auf etwa 40 °C temperieren.",
+			"Lauge in die Öle gießen und mit dem Stabmixer bis zur Andickung rühren.",
+			"In die Form gießen, 24 Stunden zugedeckt ruhen lassen, schneiden und 6 Wochen reifen lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Milde Seife aus einem einzigen Öl",
+			"napurelon_einleitung": "Reine Olivenölseife ist besonders mild und eignet sich für empfindliche Haut.",
+			"napurelon_zutaten": "Fettphase:\n500 g Olivenöl\nLaugenphase:\n63 g Natriumhydroxid\n165 g destilliertes Wasser",
+			"napurelon_zubereitungszeit": 60,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 6,
+			"napurelon_menge": "ca. 700 g Seife",
+			"napurelon_haltbarkeit": "2 Jahre trocken gelagert",
+			"napurelon_anwendung": "Zum Waschen von Händen und Körper verwenden.",
+			"napurelon_einsatzgebiete": "Körperpflege, empfindliche Haut.",
+			"napurelon_tipps": "Reine Olivenölseife braucht eine lange Reifezeit, sonst bleibt sie weich.",
+			"napurelon_vorteile": "Nur drei Zutaten, sehr hautfreundlich.",
+			"napurelon_nachteile": "Schäumt wenig und reift langsam.",
+			"napurelon_hinweise": "Natronlauge ist stark ätzend: Schutzbrille, Handschuhe und gute Belüftung sind Pflicht. Nicht in Reichweite von Kindern arbeiten. Rezepturmengen niemals ohne Seifenrechner verändern.",
+			"napurelon_quellen": "Eigene Seifenpraxis"
+		}
+	},
+	{
+		"titel": "Lavendel-Sheabutter-Seife",
+		"kategorie": [ "Seifen & Reinigung", "Seifenrezepte" ],
+		"tags": [ "Seife", "Lavendel" ],
+		"bildsuche": "lavender soap bar handmade",
+		"schritte": [
+			"Schutzausrüstung anlegen und die Lauge vorsichtig anrühren.",
+			"Feste Fette schmelzen, mit den flüssigen Ölen mischen und auf 40 °C bringen.",
+			"Lauge einrühren, bis der Seifenleim andickt, dann Lavendelöl und Blüten zugeben.",
+			"In die Form füllen, nach 24 Stunden schneiden und 4 bis 6 Wochen reifen lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Pflegende Seife mit Blütenaroma",
+			"napurelon_einleitung": "Sheabutter macht die Seife cremig, Lavendel gibt ihr den ruhigen Duft.",
+			"napurelon_zutaten": "Fettphase:\n300 g Olivenöl\n150 g Kokosöl\n50 g Sheabutter\nLaugenphase:\n71 g Natriumhydroxid\n180 g destilliertes Wasser\nZusätze:\n15 g Lavendelöl\n1 EL getrocknete Lavendelblüten",
+			"napurelon_zubereitungszeit": 70,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 7,
+			"napurelon_menge": "ca. 750 g Seife",
+			"napurelon_haltbarkeit": "2 Jahre trocken gelagert",
+			"napurelon_anwendung": "Als Dusch- und Handseife verwenden.",
+			"napurelon_einsatzgebiete": "Körperpflege, Geschenk.",
+			"napurelon_tipps": "Blüten nur oben aufstreuen, im Seifenleim werden sie braun.",
+			"napurelon_vorteile": "Cremiger Schaum durch Kokosöl und Sheabutter.",
+			"napurelon_nachteile": "Mehr Zutaten und Zeitaufwand als die reine Olivenölseife.",
+			"napurelon_hinweise": "Natronlauge ist stark ätzend: Schutzbrille, Handschuhe und gute Belüftung sind Pflicht. Mengen nur mit einem Seifenrechner anpassen.",
+			"napurelon_quellen": "Eigene Seifenpraxis"
+		}
+	},
+	{
+		"titel": "Seifenreste zu neuer Seife verkochen",
+		"kategorie": [ "Seifen & Reinigung", "Seifenrezepte" ],
+		"tags": [ "Seife", "Resteverwertung" ],
+		"bildsuche": "soap scraps pieces",
+		"schritte": [
+			"Seifenreste fein raspeln.",
+			"Mit Wasser im Wasserbad langsam schmelzen und gelegentlich rühren.",
+			"Öl und optional ätherisches Öl einrühren.",
+			"In eine Form füllen und 2 Wochen trocknen lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Aus vielen kleinen Stücken wird ein neues Stück",
+			"napurelon_einleitung": "Reste sammeln statt wegwerfen – ohne Lauge und damit ohne Risiko.",
+			"napurelon_zutaten": "Zutaten:\n300 g Seifenreste\n120 ml Wasser\n1 EL Mandelöl\n10 Tropfen ätherisches Öl (optional)",
+			"napurelon_zubereitungszeit": 20,
+			"napurelon_kochzeit": 30,
+			"napurelon_portionen": 3,
+			"napurelon_menge": "ca. 350 g",
+			"napurelon_haltbarkeit": "1 Jahr trocken gelagert",
+			"napurelon_anwendung": "Wie gekaufte Seife verwenden.",
+			"napurelon_einsatzgebiete": "Handseife, Waschküche.",
+			"napurelon_tipps": "Nur Reste mit ähnlicher Duftrichtung mischen.",
+			"napurelon_vorteile": "Keine Lauge nötig, deshalb gut mit Kindern machbar.",
+			"napurelon_nachteile": "Die Oberfläche wird nie ganz glatt.",
+			"napurelon_hinweise": "Seifenmasse wird sehr heiß, Topflappen benutzen.",
+			"napurelon_quellen": "Eigene Seifenpraxis"
+		}
+	},
+	{
+		"titel": "Allzweckreiniger mit Zitrusessig",
+		"kategorie": [ "Seifen & Reinigung", "Natürliche Reinigungsmittel" ],
+		"tags": [ "Haushalt", "Essig" ],
+		"bildsuche": "citrus vinegar cleaner spray bottle",
+		"schritte": [
+			"Zitrusschalen in ein Glas geben und mit Essig bedecken.",
+			"2 Wochen dunkel ziehen lassen und gelegentlich schütteln.",
+			"Abseihen und mit Wasser im Verhältnis 1:1 verdünnen.",
+			"In eine Sprühflasche füllen und beschriften."
+		],
+		"felder": {
+			"napurelon_untertitel": "Ein Reiniger aus Küchenabfällen",
+			"napurelon_einleitung": "Zitrusschalen geben ihre Öle an den Essig ab und mildern seinen Geruch.",
+			"napurelon_zutaten": "Ansatz:\nSchalen von 4 Bio-Zitronen oder Orangen\n500 ml Haushaltsessig\n500 ml Wasser zum Verdünnen",
+			"napurelon_zubereitungszeit": 15,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "1 Liter Reiniger",
+			"napurelon_haltbarkeit": "6 Monate",
+			"napurelon_anwendung": "Auf die Fläche sprühen, kurz einwirken lassen und trocken nachwischen.",
+			"napurelon_einsatzgebiete": "Arbeitsflächen, Fliesen, Glas.",
+			"napurelon_tipps": "Bei Kalkflecken unverdünnt einsetzen.",
+			"napurelon_vorteile": "Sehr günstig und verpackungsarm.",
+			"napurelon_nachteile": "Der Essiggeruch verfliegt erst nach einigen Minuten.",
+			"napurelon_hinweise": "Nicht auf Naturstein, Marmor oder unversiegeltem Holz verwenden. Niemals mit chlorhaltigen Mitteln mischen.",
+			"napurelon_quellen": "Eigene Haushaltspraxis"
+		}
+	},
+	{
+		"titel": "Scheuermilch aus Natron",
+		"kategorie": [ "Seifen & Reinigung", "Natürliche Reinigungsmittel" ],
+		"tags": [ "Haushalt", "Natron" ],
+		"bildsuche": "baking soda cleaning paste",
+		"schritte": [
+			"Natron und Flüssigseife zu einer Paste verrühren.",
+			"Wasser tropfenweise zugeben, bis die Konsistenz cremig ist.",
+			"In ein Schraubglas füllen.",
+			"Mit einem feuchten Schwamm auftragen und gründlich nachspülen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Milde Scheuerpaste für Bad und Küche",
+			"napurelon_einleitung": "Natron schleift sanft und entfernt Fett, ohne Oberflächen zu zerkratzen.",
+			"napurelon_zutaten": "Paste:\n150 g Natron\n50 ml Flüssigseife\n1 bis 2 EL Wasser",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "ca. 200 g",
+			"napurelon_haltbarkeit": "3 Monate im geschlossenen Glas",
+			"napurelon_anwendung": "Auf hartnäckige Stellen auftragen, kurz einwirken lassen, abwischen.",
+			"napurelon_einsatzgebiete": "Spüle, Backofentür, Fugen.",
+			"napurelon_tipps": "Vor dem ersten Einsatz an einer verdeckten Stelle testen.",
+			"napurelon_vorteile": "Wirksam ohne aggressive Chemie.",
+			"napurelon_nachteile": "Auf empfindlichen Glanzflächen können feine Kratzer entstehen.",
+			"napurelon_hinweise": "Nicht mit Essig kombinieren, die Wirkung hebt sich auf.",
+			"napurelon_quellen": "Eigene Haushaltspraxis"
+		}
+	},
+	{
+		"titel": "Waschmittel aus Kernseife",
+		"kategorie": [ "Seifen & Reinigung", "Natürliche Reinigungsmittel" ],
+		"tags": [ "Haushalt", "Waschen" ],
+		"bildsuche": "laundry soap flakes",
+		"schritte": [
+			"Kernseife fein raspeln.",
+			"In heißem Wasser unter Rühren vollständig auflösen.",
+			"Waschsoda einrühren und abkühlen lassen.",
+			"Vor jedem Gebrauch schütteln, 100 ml pro Waschgang verwenden."
+		],
+		"felder": {
+			"napurelon_untertitel": "Flüssigwaschmittel für Weiß- und Buntwäsche",
+			"napurelon_einleitung": "Drei Zutaten ersetzen die Plastikflasche aus dem Supermarkt.",
+			"napurelon_zutaten": "Ansatz:\n30 g Kernseife ohne Zusätze\n2 l heißes Wasser\n30 g Waschsoda\n10 Tropfen Lavendelöl (optional)",
+			"napurelon_zubereitungszeit": 20,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 20,
+			"napurelon_menge": "2 Liter, ca. 20 Waschgänge",
+			"napurelon_haltbarkeit": "3 Monate",
+			"napurelon_anwendung": "100 ml direkt in die Waschtrommel oder in das Waschmittelfach geben.",
+			"napurelon_einsatzgebiete": "Alltagswäsche bei 30 bis 60 °C.",
+			"napurelon_tipps": "Das Mittel geliert beim Stehen, vor Gebrauch kräftig schütteln.",
+			"napurelon_vorteile": "Günstig und ohne Mikroplastik.",
+			"napurelon_nachteile": "Nicht für Wolle und Seide geeignet.",
+			"napurelon_hinweise": "Waschsoda reizt Haut und Augen, Handschuhe tragen.",
+			"napurelon_quellen": "Eigene Haushaltspraxis"
+		}
+	},
+	{
+		"titel": "Weizen-Sauerteig neu ansetzen",
+		"kategorie": [ "Startkulturen & Fermente", "Brotstarter" ],
+		"tags": [ "Sauerteig", "Starter" ],
+		"bildsuche": "sourdough starter jar bubbles",
+		"schritte": [
+			"Tag 1: 50 g Mehl und 50 g Wasser in einem Glas verrühren, locker abdecken.",
+			"Tag 2 bis 5: täglich die Hälfte verwerfen und mit je 50 g Mehl und Wasser auffrischen.",
+			"Ab Tag 5 sollte sich das Volumen nach dem Füttern verdoppeln.",
+			"Fertigen Starter im Kühlschrank aufbewahren und wöchentlich füttern."
+		],
+		"felder": {
+			"napurelon_untertitel": "In fünf Tagen zum eigenen Anstellgut",
+			"napurelon_einleitung": "Ein Sauerteig entsteht allein aus Mehl, Wasser und den Mikroorganismen der Umgebung.",
+			"napurelon_zutaten": "Pro Fütterung:\n50 g Weizenmehl 550\n50 g lauwarmes Wasser",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "ca. 200 g Anstellgut",
+			"napurelon_haltbarkeit": "Unbegrenzt bei regelmäßiger Fütterung",
+			"napurelon_anwendung": "Vor dem Backen zweimal auffrischen und dann im Rezept einsetzen.",
+			"napurelon_einsatzgebiete": "Brot, Brötchen, Pfannkuchen.",
+			"napurelon_tipps": "Konstante 24 bis 26 °C beschleunigen den Aufbau deutlich.",
+			"napurelon_vorteile": "Kostenlos und über Jahre nutzbar.",
+			"napurelon_nachteile": "Braucht regelmäßige Pflege.",
+			"napurelon_hinweise": "Bei rosa oder pelzigem Belag den Ansatz entsorgen und neu beginnen.",
+			"napurelon_quellen": "Eigene Backpraxis"
+		}
+	},
+	{
+		"titel": "Roggen-Anstellgut auffrischen und lagern",
+		"kategorie": [ "Startkulturen & Fermente", "Brotstarter" ],
+		"tags": [ "Sauerteig", "Starter" ],
+		"bildsuche": "rye sourdough starter",
+		"schritte": [
+			"20 g Anstellgut aus dem Kühlschrank nehmen und eine Stunde akklimatisieren lassen.",
+			"Mit 40 g Roggenmehl und 40 g Wasser verrühren.",
+			"4 bis 6 Stunden bei Raumtemperatur reifen lassen, bis sich Blasen zeigen.",
+			"Wieder kühl stellen oder direkt im Brotteig verwenden."
+		],
+		"felder": {
+			"napurelon_untertitel": "Wöchentliche Pflegeroutine",
+			"napurelon_einleitung": "Ein gepflegtes Anstellgut hält Jahrzehnte – wichtig ist nur der Rhythmus.",
+			"napurelon_zutaten": "Auffrischung:\n20 g Anstellgut\n40 g Roggenmehl 1150\n40 g Wasser",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "ca. 100 g",
+			"napurelon_haltbarkeit": "2 Wochen im Kühlschrank zwischen den Fütterungen",
+			"napurelon_anwendung": "Reifes Anstellgut in Brotrezepten als Triebmittel einsetzen.",
+			"napurelon_einsatzgebiete": "Roggen- und Mischbrote.",
+			"napurelon_tipps": "Überschuss trocknen und als Sicherheitskopie aufbewahren.",
+			"napurelon_vorteile": "Sehr wenig Aufwand pro Woche.",
+			"napurelon_nachteile": "Bei längerer Abwesenheit muss jemand einspringen.",
+			"napurelon_hinweise": "Eine dunkle Flüssigkeitsschicht ist harmlos, sie kann untergerührt werden.",
+			"napurelon_quellen": "Eigene Backpraxis"
+		}
+	},
+	{
+		"titel": "Hefewasser aus Rosinen",
+		"kategorie": [ "Startkulturen & Fermente", "Brotstarter" ],
+		"tags": [ "Starter", "hefefrei backen" ],
+		"bildsuche": "raisin yeast water jar",
+		"schritte": [
+			"Rosinen, Wasser und Honig in ein sauberes Glas geben.",
+			"Locker verschließen und täglich schütteln.",
+			"Nach 4 bis 6 Tagen perlt das Wasser deutlich.",
+			"Abseihen und als Triebmittel verwenden oder kühl lagern."
+		],
+		"felder": {
+			"napurelon_untertitel": "Wilde Hefen aus Trockenfrüchten",
+			"napurelon_einleitung": "Hefewasser treibt milder als Sauerteig und eignet sich gut für süße Teige.",
+			"napurelon_zutaten": "Ansatz:\n50 g ungeschwefelte Rosinen\n500 ml lauwarmes Wasser\n1 TL Honig",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "ca. 500 ml",
+			"napurelon_haltbarkeit": "3 Wochen im Kühlschrank",
+			"napurelon_anwendung": "Im Rezept einen Teil des Wassers durch Hefewasser ersetzen.",
+			"napurelon_einsatzgebiete": "Hefezopf, Brioche, helle Brote.",
+			"napurelon_tipps": "Das Glas nur locker verschließen, sonst baut sich Druck auf.",
+			"napurelon_vorteile": "Milder Geschmack ohne Säure.",
+			"napurelon_nachteile": "Treibt langsamer als Backhefe.",
+			"napurelon_hinweise": "Bei Schimmelbildung oder Fehlgeruch entsorgen.",
+			"napurelon_quellen": "Eigene Backpraxis"
+		}
+	},
+	{
+		"titel": "Joghurtkultur selbst weiterführen",
+		"kategorie": [ "Startkulturen & Fermente", "Joghurtkultur" ],
+		"tags": [ "Joghurt", "Starter" ],
+		"bildsuche": "homemade yogurt jar",
+		"schritte": [
+			"Milch auf 90 °C erhitzen und 5 Minuten halten.",
+			"Auf 43 °C abkühlen lassen.",
+			"Joghurt als Starter einrühren.",
+			"8 Stunden bei konstant 42 bis 45 °C fermentieren, danach kühl stellen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Aus einem Löffel Joghurt wird ein Liter",
+			"napurelon_einleitung": "Eine Joghurtkultur lässt sich viele Male weiterführen, bevor sie erneuert werden muss.",
+			"napurelon_zutaten": "Ansatz:\n1 l Vollmilch\n2 EL Naturjoghurt mit lebenden Kulturen",
+			"napurelon_zubereitungszeit": 20,
+			"napurelon_kochzeit": 480,
+			"napurelon_portionen": 8,
+			"napurelon_menge": "1 Liter Joghurt",
+			"napurelon_haltbarkeit": "10 Tage im Kühlschrank",
+			"napurelon_anwendung": "Pur, mit Obst oder als Basis für Dips verwenden.",
+			"napurelon_einsatzgebiete": "Frühstück, Saucen, Backen.",
+			"napurelon_tipps": "Immer zwei Löffel für den nächsten Ansatz zurückstellen.",
+			"napurelon_vorteile": "Kein Kauf von Starterkulturen nötig.",
+			"napurelon_nachteile": "Nach etwa zehn Generationen lässt die Triebkraft nach.",
+			"napurelon_hinweise": "Nur saubere Gefäße verwenden, Fremdkeime setzen sich sonst durch.",
+			"napurelon_quellen": "Eigene Milchpraxis"
+		}
+	},
+	{
+		"titel": "Griechischer Joghurt aus eigener Kultur",
+		"kategorie": [ "Startkulturen & Fermente", "Joghurtkultur" ],
+		"tags": [ "Joghurt", "Starter" ],
+		"bildsuche": "greek yogurt straining cloth",
+		"schritte": [
+			"Joghurt wie gewohnt ansetzen und fertig fermentieren lassen.",
+			"Ein Sieb mit einem sauberen Tuch auslegen.",
+			"Joghurt einfüllen und 4 bis 6 Stunden im Kühlschrank abtropfen lassen.",
+			"Molke auffangen und weiterverwenden."
+		],
+		"felder": {
+			"napurelon_untertitel": "Cremig durch Abtropfen statt Verdicker",
+			"napurelon_einleitung": "Griechischer Joghurt entsteht allein dadurch, dass Molke abfließt.",
+			"napurelon_zutaten": "Zutaten:\n1 l fertiger Naturjoghurt\n1 sauberes Baumwolltuch",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 5,
+			"napurelon_menge": "ca. 500 g",
+			"napurelon_haltbarkeit": "7 Tage im Kühlschrank",
+			"napurelon_anwendung": "Als Dip, Brotaufstrich oder Dessertbasis verwenden.",
+			"napurelon_einsatzgebiete": "Tzatziki, Frühstücksbowls, Backen.",
+			"napurelon_tipps": "Die abgetropfte Molke eignet sich für Brotteig oder Smoothies.",
+			"napurelon_vorteile": "Höherer Eiweißanteil, keine Zusatzstoffe.",
+			"napurelon_nachteile": "Aus einem Liter wird nur etwa ein halber Liter.",
+			"napurelon_hinweise": "Tuch vor jedem Gebrauch auskochen.",
+			"napurelon_quellen": "Eigene Milchpraxis"
+		}
+	},
+	{
+		"titel": "Milchkefir pflegen",
+		"kategorie": [ "Startkulturen & Fermente", "Joghurtkultur" ],
+		"tags": [ "Kefir", "fermentiert" ],
+		"bildsuche": "milk kefir grains",
+		"schritte": [
+			"Kefirknollen in ein sauberes Glas geben und mit Milch aufgießen.",
+			"Locker abgedeckt 24 Stunden bei Raumtemperatur stehen lassen.",
+			"Durch ein Kunststoffsieb abseihen.",
+			"Knollen erneut mit frischer Milch ansetzen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Tägliche Routine für lebendige Knollen",
+			"napurelon_einleitung": "Kefirknollen wachsen mit der Zeit und liefern täglich frisches Getränk.",
+			"napurelon_zutaten": "Ansatz:\n1 EL Milchkefirknollen\n500 ml Vollmilch",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 2,
+			"napurelon_menge": "500 ml pro Tag",
+			"napurelon_haltbarkeit": "Fertiger Kefir 5 Tage im Kühlschrank",
+			"napurelon_anwendung": "Pur trinken oder mit Obst mixen.",
+			"napurelon_einsatzgebiete": "Frühstück, Smoothies, Salatdressings.",
+			"napurelon_tipps": "Kein Metallsieb verwenden, das schadet den Knollen.",
+			"napurelon_vorteile": "Vermehrt sich selbst und kann verschenkt werden.",
+			"napurelon_nachteile": "Muss fast täglich versorgt werden.",
+			"napurelon_hinweise": "Für eine Pause die Knollen in Milch im Kühlschrank parken, maximal zwei Wochen.",
+			"napurelon_quellen": "Eigene Fermentationspraxis"
+		}
+	},
+	{
+		"titel": "Sauerteig retten, wenn er nicht mehr treibt",
+		"kategorie": [ "Grundlagen & Wissen", "Tipps & Tricks" ],
+		"tags": [ "Sauerteig", "Grundlagen" ],
+		"bildsuche": "sourdough starter flour",
+		"schritte": [
+			"Anstellgut auf 10 g reduzieren und mit 50 g Mehl und 50 g Wasser auffrischen.",
+			"Zwei Tage lang alle 12 Stunden im gleichen Verhältnis füttern.",
+			"Das Glas an einen Ort mit 25 °C stellen.",
+			"Sobald sich das Volumen verdoppelt, ist der Sauerteig wieder backfähig."
+		],
+		"felder": {
+			"napurelon_untertitel": "Diagnose und Rettung in vier Schritten",
+			"napurelon_einleitung": "Ein müder Sauerteig ist selten tot – meist fehlt ihm nur Wärme oder frisches Futter.",
+			"napurelon_zutaten": "Benötigt:\n10 g Anstellgut\n50 g Mehl je Fütterung\n50 g Wasser je Fütterung",
+			"napurelon_zubereitungszeit": 15,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "für ein Anstellgut",
+			"napurelon_haltbarkeit": "Nicht zutreffend",
+			"napurelon_anwendung": "Nach der Rettung wie gewohnt weiterführen.",
+			"napurelon_einsatzgebiete": "Alle Sauerteigbrote.",
+			"napurelon_tipps": "Ein Gummiband am Glas zeigt zuverlässig, ob das Volumen steigt.",
+			"napurelon_vorteile": "Erspart den Neuaufbau über mehrere Tage.",
+			"napurelon_nachteile": "In den ersten Tagen fällt viel Überschuss an.",
+			"napurelon_hinweise": "Bei Schimmel oder stechendem Fehlgeruch hilft nur ein Neuansatz.",
+			"napurelon_quellen": "Eigene Backpraxis"
+		}
+	},
+	{
+		"titel": "Kräuter richtig trocknen",
+		"kategorie": [ "Grundlagen & Wissen", "Tipps & Tricks" ],
+		"tags": [ "Kräuter", "Grundlagen" ],
+		"bildsuche": "drying herbs bunch",
+		"schritte": [
+			"Kräuter am späten Vormittag ernten, wenn der Tau abgetrocknet ist.",
+			"Zu lockeren Bündeln binden und kopfüber an einen luftigen, schattigen Ort hängen.",
+			"Nach 7 bis 14 Tagen prüfen: die Blätter müssen rascheln.",
+			"Blätter abstreifen und in dunklen Gläsern beschriftet lagern."
+		],
+		"felder": {
+			"napurelon_untertitel": "Aroma erhalten statt verlieren",
+			"napurelon_einleitung": "Beim Trocknen entscheiden Licht, Luft und Temperatur über das spätere Aroma.",
+			"napurelon_zutaten": "Benötigt:\nFrische Kräuter\nBaumwollschnur\nDunkle Schraubgläser\nEtiketten",
+			"napurelon_zubereitungszeit": 30,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "beliebige Menge",
+			"napurelon_haltbarkeit": "Getrocknete Kräuter 12 Monate",
+			"napurelon_anwendung": "Für Tee, Gewürzmischungen und Kosmetik verwenden.",
+			"napurelon_einsatzgebiete": "Küche, Kräutertees, Naturkosmetik.",
+			"napurelon_tipps": "Im Backofen nur bei maximal 40 °C und mit offener Tür trocknen.",
+			"napurelon_vorteile": "Kostet nichts außer Zeit.",
+			"napurelon_nachteile": "Braucht Platz und gute Luftzirkulation.",
+			"napurelon_hinweise": "Nicht vollständig getrocknete Kräuter schimmeln im Glas.",
+			"napurelon_quellen": "Eigene Kräuterpraxis"
+		}
+	},
+	{
+		"titel": "Ätherische Öle sicher dosieren",
+		"kategorie": [ "Grundlagen & Wissen", "Tipps & Tricks" ],
+		"tags": [ "Naturkosmetik", "Grundlagen" ],
+		"bildsuche": "essential oil bottle dropper",
+		"schritte": [
+			"Gewünschte Gesamtmenge der Rezeptur bestimmen.",
+			"Für Körperpflege mit höchstens 1 Prozent ätherischem Öl rechnen, für das Gesicht mit 0,5 Prozent.",
+			"Tropfenzahl berechnen: 20 Tropfen entsprechen etwa 1 ml.",
+			"Öl in das Trägeröl einrühren und die Mischung 24 Stunden in der Armbeuge testen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Verdünnung, Test und Lagerung",
+			"napurelon_einleitung": "Ätherische Öle sind hochkonzentriert – die richtige Verdünnung entscheidet über die Verträglichkeit.",
+			"napurelon_zutaten": "Benötigt:\nÄtherisches Öl\nTrägeröl (z. B. Mandel- oder Jojobaöl)\nDunkle Glasflasche\nEtikett mit Datum",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "für eine Rezeptur",
+			"napurelon_haltbarkeit": "Ölmischungen 6 Monate dunkel und kühl",
+			"napurelon_anwendung": "Immer verdünnt auftragen, niemals unverdünnt auf die Haut.",
+			"napurelon_einsatzgebiete": "Cremes, Massageöle, Raumdüfte.",
+			"napurelon_tipps": "Zitrusöle können die Haut lichtempfindlich machen, deshalb abends anwenden.",
+			"napurelon_vorteile": "Weniger Öl wirkt oft besser und ist verträglicher.",
+			"napurelon_nachteile": "Genaues Abmessen kleiner Mengen ist fummelig.",
+			"napurelon_hinweise": "Nicht bei Säuglingen, in der Schwangerschaft oder bei Asthma ohne fachliche Beratung anwenden. Von Kindern fernhalten.",
+			"napurelon_quellen": "Eigene Rezepturpraxis"
+		}
+	},
+	{
+		"titel": "Kräuteröle richtig lagern",
+		"kategorie": [ "Grundlagen & Wissen", "Haltbarkeit & Aufbewahrung" ],
+		"tags": [ "Grundlagen", "Haltbarkeit" ],
+		"bildsuche": "herb infused oil bottle",
+		"schritte": [
+			"Kräuter vollständig trocknen, bevor sie ins Öl kommen.",
+			"Öl und Kräuter in eine dunkle Flasche füllen, Kräuter müssen bedeckt sein.",
+			"Kühl und dunkel lagern und das Abfülldatum notieren.",
+			"Nach 4 Wochen abseihen und die Kräuter entfernen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Wasser ist der größte Feind",
+			"napurelon_einleitung": "Restfeuchte in Kräutern führt in Öl schnell zu Verderb – Trocknung und Lagerung sind entscheidend.",
+			"napurelon_zutaten": "Benötigt:\nGetrocknete Kräuter\nHochwertiges Pflanzenöl\nDunkle Glasflasche\nEtikett",
+			"napurelon_zubereitungszeit": 15,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "beliebige Menge",
+			"napurelon_haltbarkeit": "6 bis 12 Monate je nach Öl",
+			"napurelon_anwendung": "In der Küche oder als Basis für Salben verwenden.",
+			"napurelon_einsatzgebiete": "Küche, Naturkosmetik.",
+			"napurelon_tipps": "Öle mit hohem Anteil ungesättigter Fettsäuren gehören in den Kühlschrank.",
+			"napurelon_vorteile": "Verlängert die Haltbarkeit deutlich.",
+			"napurelon_nachteile": "Dunkle Flaschen zeigen Trübungen erst spät.",
+			"napurelon_hinweise": "Öle mit frischen Kräutern oder Knoblauch bergen ein Botulismusrisiko und gehören immer in den Kühlschrank, maximal eine Woche.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Fermente sicher aufbewahren",
+		"kategorie": [ "Grundlagen & Wissen", "Haltbarkeit & Aufbewahrung" ],
+		"tags": [ "fermentiert", "Haltbarkeit" ],
+		"bildsuche": "fermentation jars shelf",
+		"schritte": [
+			"Nach der Hauptgärung das Glas verschließen und kühl stellen.",
+			"Gemüse immer unter der Lake halten, bei Bedarf Lake nachfüllen.",
+			"Nur mit sauberem Besteck entnehmen.",
+			"Datum und Inhalt auf dem Glas notieren."
+		],
+		"felder": {
+			"napurelon_untertitel": "Von der Gärung in die Lagerung",
+			"napurelon_einleitung": "Nach der aktiven Gärung entscheidet die Lagerung darüber, wie lange ein Ferment gut bleibt.",
+			"napurelon_zutaten": "Benötigt:\nSaubere Gläser mit Deckel\nSalzlake zum Nachfüllen\nEtiketten",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "beliebige Menge",
+			"napurelon_haltbarkeit": "3 bis 6 Monate kühl gelagert",
+			"napurelon_anwendung": "Kühl und dunkel lagern, Gläser regelmäßig kontrollieren.",
+			"napurelon_einsatzgebiete": "Sauerkraut, Kimchi, eingelegtes Gemüse.",
+			"napurelon_tipps": "Kleine Gläser abfüllen, dann bleibt der Rest ungeöffnet.",
+			"napurelon_vorteile": "Fermente reifen im Kalten weiter und gewinnen an Geschmack.",
+			"napurelon_nachteile": "Kühlschrankplatz wird knapp.",
+			"napurelon_hinweise": "Bei Schimmel, schleimiger Lake oder fauligem Geruch das gesamte Glas entsorgen.",
+			"napurelon_quellen": "Eigene Fermentationspraxis"
+		}
+	},
+	{
+		"titel": "Naturkosmetik ohne Konservierungsstoffe haltbar machen",
+		"kategorie": [ "Grundlagen & Wissen", "Haltbarkeit & Aufbewahrung" ],
+		"tags": [ "Naturkosmetik", "Haltbarkeit" ],
+		"bildsuche": "cosmetic jars natural cream",
+		"schritte": [
+			"Gefäße und Rührwerkzeuge auskochen oder mit hochprozentigem Alkohol auswischen.",
+			"Wasserfreie Rezepturen bevorzugen, sie sind deutlich länger haltbar.",
+			"Fertige Produkte in kleine Portionen abfüllen und mit Datum beschriften.",
+			"Kühl und dunkel lagern und mit einem Spatel statt mit den Fingern entnehmen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Hygiene ersetzt Konservierung",
+			"napurelon_einleitung": "Ohne Konservierungsmittel entscheidet die Sauberkeit beim Herstellen über die Haltbarkeit.",
+			"napurelon_zutaten": "Benötigt:\nSaubere Gefäße\nHochprozentiger Alkohol zum Desinfizieren\nKleine Spatel\nEtiketten",
+			"napurelon_zubereitungszeit": 20,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 1,
+			"napurelon_menge": "für eine Rezeptur",
+			"napurelon_haltbarkeit": "Wasserhaltige Produkte 1 bis 2 Wochen im Kühlschrank, wasserfreie 6 Monate",
+			"napurelon_anwendung": "Immer mit sauberem Spatel entnehmen und den Deckel schließen.",
+			"napurelon_einsatzgebiete": "Cremes, Salben, Masken.",
+			"napurelon_tipps": "Wasserhaltige Cremes lieber in kleinen Mengen und häufiger herstellen.",
+			"napurelon_vorteile": "Keine Zusatzstoffe nötig.",
+			"napurelon_nachteile": "Kurze Haltbarkeit erfordert Planung.",
+			"napurelon_hinweise": "Bei Geruchs-, Farb- oder Konsistenzveränderung nicht mehr verwenden.",
+			"napurelon_quellen": "Eigene Rezepturpraxis"
+		}
+	}
+]
