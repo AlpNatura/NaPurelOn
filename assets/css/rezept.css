@@ -6,16 +6,47 @@
 	--napurelon-akzent: #7a9a3f;
 	--napurelon-rahmen: #e4e4e0;
 	--napurelon-akzent-warm: #f9a61a;
+	--napurelon-band: #f6f2ea;
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 1.5rem 1.25rem 3rem;
 }
 
-/* Brotkrumen zwischen Menü und Kopfbild. */
+/* Das Titelband reicht über die Fensterbreite hinaus, deshalb kein
+   waagerechtes Scrollen auf Rezeptseiten. */
+body.single-rezepte {
+	overflow-x: hidden;
+}
+
+/* Titelband in der Menüfarbe, vom Inhalt durch ein Blatt getrennt. */
+.napurelon-rezept__titelband {
+	position: relative;
+	/* Über die volle Fensterbreite, auch innerhalb des Inhaltscontainers. */
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-bottom: 4rem;
+	padding: 1.25rem 1.5rem 1.75rem;
+	background: var(--napurelon-band);
+}
+
+.napurelon-rezept__blatt {
+	position: absolute;
+	bottom: -1.4rem;
+	left: 50%;
+	display: block;
+	width: 7.5rem;
+	transform: translateX(-50%);
+	pointer-events: none;
+}
+
+.napurelon-blatt {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
 .napurelon-rezept__brotkrumen {
-	margin: 0 0 1.5rem;
-	padding: 0 0 1rem;
-	border-bottom: 1px solid var(--napurelon-rahmen);
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 .napurelon-rezept__brotkrumen ol {

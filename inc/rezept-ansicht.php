@@ -52,32 +52,6 @@ function napurelon_enqueue_rezept_assets() {
 add_action( 'wp_enqueue_scripts', 'napurelon_enqueue_rezept_assets' );
 
 /**
- * Rezepte ohne Seitenleiste ausgeben.
- *
- * @param string $layout Von Astra ermitteltes Layout.
- * @return string
- */
-function napurelon_rezept_seitenlayout( $layout ) {
-	return is_singular( 'rezepte' ) ? 'no-sidebar' : $layout;
-}
-
-add_filter( 'astra_page_layout', 'napurelon_rezept_seitenlayout' );
-
-/**
- * Rezepte über die volle Breite ausgeben, wie die mit dem Seitenbaukasten
- * erstellten Seiten. Ohne diesen Filter greift Astras Boxed-Container und
- * legt graue Ränder neben den Inhalt.
- *
- * @param string $layout Von Astra ermittelter Container-Typ.
- * @return string
- */
-function napurelon_rezept_inhaltslayout( $layout ) {
-	return is_singular( 'rezepte' ) ? 'page-builder' : $layout;
-}
-
-add_filter( 'astra_get_content_layout', 'napurelon_rezept_inhaltslayout' );
-
-/**
  * Sperrfrist zwischen zwei Likes desselben Besuchers für dasselbe Rezept.
  */
 define( 'NAPURELON_LIKE_SPERRE', 12 * HOUR_IN_SECONDS );
@@ -191,6 +165,18 @@ function napurelon_rezept_icon( $name ) {
 	}
 
 	return '<svg ' . $attrs . '>' . $icons[ $name ] . '</svg>';
+}
+
+/**
+ * Blatt als Trenner zwischen Titelband und Rezeptinhalt.
+ *
+ * @return string
+ */
+function napurelon_rezept_blatt() {
+	return '<svg class="napurelon-blatt" viewBox="0 0 120 48" fill="none" aria-hidden="true" focusable="false">'
+		. '<path d="M8 40c14-26 44-36 104-36-6 30-34 44-64 40-14-2-26-4-40-4z" fill="#7a9a3f"/>'
+		. '<path d="M8 40c26-14 56-24 104-36" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>'
+		. '</svg>';
 }
 
 /**
