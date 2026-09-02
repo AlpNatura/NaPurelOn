@@ -27,6 +27,12 @@ body.single-rezepte .site-content {
 	background-color: #ffffff;
 }
 
+/* Das Titelband reicht ueber die volle Fensterbreite; der Ueberhang durch die
+   Scrollleiste wird abgeschnitten statt zu scrollen. */
+body.single-rezepte {
+	overflow-x: hidden;
+}
+
 /* Der Innenabstand des Astra-Artikels wandert vom Artikel in den Inhaltsblock,
    damit das Titelband die Spalte randlos ausfüllt. */
 body.single-rezepte .ast-article-single {
@@ -39,15 +45,17 @@ body.single-rezepte .ast-article-single {
 	padding: 0 clamp(1rem, 3vw, 3.34em) clamp(1rem, 3vw, 3.34em);
 }
 
-/* Titelband in der Menüfarbe, vom Inhalt durch ein Blatt getrennt.
-   Breite und Ausrichtung folgen der Inhaltsspalte. */
+/* Titelband in der Menüfarbe über die volle Breite, vom Inhalt durch ein Blatt
+   getrennt. */
 .napurelon-rezept__titelband {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
+	justify-content: center;
 	box-sizing: border-box;
 	min-height: 342px;
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
 	margin-bottom: 4rem;
 	padding: 3.5rem 1.5rem;
 	overflow: visible;
@@ -57,7 +65,8 @@ body.single-rezepte .ast-article-single {
 
 .napurelon-rezept__bandtitel {
 	margin: 0 0 0.75rem;
-	font-size: clamp(1.6rem, 3vw, 2.2rem);
+	font-size: clamp(2rem, 5vw, 3rem);
+	font-weight: 500;
 	line-height: 1.2;
 	color: #333333;
 }
