@@ -43,13 +43,23 @@ body.single-rezepte .ast-article-single {
    Breite und Ausrichtung folgen der Inhaltsspalte. */
 .napurelon-rezept__titelband {
 	position: relative;
-	display: block;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 	box-sizing: border-box;
 	min-height: 342px;
 	margin-bottom: 4rem;
 	padding: 3.5rem 1.5rem;
 	overflow: visible;
 	background: var(--napurelon-band);
+	text-align: center;
+}
+
+.napurelon-rezept__bandtitel {
+	margin: 0 0 0.75rem;
+	font-size: clamp(1.6rem, 3vw, 2.2rem);
+	line-height: 1.2;
+	color: #333333;
 }
 
 /* Bei transparentem Kopfbereich liegt das Menü über dem Band; die Brotkrumen
@@ -60,10 +70,11 @@ body.ast-theme-transparent-header .napurelon-rezept__titelband {
 
 .napurelon-rezept__blatt {
 	position: absolute;
-	bottom: -1.6rem;
+	bottom: -2.2rem;
 	left: 50%;
 	display: block;
-	width: 4.5rem;
+	width: 150px;
+	max-width: 60%;
 	transform: translateX(-50%);
 	pointer-events: none;
 }
@@ -84,6 +95,7 @@ body.ast-theme-transparent-header .napurelon-rezept__titelband {
 .napurelon-rezept__brotkrumen ol {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 	gap: 0.35rem 0.6rem;
 	margin: 0;
 	padding: 0;

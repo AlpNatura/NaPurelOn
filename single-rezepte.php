@@ -34,6 +34,8 @@ while ( have_posts() ) :
 <article id="rezept-<?php echo esc_attr( $post_id ); ?>" <?php post_class( 'napurelon-rezept' ); ?>>
 
 	<div class="napurelon-rezept__titelband">
+		<p class="napurelon-rezept__bandtitel"><?php esc_html_e( 'Rezept Details', 'astra-child' ); ?></p>
+
 		<nav class="napurelon-rezept__brotkrumen" aria-label="Brotkrumen">
 			<ol>
 				<?php foreach ( napurelon_rezept_brotkrumen( $post_id ) as $krume ) : ?>
