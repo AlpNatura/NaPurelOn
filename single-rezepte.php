@@ -53,6 +53,8 @@ while ( have_posts() ) :
 		</span>
 	</div>
 
+	<div class="napurelon-rezept__inhalt">
+
 	<header class="napurelon-rezept__kopf">
 		<?php
 		// Galerie: Rezeptbild zuerst, danach die Bilder aus der Metabox.
@@ -254,6 +256,8 @@ while ( have_posts() ) :
 		comments_template();
 	}
 	?>
+
+	</div>
 
 </article>
 
