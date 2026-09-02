@@ -20,6 +20,13 @@ body.single-rezepte .main-header-bar {
 	background-color: #f8f6f3;
 }
 
+/* Neben dem Inhalt bleibt es weiss, nicht im Bandton. */
+body.single-rezepte,
+body.single-rezepte #content,
+body.single-rezepte .site-content {
+	background-color: #ffffff;
+}
+
 /* Der Innenabstand des Astra-Artikels wandert vom Artikel in den Inhaltsblock,
    damit das Titelband die Spalte randlos ausfüllt. */
 body.single-rezepte .ast-article-single {
@@ -60,6 +67,8 @@ body.single-rezepte .ast-article-single {
 }
 
 .napurelon-rezept__brotkrumen {
+	position: relative;
+	z-index: 1;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -73,7 +82,7 @@ body.single-rezepte .ast-article-single {
 	list-style: none;
 	font-size: 0.9rem;
 	line-height: 1.6;
-	color: #6b6b66;
+	color: #4a4a45;
 }
 
 .napurelon-rezept__brotkrumen li {
