@@ -173,6 +173,12 @@ function napurelon_rezept_icon( $name ) {
  * @return string
  */
 function napurelon_rezept_blatt() {
+	$pfad = '/uploads/2021/03/basil-leaf-150x90.png';
+
+	if ( file_exists( WP_CONTENT_DIR . $pfad ) ) {
+		return '<img class="napurelon-blatt" src="' . esc_url( content_url( $pfad ) ) . '" alt="" width="150" height="90" loading="lazy" decoding="async" />';
+	}
+
 	return '<svg class="napurelon-blatt" viewBox="0 0 120 48" fill="none" aria-hidden="true" focusable="false">'
 		. '<path d="M8 40c14-26 44-36 104-36-6 30-34 44-64 40-14-2-26-4-40-4z" fill="#7a9a3f"/>'
 		. '<path d="M8 40c26-14 56-24 104-36" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>'
