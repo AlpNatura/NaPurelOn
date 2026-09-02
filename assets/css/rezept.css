@@ -36,11 +36,9 @@ body.single-rezepte .ast-article-single {
    Breite und Ausrichtung folgen der Inhaltsspalte. */
 .napurelon-rezept__titelband {
 	position: relative;
-	display: flex;
-	align-items: center;
-	min-height: 9rem;
+	display: block;
 	margin-bottom: 4rem;
-	padding: 3rem 1.5rem 3.25rem;
+	padding: 3.5rem 1.5rem;
 	overflow: visible;
 	background: var(--napurelon-band);
 }
@@ -62,7 +60,6 @@ body.single-rezepte .ast-article-single {
 }
 
 .napurelon-rezept__brotkrumen {
-	flex: 1 1 auto;
 	max-width: 1200px;
 	margin: 0 auto;
 }
