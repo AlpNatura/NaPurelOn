@@ -58,9 +58,14 @@
 }
 
 .napurelon-rezept__karte {
+	box-sizing: border-box;
 	background: #fff;
 	border: 1px solid var(--napurelon-rahmen);
 	padding: 2rem;
+	/* Lange Wörter umbrechen, statt aus der Karte zu laufen. */
+	overflow-wrap: break-word;
+	word-break: break-word;
+	hyphens: auto;
 }
 
 @media (min-width: 900px) {
@@ -86,7 +91,9 @@
 
 .napurelon-rezept__titel {
 	margin: 0 0 1rem;
-	font-size: clamp(1.8rem, 3vw, 2.6rem);
+	overflow-wrap: break-word;
+	hyphens: auto;
+	font-size: clamp(1.5rem, 2.2vw, 2.2rem);
 	line-height: 1.15;
 	color: var(--napurelon-akzent);
 }
