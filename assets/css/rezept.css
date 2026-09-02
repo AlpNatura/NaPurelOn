@@ -20,6 +20,18 @@ body.single-rezepte .main-header-bar {
 	background-color: #f8f6f3;
 }
 
+/* Der Innenabstand des Astra-Artikels wandert vom Artikel in den Inhaltsblock,
+   damit das Titelband die Spalte randlos ausfüllt. */
+body.single-rezepte .ast-article-single {
+	padding-top: 0;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.napurelon-rezept__inhalt {
+	padding: 0 clamp(1rem, 3vw, 3.34em) clamp(1rem, 3vw, 3.34em);
+}
+
 /* Titelband in der Menüfarbe, vom Inhalt durch ein Blatt getrennt.
    Breite und Ausrichtung folgen der Inhaltsspalte. */
 .napurelon-rezept__titelband {
