@@ -11,18 +11,10 @@
 	margin: 0 auto;
 }
 
-/* Das Titelband reicht über die Fensterbreite hinaus, deshalb kein
-   waagerechtes Scrollen auf Rezeptseiten. */
-body.single-rezepte {
-	overflow-x: hidden;
-}
-
-/* Titelband in der Menüfarbe, vom Inhalt durch ein Blatt getrennt. */
+/* Titelband in der Menüfarbe, vom Inhalt durch ein Blatt getrennt.
+   Breite und Ausrichtung folgen der Inhaltsspalte. */
 .napurelon-rezept__titelband {
 	position: relative;
-	/* Über die volle Fensterbreite, auch innerhalb des Inhaltscontainers. */
-	width: 100vw;
-	margin-left: calc(50% - 50vw);
 	margin-bottom: 4rem;
 	padding: 1.25rem 1.5rem 1.75rem;
 	background: var(--napurelon-band);
