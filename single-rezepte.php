@@ -31,22 +31,6 @@ while ( have_posts() ) :
 	$likes       = (int) get_post_meta( $post_id, NAPURELON_LIKES_META_KEY, true );
 	?>
 
-<div class="napurelon-rezept-titelbereich">
-	<nav class="napurelon-brotkrumen" aria-label="Brotkrumen">
-		<ol>
-			<?php foreach ( napurelon_rezept_brotkrumen( $post_id ) as $krume ) : ?>
-				<li>
-					<?php if ( '' !== $krume['url'] ) : ?>
-						<a href="<?php echo esc_url( $krume['url'] ); ?>"><?php echo esc_html( $krume['titel'] ); ?></a>
-					<?php else : ?>
-						<span><?php echo esc_html( $krume['titel'] ); ?></span>
-					<?php endif; ?>
-				</li>
-			<?php endforeach; ?>
-		</ol>
-	</nav>
-</div>
-
 <article id="rezept-<?php echo esc_attr( $post_id ); ?>" <?php post_class( 'napurelon-rezept' ); ?>>
 
 	<header class="napurelon-rezept__kopf">
