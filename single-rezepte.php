@@ -33,6 +33,20 @@ while ( have_posts() ) :
 
 <article id="rezept-<?php echo esc_attr( $post_id ); ?>" <?php post_class( 'napurelon-rezept' ); ?>>
 
+	<nav class="napurelon-rezept__brotkrumen" aria-label="Brotkrumen">
+		<ol>
+			<?php foreach ( napurelon_rezept_brotkrumen( $post_id ) as $krume ) : ?>
+				<li>
+					<?php if ( '' !== $krume['url'] ) : ?>
+						<a href="<?php echo esc_url( $krume['url'] ); ?>"><?php echo esc_html( $krume['titel'] ); ?></a>
+					<?php else : ?>
+						<span><?php echo esc_html( $krume['titel'] ); ?></span>
+					<?php endif; ?>
+				</li>
+			<?php endforeach; ?>
+		</ol>
+	</nav>
+
 	<header class="napurelon-rezept__kopf">
 		<?php
 		// Galerie: Rezeptbild zuerst, danach die Bilder aus der Metabox.
