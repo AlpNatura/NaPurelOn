@@ -44,10 +44,18 @@ body.single-rezepte .ast-article-single {
 .napurelon-rezept__titelband {
 	position: relative;
 	display: block;
+	box-sizing: border-box;
+	min-height: 342px;
 	margin-bottom: 4rem;
 	padding: 3.5rem 1.5rem;
 	overflow: visible;
 	background: var(--napurelon-band);
+}
+
+/* Bei transparentem Kopfbereich liegt das Menü über dem Band; die Brotkrumen
+   starten deshalb unterhalb der Menühöhe. */
+body.ast-theme-transparent-header .napurelon-rezept__titelband {
+	padding-top: calc(3.5rem + var(--ast-transparent-header-height, 124px));
 }
 
 .napurelon-rezept__blatt {
