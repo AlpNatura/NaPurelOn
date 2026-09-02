@@ -52,32 +52,6 @@ function napurelon_enqueue_rezept_assets() {
 add_action( 'wp_enqueue_scripts', 'napurelon_enqueue_rezept_assets' );
 
 /**
- * Rezepte ohne Seitenleiste ausgeben.
- *
- * @param string $layout Von Astra ermitteltes Layout.
- * @return string
- */
-function napurelon_rezept_seitenlayout( $layout ) {
-	return is_singular( 'rezepte' ) ? 'no-sidebar' : $layout;
-}
-
-add_filter( 'astra_page_layout', 'napurelon_rezept_seitenlayout' );
-
-/**
- * Rezepte über die volle Breite ausgeben, wie die mit dem Seitenbaukasten
- * erstellten Seiten. Ohne diesen Filter greift Astras Boxed-Container und
- * legt graue Ränder neben den Inhalt.
- *
- * @param string $layout Von Astra ermittelter Container-Typ.
- * @return string
- */
-function napurelon_rezept_inhaltslayout( $layout ) {
-	return is_singular( 'rezepte' ) ? 'page-builder' : $layout;
-}
-
-add_filter( 'astra_get_content_layout', 'napurelon_rezept_inhaltslayout' );
-
-/**
  * Sperrfrist zwischen zwei Likes desselben Besuchers für dasselbe Rezept.
  */
 define( 'NAPURELON_LIKE_SPERRE', 12 * HOUR_IN_SECONDS );
