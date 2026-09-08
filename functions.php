@@ -11,6 +11,17 @@ require_once get_stylesheet_directory() . '/inc/bilder.php';
 add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style( 'astra-parent', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'napurelon', get_stylesheet_uri(), array( 'astra-parent' ), '1.0.0' );
+
+    $karten      = '/assets/css/kategoriekarten.css';
+    $karten_pfad = get_stylesheet_directory() . $karten;
+    if ( file_exists( $karten_pfad ) ) {
+        wp_enqueue_style(
+            'napurelon-kategoriekarten',
+            get_stylesheet_directory_uri() . $karten,
+            array( 'napurelon' ),
+            (string) filemtime( $karten_pfad )
+        );
+    }
 } );
 
 /**
