@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
  * Version der Rewrite-Regeln. Bei jeder Änderung an Slugs oder
  * Rewrite-Optionen erhöhen, damit die Permalinks neu geschrieben werden.
  */
-define( 'NAPURELON_REZEPTE_REWRITE_VERSION', '1.2.0' );
+define( 'NAPURELON_REZEPTE_REWRITE_VERSION', '1.3.0' );
 
 /**
  * Registriert den Custom Post Type "Rezepte".
@@ -48,7 +48,8 @@ function napurelon_register_rezepte_post_type() {
     $args = array(
         'labels'       => $labels,
         'public'       => true,
-        'has_archive'  => true,
+        // Kein eigenes Archiv: /rezepte/ gehoert der mit Elementor gebauten Seite.
+        'has_archive'  => false,
         'show_in_rest' => true, // Gutenberg, Elementor und REST API.
         'menu_icon'    => 'dashicons-carrot',
         'menu_position'=> 5,
