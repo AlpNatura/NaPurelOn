@@ -4,51 +4,56 @@
  * Verwendung: dem Karten-Container in Elementor die CSS-Klasse
  * "npo-kategoriekarte" geben. Hintergrundbild, Overlay, Radius und Abstaende
  * werden weiterhin in Elementor gesetzt; hier liegen nur Hover und Schichtung.
+ *
+ * Elementor-Container nutzen ::before selbst fuer das Overlay, deshalb liegt
+ * die Zoom-Ebene auf ::after. Die Selektoren sind bewusst doppelt
+ * (.elementor-element.npo-kategoriekarte), damit sie Elementors eigene,
+ * sehr spezifische Regeln uebertreffen.
  */
 
-.npo-kategoriekarte {
+.elementor-element.npo-kategoriekarte {
 	position: relative;
 	overflow: hidden;
 	transition: box-shadow 350ms ease;
 }
 
-/* Ebene fuer den Zoom: uebernimmt das in Elementor gesetzte Hintergrundbild. */
-.npo-kategoriekarte::before {
+/* Zoom-Ebene: uebernimmt das in Elementor gesetzte Hintergrundbild. */
+.elementor-element.npo-kategoriekarte::after {
 	position: absolute;
 	z-index: 0;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
+	display: block;
 	background-image: inherit;
 	background-position: center center;
+	background-repeat: no-repeat;
 	background-size: cover;
 	content: "";
+	pointer-events: none;
 	transform: scale(1);
 	transition: transform 350ms ease;
 }
 
-.npo-kategoriekarte:hover::before,
-.npo-kategoriekarte:focus-within::before {
+.elementor-element.npo-kategoriekarte:hover::after,
+.elementor-element.npo-kategoriekarte:focus-within::after {
 	transform: scale(1.03);
 }
 
-.npo-kategoriekarte > .elementor-background-overlay {
+/* Elementors Overlay (Container: ::before, aeltere Sections: eigenes div). */
+.elementor-element.npo-kategoriekarte::before,
+.elementor-element.npo-kategoriekarte > .elementor-background-overlay {
 	z-index: 1;
 	transition: opacity 350ms ease;
 }
 
-.npo-kategoriekarte:hover > .elementor-background-overlay,
-.npo-kategoriekarte:focus-within > .elementor-background-overlay {
-	opacity: 1;
-}
-
-.npo-kategoriekarte > *:not(.elementor-background-overlay) {
+.elementor-element.npo-kategoriekarte > *:not(.elementor-background-overlay) {
 	position: relative;
 	z-index: 2;
 }
 
-.npo-kategoriekarte:hover {
+.elementor-element.npo-kategoriekarte:hover {
 	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
@@ -81,13 +86,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.npo-kategoriekarte::before,
-	.npo-kategoriekarte > .elementor-background-overlay {
+	.elementor-element.npo-kategoriekarte::after {
 		transition: none;
 	}
 
-	.npo-kategoriekarte:hover::before,
-	.npo-kategoriekarte:focus-within::before {
+	.elementor-element.npo-kategoriekarte:hover::after,
+	.elementor-element.npo-kategoriekarte:focus-within::after {
 		transform: none;
 	}
 }
