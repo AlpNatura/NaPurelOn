@@ -1,6 +1,79 @@
 /**
- * Karten der zuletzt veröffentlichten Rezepte ([napurelon_neue_rezepte]).
+ * Karten der zuletzt veröffentlichten Rezepte ([napurelon_neue_rezepte])
+ * und die Rezeptsuche ([napurelon_rezept_suche]).
  */
+
+.npo-rezeptsuche {
+	margin: 0 0 2rem;
+}
+
+.npo-rezeptsuche__form {
+	display: flex;
+	gap: 12px;
+	align-items: stretch;
+	max-width: 560px;
+	margin: 0 auto;
+}
+
+.npo-rezeptsuche__feld {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 0.75rem 1rem;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: 999px;
+	background-color: #ffffff;
+	font-size: 1rem;
+	color: #333333;
+}
+
+.npo-rezeptsuche__feld:focus {
+	outline: none;
+	border-color: #7a9a3f;
+	box-shadow: 0 0 0 3px rgba(122, 154, 63, 0.18);
+}
+
+.npo-rezeptsuche__button {
+	flex: 0 0 auto;
+	padding: 0.75rem 1.5rem;
+	border: 0;
+	border-radius: 999px;
+	background-color: #7a9a3f;
+	font-size: 0.95rem;
+	color: #ffffff;
+	cursor: pointer;
+	transition: background-color 200ms ease;
+}
+
+.npo-rezeptsuche__button:hover,
+.npo-rezeptsuche__button:focus {
+	background-color: #6a8737;
+}
+
+.npo-rezeptsuche__status,
+.npo-rezeptsuche__leer {
+	margin: 0.75rem 0 0;
+	text-align: center;
+	font-size: 0.9rem;
+	color: #6b6b6b;
+}
+
+.npo-rezeptsuche__status:empty {
+	margin: 0;
+}
+
+.npo-rezeptsuche__treffer:not(:empty) {
+	margin-top: 1.5rem;
+}
+
+@media (max-width: 640px) {
+	.npo-rezeptsuche__form {
+		flex-direction: column;
+	}
+
+	.npo-rezeptsuche__button {
+		width: 100%;
+	}
+}
 
 /* !important haelt das Raster gegen die Listenregeln von Astra/Elementor. */
 ul.npo-rezeptkarten {
