@@ -1,0 +1,170 @@
+/**
+ * Karten der zuletzt veröffentlichten Rezepte ([napurelon_neue_rezepte]).
+ */
+
+.npo-rezeptkarten {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 24px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@media (max-width: 1024px) {
+	.npo-rezeptkarten {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 640px) {
+	.npo-rezeptkarten {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.npo-rezeptkarte {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	height: 100%;
+	border-radius: 12px;
+	background-color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+	transition: box-shadow 300ms ease, transform 300ms ease;
+}
+
+.npo-rezeptkarte:hover,
+.npo-rezeptkarte:focus-within {
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+	transform: translateY(-2px);
+}
+
+.npo-rezeptkarte__medien {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 3 / 2;
+	background-color: #f8f6f3;
+}
+
+.npo-rezeptkarte__bild {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 350ms ease;
+}
+
+.npo-rezeptkarte:hover .npo-rezeptkarte__bild,
+.npo-rezeptkarte:focus-within .npo-rezeptkarte__bild {
+	transform: scale(1.03);
+}
+
+.npo-rezeptkarte__platzhalter {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: #f8f6f3;
+}
+
+.npo-rezeptkarte__inhalt {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.35rem;
+	padding: 1.1rem 1.25rem 1rem;
+}
+
+.npo-rezeptkarte__kategorie {
+	font-size: 0.72rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #7a9a3f;
+}
+
+.npo-rezeptkarte__titel {
+	margin: 0;
+	font-size: 1.15rem;
+	font-weight: 500;
+	line-height: 1.35;
+	color: #333333;
+}
+
+.npo-rezeptkarte__link {
+	display: -webkit-box;
+	overflow: hidden;
+	color: inherit;
+	text-decoration: none;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+/* Ganze Karte klickbar – der Like-Button liegt darüber. */
+.npo-rezeptkarte__link::after {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: "";
+}
+
+.npo-rezeptkarte__untertitel {
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	color: #6b6b6b;
+}
+
+.npo-rezeptkarte__like {
+	position: relative;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	margin-top: auto;
+	margin-left: auto;
+	padding: 0.35rem 0;
+	border: 0;
+	background: none;
+	font-size: 0.9rem;
+	line-height: 1;
+	color: #6b6b6b;
+	cursor: pointer;
+	transition: color 200ms ease;
+}
+
+.npo-rezeptkarte__like .napurelon-icon {
+	width: 18px;
+	height: 18px;
+}
+
+.npo-rezeptkarte__like:hover,
+.npo-rezeptkarte__like.is-active {
+	color: #c0553f;
+}
+
+.npo-rezeptkarte__like.is-active .napurelon-icon {
+	fill: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.npo-rezeptkarte,
+	.npo-rezeptkarte__bild {
+		transition: none;
+	}
+
+	.npo-rezeptkarte:hover,
+	.npo-rezeptkarte:focus-within {
+		transform: none;
+	}
+
+	.npo-rezeptkarte:hover .npo-rezeptkarte__bild,
+	.npo-rezeptkarte:focus-within .npo-rezeptkarte__bild {
+		transform: none;
+	}
+}
