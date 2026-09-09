@@ -4,7 +4,21 @@
  */
 
 .npo-rezeptsuche {
-	margin: 0 0 1.25rem;
+	margin: 0;
+}
+
+.npo-rezeptsuche > *:last-child {
+	margin-bottom: 0;
+}
+
+/* Der Elementor-Container um das Suchfeld soll unten nicht nachfedern. */
+.elementor-widget-shortcode:has(.npo-rezeptsuche) {
+	margin-bottom: 0;
+}
+
+.elementor-widget-shortcode:has(.npo-rezeptsuche) .elementor-widget-container {
+	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 .npo-rezeptsuche__form {
