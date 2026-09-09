@@ -11,10 +11,10 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registriert CSS und JavaScript der Kartenliste.
+ * Bindet CSS und JavaScript der Kartenliste ein.
  *
- * Eingebunden wird erst beim Rendern des Shortcodes, damit andere Seiten
- * die Dateien nicht laden.
+ * Der Shortcode steckt bei Elementor-Seiten in _elementor_data statt im
+ * Beitragsinhalt, deshalb laedt das Stylesheet im Frontend generell mit.
  */
 function napurelon_register_rezeptkarten_assets() {
 	$dir = get_stylesheet_directory();
@@ -22,14 +22,18 @@ function napurelon_register_rezeptkarten_assets() {
 	$css = '/assets/css/rezeptkarten.css';
 	$js  = '/assets/js/rezeptkarten.js';
 
-	wp_register_style(
+	if ( is_admin() ) {
+		return;
+	}
+
+	wp_enqueue_style(
 		'napurelon-rezeptkarten',
 		$uri . $css,
 		array( 'napurelon' ),
 		file_exists( $dir . $css ) ? (string) filemtime( $dir . $css ) : '1.0.0'
 	);
 
-	wp_register_script(
+	wp_enqueue_script(
 		'napurelon-rezeptkarten',
 		$uri . $js,
 		array(),
@@ -45,14 +49,6 @@ function napurelon_register_rezeptkarten_assets() {
 			'nonce'   => wp_create_nonce( 'napurelon_rezept_like' ),
 		)
 	);
-
-	// Steht der Shortcode im Seiteninhalt, laden die Dateien regulär im Kopf.
-	$beitrag = get_post();
-
-	if ( $beitrag instanceof WP_Post && has_shortcode( $beitrag->post_content, 'napurelon_neue_rezepte' ) ) {
-		wp_enqueue_style( 'napurelon-rezeptkarten' );
-		wp_enqueue_script( 'napurelon-rezeptkarten' );
-	}
 }
 
 add_action( 'wp_enqueue_scripts', 'napurelon_register_rezeptkarten_assets' );
@@ -147,9 +143,6 @@ function napurelon_neue_rezepte_shortcode( $atts ) {
 	if ( ! $abfrage->have_posts() ) {
 		return '';
 	}
-
-	wp_enqueue_style( 'napurelon-rezeptkarten' );
-	wp_enqueue_script( 'napurelon-rezeptkarten' );
 
 	$karten = '';
 
