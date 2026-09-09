@@ -41,16 +41,17 @@ ul.npo-rezeptkarten > li.npo-rezeptkarte::marker {
 	flex-direction: column;
 	overflow: hidden;
 	height: 100%;
+	border: 1px solid rgba(0, 0, 0, 0.06);
 	border-radius: 12px;
 	background-color: #ffffff;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 2px 4px rgba(31, 26, 20, 0.06), 0 8px 20px rgba(31, 26, 20, 0.1);
 	transition: box-shadow 300ms ease, transform 300ms ease;
 }
 
 .npo-rezeptkarte:hover,
 .npo-rezeptkarte:focus-within {
-	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(31, 26, 20, 0.08), 0 16px 32px rgba(31, 26, 20, 0.16);
+	transform: translateY(-3px);
 }
 
 .npo-rezeptkarte__medien {
