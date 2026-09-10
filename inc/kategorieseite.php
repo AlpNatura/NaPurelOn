@@ -133,7 +133,31 @@ function napurelon_kategorie_begriff( $atts = array() ) {
 		return ( $begriff instanceof WP_Term ) ? $begriff : null;
 	}
 
+	if ( napurelon_kategorie_ist_vorlage() ) {
+		$haupt = napurelon_kategorie_hauptkategorien();
+
+		return isset( $haupt[0] ) ? $haupt[0] : null;
+	}
+
 	return null;
+}
+
+/**
+ * Prueft, ob gerade die Vorlagenseite selbst angezeigt oder bearbeitet wird.
+ *
+ * Dort zeigen die Bausteine die erste Hauptkategorie, damit sich das Layout
+ * in Elementor mit echten Inhalten aufbauen laesst.
+ *
+ * @return bool Wahr auf der Vorlagenseite.
+ */
+function napurelon_kategorie_ist_vorlage() {
+	if ( ! function_exists( 'napurelon_kategorie_vorlage_id' ) ) {
+		return false;
+	}
+
+	$vorlage = napurelon_kategorie_vorlage_id();
+
+	return $vorlage > 0 && get_queried_object_id() === $vorlage;
 }
 
 /**
