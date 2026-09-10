@@ -51,16 +51,7 @@ add_action( 'admin_enqueue_scripts', 'napurelon_kategorie_felder_assets' );
  * @return WP_Term[] Begriffe.
  */
 function napurelon_kategorie_auswahlliste( $ausser = 0 ) {
-	$begriffe = get_terms(
-		array(
-			'taxonomy'   => 'rezeptkategorie',
-			'parent'     => 0,
-			'hide_empty' => false,
-			'exclude'    => $ausser ? array( (int) $ausser ) : array(),
-		)
-	);
-
-	return is_wp_error( $begriffe ) ? array() : $begriffe;
+	return napurelon_kategorie_hauptkategorien( $ausser ? array( (int) $ausser ) : array() );
 }
 
 /**

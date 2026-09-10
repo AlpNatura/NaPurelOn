@@ -49,6 +49,52 @@ function napurelon_kategorieseite_assets() {
 add_action( 'wp_enqueue_scripts', 'napurelon_kategorieseite_assets' );
 
 /**
+ * Die sechs Hauptkategorien in ihrer redaktionellen Reihenfolge,
+ * jeweils mit dem Kurztext, der ohne eigene Pflege im Hero erscheint.
+ *
+ * @return array<string,string> Name des Begriffs => Kurztext.
+ */
+function napurelon_kategorie_hauptnamen() {
+	return array(
+		'Lebensmittel'             => 'Natürliche Rezepte für den Alltag.',
+		'Getränke'                 => 'Wohltuende Getränke aus natürlichen Zutaten.',
+		'Naturkosmetik'            => 'Pflege aus Pflanzen und Ölen.',
+		'Seifen & Reinigung'       => 'Natürlich sauber – ohne Zusätze.',
+		'Startkulturen & Fermente' => 'Lebendige Kulturen selbst vorbereiten.',
+		'Grundlagen & Wissen'      => 'Verstehen statt nur nachmachen.',
+	);
+}
+
+/**
+ * Liefert die vorhandenen Hauptkategorien als Begriffe.
+ *
+ * Es werden ausschliesslich die sechs festgelegten Kategorien beruecksichtigt,
+ * damit weitere Begriffe auf oberster Ebene die Navigation nicht aufblaehen.
+ *
+ * @param int[] $ausschluss Begriffs-IDs, die uebersprungen werden.
+ * @return WP_Term[] Begriffe in redaktioneller Reihenfolge.
+ */
+function napurelon_kategorie_hauptkategorien( array $ausschluss = array() ) {
+	$begriffe = array();
+
+	foreach ( array_keys( napurelon_kategorie_hauptnamen() ) as $name ) {
+		$begriff = get_term_by( 'name', $name, 'rezeptkategorie' );
+
+		if ( ! $begriff instanceof WP_Term ) {
+			$begriff = get_term_by( 'slug', sanitize_title( $name ), 'rezeptkategorie' );
+		}
+
+		if ( ! $begriff instanceof WP_Term || in_array( $begriff->term_id, $ausschluss, true ) ) {
+			continue;
+		}
+
+		$begriffe[] = $begriff;
+	}
+
+	return $begriffe;
+}
+
+/**
  * Haelt die Seitengroesse der Hauptabfrage gleich gross wie das Raster,
  * damit "Seite 2" der Kategorieseite nicht auf 404 laeuft.
  *
@@ -101,6 +147,11 @@ function napurelon_kategorie_kurztext( WP_Term $begriff ) {
 
 	if ( '' === $kurztext ) {
 		$kurztext = wp_strip_all_tags( (string) $begriff->description );
+	}
+
+	if ( '' === $kurztext ) {
+		$vorgaben = napurelon_kategorie_hauptnamen();
+		$kurztext = isset( $vorgaben[ $begriff->name ] ) ? $vorgaben[ $begriff->name ] : '';
 	}
 
 	return $kurztext;
@@ -164,18 +215,10 @@ add_shortcode( 'napurelon_kategorie_hero', 'napurelon_kategorie_hero_shortcode' 
  */
 function napurelon_kategorie_nav_shortcode( $atts ) {
 	$atts    = shortcode_atts( array( 'kategorie' => '' ), $atts, 'napurelon_kategorie_nav' );
-	$aktiv   = napurelon_kategorie_begriff( $atts );
-	$begriffe = get_terms(
-		array(
-			'taxonomy'   => 'rezeptkategorie',
-			'parent'     => 0,
-			'hide_empty' => false,
-			'orderby'    => 'term_id',
-			'order'      => 'ASC',
-		)
-	);
+	$aktiv    = napurelon_kategorie_begriff( $atts );
+	$begriffe = napurelon_kategorie_hauptkategorien();
 
-	if ( is_wp_error( $begriffe ) || empty( $begriffe ) ) {
+	if ( empty( $begriffe ) ) {
 		return '';
 	}
 
@@ -423,20 +466,20 @@ function napurelon_kategorie_empfehlungen( WP_Term $begriff ) {
 		return array_slice( array_values( $empfehlungen ), 0, 3 );
 	}
 
-	$weitere = get_terms(
-		array(
-			'taxonomy'   => 'rezeptkategorie',
-			'parent'     => 0,
-			'hide_empty' => false,
-			'exclude'    => array_merge( array( $begriff->term_id ), array_keys( $empfehlungen ) ),
-			'number'     => 3 - count( $empfehlungen ),
-		)
+	$ausschluss = array_merge(
+		array( $begriff->term_id ),
+		get_ancestors( $begriff->term_id, 'rezeptkategorie' ),
+		array_keys( $empfehlungen )
 	);
 
-	if ( ! is_wp_error( $weitere ) ) {
-		foreach ( $weitere as $kandidat ) {
-			$empfehlungen[ $kandidat->term_id ] = $kandidat;
-		}
+	$weitere = array_slice(
+		napurelon_kategorie_hauptkategorien( array_map( 'absint', $ausschluss ) ),
+		0,
+		3 - count( $empfehlungen )
+	);
+
+	foreach ( $weitere as $kandidat ) {
+		$empfehlungen[ $kandidat->term_id ] = $kandidat;
 	}
 
 	return array_slice( array_values( $empfehlungen ), 0, 3 );
