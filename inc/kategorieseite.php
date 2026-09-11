@@ -182,6 +182,98 @@ function napurelon_kategorie_kurztext( WP_Term $begriff ) {
 }
 
 /**
+ * Shortcode: nur der Name der Kategorie.
+ *
+ * Fuer einen selbst gebauten Hero, in dem Ueberschrift, Text und Hintergrund
+ * getrennt gestaltet werden.
+ *
+ * @param array $atts kategorie: Slug oder ID, tag: HTML-Element (Vorgabe h1).
+ * @return string HTML der Ueberschrift.
+ */
+function napurelon_kategorie_titel_shortcode( $atts ) {
+	$atts    = shortcode_atts( array( 'kategorie' => '', 'tag' => 'h1' ), $atts, 'napurelon_kategorie_titel' );
+	$begriff = napurelon_kategorie_begriff( $atts );
+
+	if ( ! $begriff ) {
+		return '';
+	}
+
+	$erlaubt = array( 'h1', 'h2', 'h3', 'h4', 'p', 'span', 'div' );
+	$tag     = in_array( strtolower( $atts['tag'] ), $erlaubt, true ) ? strtolower( $atts['tag'] ) : 'h1';
+
+	return sprintf(
+		'<%1$s class="npo-kattitel">%2$s</%1$s>',
+		$tag,
+		esc_html( $begriff->name )
+	);
+}
+
+add_shortcode( 'napurelon_kategorie_titel', 'napurelon_kategorie_titel_shortcode' );
+
+/**
+ * Shortcode: nur der Kurztext der Kategorie.
+ *
+ * @param array $atts kategorie: Slug oder ID, tag: HTML-Element (Vorgabe p).
+ * @return string HTML des Kurztexts.
+ */
+function napurelon_kategorie_text_shortcode( $atts ) {
+	$atts    = shortcode_atts( array( 'kategorie' => '', 'tag' => 'p' ), $atts, 'napurelon_kategorie_text' );
+	$begriff = napurelon_kategorie_begriff( $atts );
+
+	if ( ! $begriff ) {
+		return '';
+	}
+
+	$kurztext = napurelon_kategorie_kurztext( $begriff );
+
+	if ( '' === $kurztext ) {
+		return '';
+	}
+
+	$erlaubt = array( 'p', 'span', 'div', 'h2', 'h3' );
+	$tag     = in_array( strtolower( $atts['tag'] ), $erlaubt, true ) ? strtolower( $atts['tag'] ) : 'p';
+
+	return sprintf(
+		'<%1$s class="npo-kattext">%2$s</%1$s>',
+		$tag,
+		esc_html( $kurztext )
+	);
+}
+
+add_shortcode( 'napurelon_kategorie_text', 'napurelon_kategorie_text_shortcode' );
+
+/**
+ * Setzt das Kategoriebild als Hintergrund fuer eigene Bausteine.
+ *
+ * Ein Element mit der Klasse "npo-kat-bild" (etwa ein Elementor-Container)
+ * bekommt das Bild der aufgerufenen Kategorie als Hintergrund; Overlay,
+ * Hoehe und alles Weitere bleiben in Elementor einstellbar. "!important"
+ * ist noetig, weil Elementor eigene Hintergrundregeln mit hoher
+ * Spezifitaet ausgibt.
+ */
+function napurelon_kategorie_bild_stil() {
+	$begriff = napurelon_kategorie_begriff();
+
+	if ( ! $begriff ) {
+		return;
+	}
+
+	$bild_id = (int) get_term_meta( $begriff->term_id, NAPURELON_KAT_BILD, true );
+	$bild    = $bild_id ? wp_get_attachment_image_url( $bild_id, 'full' ) : '';
+
+	if ( '' === $bild ) {
+		return;
+	}
+
+	printf(
+		'<style id="napurelon-kategoriebild">.npo-kat-bild{background-image:url(\'%s\') !important;background-size:cover;background-position:center center;}</style>',
+		esc_url( $bild )
+	);
+}
+
+add_action( 'wp_head', 'napurelon_kategorie_bild_stil' );
+
+/**
  * Shortcode: Hero mit Bild, Kategoriename und Kurztext.
  *
  * @param array $atts kategorie: Slug oder ID, hoehe: Höhe in Pixeln.

@@ -84,6 +84,13 @@ function napurelon_kategorie_vorlage_seite() {
 			und <code>[napurelon_kategorie_empfehlungen]</code>. Ohne Auswahl bleibt die
 			eingebaute Reihenfolge bestehen.
 		</p>
+		<p>
+			Für einen selbst gebauten Hero gibt es die Einzelteile
+			<code>[napurelon_kategorie_titel]</code> und <code>[napurelon_kategorie_text]</code>;
+			das Bild der Kategorie erscheint als Hintergrund, sobald ein Container die
+			CSS-Klasse <code>npo-kat-bild</code> trägt. Overlay, Höhe und Abstände bleiben
+			dann in Elementor einstellbar.
+		</p>
 		<form action="options.php" method="post">
 			<?php settings_fields( 'napurelon_kategorie_vorlage' ); ?>
 			<table class="form-table" role="presentation">
