@@ -355,7 +355,7 @@ function napurelon_filter_optionen( $schluessel, WP_Term $begriff ) {
 		foreach ( napurelon_filter_zeitspannen() as $spanne_id => $spanne ) {
 			$optionen[] = array(
 				'wert'  => $spanne_id,
-				'label' => $spanne['label'],
+				'label' => napurelon_text( $spanne['label'] ),
 			);
 		}
 
@@ -594,7 +594,7 @@ function napurelon_kategorie_filter_shortcode( $atts ) {
 		<?php if ( '' !== $sortierung ) : ?>
 			<input type="hidden" name="sortierung" value="<?php echo esc_attr( $sortierung ); ?>">
 		<?php endif; ?>
-		<div class="npo-filter__leiste" role="group" aria-label="Rezepte filtern">
+		<div class="npo-filter__leiste" role="group" aria-label="<?php echo esc_attr( napurelon_text( 'Rezepte filtern' ) ); ?>">
 			<?php foreach ( $definitionen as $schluessel => $filter ) : ?>
 				<?php
 				$ist_aktiv = in_array( $schluessel, $aktiv, true );
@@ -609,9 +609,10 @@ function napurelon_kategorie_filter_shortcode( $atts ) {
 						type="button"
 						aria-expanded="false"
 						aria-controls="<?php echo esc_attr( $panel_id ); ?>"
-						<?php echo $benutzbar ? '' : 'disabled title="In dieser Kategorie nicht verwendet"'; ?>
+						<?php disabled( $benutzbar, false ); ?>
+						<?php echo $benutzbar ? '' : 'title="' . esc_attr( napurelon_text( 'In dieser Kategorie nicht verwendet' ) ) . '"'; ?>
 					>
-						<span class="npo-filter__name"><?php echo esc_html( $filter['label'] ); ?></span>
+						<span class="npo-filter__name"><?php echo esc_html( napurelon_text( $filter['label'] ) ); ?></span>
 						<?php if ( ! empty( $gewaehlte ) ) : ?>
 							<span class="npo-filter__zaehler"><?php echo esc_html( (string) count( $gewaehlte ) ); ?></span>
 						<?php endif; ?>
@@ -639,9 +640,9 @@ function napurelon_kategorie_filter_shortcode( $atts ) {
 		</div>
 
 		<div class="npo-filter__aktionen">
-			<button class="npo-filter__senden" type="submit">Anwenden</button>
+			<button class="npo-filter__senden" type="submit"><?php echo esc_html( napurelon_text( 'Anwenden' ) ); ?></button>
 			<?php if ( $gewaehlt > 0 ) : ?>
-				<a class="npo-filter__zuruecksetzen" href="<?php echo esc_url( $ziel ); ?>">Filter zurücksetzen</a>
+				<a class="npo-filter__zuruecksetzen" href="<?php echo esc_url( $ziel ); ?>"><?php echo esc_html( napurelon_text( 'Filter zurücksetzen' ) ); ?></a>
 			<?php endif; ?>
 		</div>
 	</form>

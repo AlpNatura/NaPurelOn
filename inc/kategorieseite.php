@@ -556,7 +556,7 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 			<?php endif; ?>
 		<?php else : ?>
 			<p class="npo-katrezepte__leer">
-				<?php echo esc_html( empty( $filter_parameter ) ? 'In dieser Kategorie gibt es noch keine Rezepte.' : 'Zu dieser Auswahl gibt es keine Rezepte.' ); ?>
+				<?php echo esc_html( napurelon_text( empty( $filter_parameter ) ? 'In dieser Kategorie gibt es noch keine Rezepte.' : 'Zu dieser Auswahl gibt es keine Rezepte.' ) ); ?>
 			</p>
 		<?php endif; ?>
 	</section>
