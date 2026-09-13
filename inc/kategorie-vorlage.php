@@ -80,7 +80,7 @@ function napurelon_kategorie_vorlage_seite() {
 			Die gewählte Seite bestimmt das Layout aller Rezeptkategorien. Baue sie
 			mit Elementor und setze die Bausteine als Shortcode ein:
 			<code>[napurelon_kategorie_hero]</code>, <code>[napurelon_kategorie_nav]</code>,
-			<code>[napurelon_unterkategorien]</code>, <code>[napurelon_kategorie_rezepte]</code>
+			<code>[napurelon_kategorie_filter]</code>, <code>[napurelon_kategorie_rezepte]</code>
 			und <code>[napurelon_kategorie_empfehlungen]</code>. Ohne Auswahl bleibt die
 			eingebaute Reihenfolge bestehen.
 		</p>

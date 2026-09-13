@@ -494,6 +494,13 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 		$argumente['meta_key'] = $einstellung['meta_key']; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 	}
 
+	$filter_parameter = array();
+
+	if ( function_exists( 'napurelon_filter_abfrage' ) ) {
+		$argumente        = napurelon_filter_abfrage( $argumente, $begriff );
+		$filter_parameter = napurelon_filter_parameter( $begriff );
+	}
+
 	$abfrage = new WP_Query( $argumente );
 	$gesamt  = (int) $abfrage->found_posts;
 
@@ -505,6 +512,11 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 			<p class="npo-katrezepte__anzahl"><?php echo esc_html( sprintf( '%d %s', $gesamt, 1 === $gesamt ? 'Rezept' : 'Rezepte' ) ); ?></p>
 
 			<form class="npo-katrezepte__sortierung" method="get" action="<?php echo esc_url( (string) get_term_link( $begriff ) ); ?>">
+				<?php foreach ( $filter_parameter as $name => $werte ) : ?>
+					<?php foreach ( $werte as $wert ) : ?>
+						<input type="hidden" name="<?php echo esc_attr( $name ); ?>[]" value="<?php echo esc_attr( $wert ); ?>">
+					<?php endforeach; ?>
+				<?php endforeach; ?>
 				<label class="npo-katrezepte__label" for="npo-sortierung">Sortieren</label>
 				<select class="npo-katrezepte__auswahl" id="npo-sortierung" name="sortierung">
 					<?php foreach ( $sortierungen as $schluessel => $eintrag ) : ?>
@@ -529,7 +541,7 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 				array(
 					'total'     => (int) $abfrage->max_num_pages,
 					'current'   => $seite,
-					'add_args'  => array( 'sortierung' => $sortierung ),
+					'add_args'  => array_merge( array( 'sortierung' => $sortierung ), $filter_parameter ),
 					'prev_text' => 'Zurück',
 					'next_text' => 'Weiter',
 					'type'      => 'plain',
@@ -543,7 +555,9 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 				</nav>
 			<?php endif; ?>
 		<?php else : ?>
-			<p class="npo-katrezepte__leer">In dieser Kategorie gibt es noch keine Rezepte.</p>
+			<p class="npo-katrezepte__leer">
+				<?php echo esc_html( empty( $filter_parameter ) ? 'In dieser Kategorie gibt es noch keine Rezepte.' : 'Zu dieser Auswahl gibt es keine Rezepte.' ); ?>
+			</p>
 		<?php endif; ?>
 	</section>
 	<?php
