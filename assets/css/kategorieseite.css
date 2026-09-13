@@ -311,6 +311,7 @@
 .npo-kattitel,
 .npo-kattext {
 	margin: 0;
+	color: #f8f6f3;
 }
 
 @media (max-width: 782px) {
