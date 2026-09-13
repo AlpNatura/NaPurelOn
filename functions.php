@@ -9,6 +9,7 @@ require_once get_stylesheet_directory() . '/inc/rezept-ansicht.php';
 require_once get_stylesheet_directory() . '/inc/rezept-liste.php';
 require_once get_stylesheet_directory() . '/inc/rezept-suche.php';
 require_once get_stylesheet_directory() . '/inc/rezept-filter.php';
+require_once get_stylesheet_directory() . '/inc/sprachen.php';
 require_once get_stylesheet_directory() . '/inc/kategorieseite.php';
 require_once get_stylesheet_directory() . '/inc/kategorie-felder.php';
 require_once get_stylesheet_directory() . '/inc/kategorie-vorlage.php';
