@@ -39,13 +39,29 @@ function napurelon_sichtbarkeit_taxonomien() {
  * @return bool Wahr, wenn der Begriff nicht veröffentlicht ist.
  */
 function napurelon_begriff_verborgen( $begriff ) {
-	$term_id = ( $begriff instanceof WP_Term ) ? $begriff->term_id : absint( $begriff );
+	if ( ! $begriff instanceof WP_Term ) {
+		$begriff = get_term( absint( $begriff ) );
+	}
 
-	if ( ! $term_id ) {
+	if ( ! $begriff instanceof WP_Term ) {
 		return false;
 	}
 
-	return '1' === (string) get_term_meta( $term_id, NAPURELON_BEGRIFF_VERBORGEN, true );
+	if ( '1' === (string) get_term_meta( $begriff->term_id, NAPURELON_BEGRIFF_VERBORGEN, true ) ) {
+		return true;
+	}
+
+	if ( ! is_taxonomy_hierarchical( $begriff->taxonomy ) ) {
+		return false;
+	}
+
+	foreach ( get_ancestors( $begriff->term_id, $begriff->taxonomy, 'taxonomy' ) as $vorfahre ) {
+		if ( '1' === (string) get_term_meta( absint( $vorfahre ), NAPURELON_BEGRIFF_VERBORGEN, true ) ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /**
@@ -77,8 +93,19 @@ function napurelon_verborgene_begriffe( $taxonomie ) {
 		)
 	);
 	$laeuft   = false;
+	$begriffe = is_array( $begriffe ) ? array_map( 'absint', $begriffe ) : array();
 
-	$zwischenspeicher[ $taxonomie ] = is_array( $begriffe ) ? array_map( 'absint', $begriffe ) : array();
+	if ( is_taxonomy_hierarchical( $taxonomie ) ) {
+		foreach ( $begriffe as $term_id ) {
+			$kinder = get_term_children( $term_id, $taxonomie );
+
+			if ( is_array( $kinder ) ) {
+				$begriffe = array_merge( $begriffe, array_map( 'absint', $kinder ) );
+			}
+		}
+	}
+
+	$zwischenspeicher[ $taxonomie ] = array_values( array_unique( $begriffe ) );
 
 	return $zwischenspeicher[ $taxonomie ];
 }
