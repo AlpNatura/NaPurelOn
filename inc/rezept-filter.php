@@ -78,22 +78,22 @@ function napurelon_filter_definitionen() {
 function napurelon_filter_zeitspannen() {
 	return array(
 		'bis15'   => array(
-			'label' => 'bis 15 Minuten',
+			'label' => 'Bis 15 Min.',
 			'von'   => 0,
 			'bis'   => 15,
 		),
 		'bis30'   => array(
-			'label' => '15 bis 30 Minuten',
+			'label' => '15–30 Min.',
 			'von'   => 16,
 			'bis'   => 30,
 		),
 		'bis60'   => array(
-			'label' => '30 bis 60 Minuten',
+			'label' => '30–60 Min.',
 			'von'   => 31,
 			'bis'   => 60,
 		),
 		'ueber60' => array(
-			'label' => 'über 60 Minuten',
+			'label' => 'Über 60 Min.',
 			'von'   => 61,
 			'bis'   => PHP_INT_MAX,
 		),
