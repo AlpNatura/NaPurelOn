@@ -44,16 +44,25 @@
 }
 
 .npo-filter__knopf:hover,
-.npo-filter__knopf[aria-expanded="true"] {
-	color: #7a8b5a;
+.npo-filter__knopf:focus-visible,
+.npo-filter__knopf[aria-expanded="true"],
+.npo-filter__knopf.is-gewaehlt {
+	background: #7a8b5a;
+	color: #f8f6f3;
 }
 
 .npo-filter__knopf.is-gewaehlt {
-	color: #7a8b5a;
 	font-weight: 600;
 }
 
-.npo-filter__gruppe.is-inaktiv .npo-filter__knopf {
+.npo-filter__knopf.is-gewaehlt .npo-filter__zaehler {
+	background: #f8f6f3;
+	color: #7a8b5a;
+}
+
+.npo-filter__gruppe.is-inaktiv .npo-filter__knopf,
+.npo-filter__gruppe.is-inaktiv .npo-filter__knopf:hover {
+	background: transparent;
 	color: #b3aea5;
 	cursor: not-allowed;
 }
