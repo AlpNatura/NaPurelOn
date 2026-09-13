@@ -213,7 +213,13 @@ function napurelon_kategorie_felder_speichern( $term_id ) {
 			? array_map( 'sanitize_key', wp_unslash( $_POST['napurelon_kat_filter'] ) )
 			: array();
 
-		update_term_meta( $term_id, NAPURELON_KAT_FILTER, array_values( array_intersect( $erlaubt, $roh ) ) );
+		$gewaehlt = array_values( array_intersect( $erlaubt, $roh ) );
+
+		if ( empty( $gewaehlt ) ) {
+			delete_term_meta( $term_id, NAPURELON_KAT_FILTER );
+		} else {
+			update_term_meta( $term_id, NAPURELON_KAT_FILTER, $gewaehlt );
+		}
 	}
 
 	if ( isset( $_POST['napurelon_kat_empfehlungen'] ) && is_array( $_POST['napurelon_kat_empfehlungen'] ) ) {

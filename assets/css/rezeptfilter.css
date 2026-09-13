@@ -11,10 +11,9 @@
 .npo-filter__leiste {
 	display: flex;
 	align-items: stretch;
+	justify-content: center;
+	flex-wrap: wrap;
 	gap: 0.25rem;
-	overflow-x: auto;
-	scrollbar-width: thin;
-	-webkit-overflow-scrolling: touch;
 }
 
 .npo-filter__gruppe {
@@ -85,6 +84,11 @@
 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
+.npo-filter__gruppe:last-child .npo-filter__panel {
+	right: 0;
+	left: auto;
+}
+
 .npo-filter__option {
 	display: flex;
 	align-items: center;
@@ -104,6 +108,7 @@
 .npo-filter__aktionen {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 1rem;
 	padding: 0.5rem 0 0.75rem;
 }
@@ -130,9 +135,24 @@
 }
 
 @media (max-width: 782px) {
+	.npo-filter__leiste {
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		overflow-x: auto;
+		scrollbar-width: thin;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Fest am unteren Rand, damit die Liste nicht im Scrollbereich steckt. */
 	.npo-filter__panel {
-		position: static;
+		position: fixed;
+		top: auto;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
 		min-width: 0;
-		box-shadow: none;
+		max-height: 60vh;
+		box-shadow: 0 -12px 24px rgba(0, 0, 0, 0.12);
 	}
 }
