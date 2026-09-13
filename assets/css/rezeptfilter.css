@@ -47,7 +47,7 @@
 .npo-filter__knopf:focus-visible,
 .npo-filter__knopf[aria-expanded="true"],
 .npo-filter__knopf.is-gewaehlt {
-	background: #7a8b5a;
+	background: #6a9738;
 	color: #f8f6f3;
 }
 
@@ -57,7 +57,7 @@
 
 .npo-filter__knopf.is-gewaehlt .npo-filter__zaehler {
 	background: #f8f6f3;
-	color: #7a8b5a;
+	color: #6a9738;
 }
 
 .npo-filter__gruppe.is-inaktiv .npo-filter__knopf,
