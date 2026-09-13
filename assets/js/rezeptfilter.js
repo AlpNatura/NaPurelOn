@@ -14,6 +14,22 @@
 	formular.classList.add('is-sofort');
 
 	var gruppen = Array.prototype.slice.call(formular.querySelectorAll('.npo-filter__gruppe'));
+	var zeigermaus = window.matchMedia ? window.matchMedia('(hover: hover)').matches : false;
+	var nachlauf = null;
+
+	function oeffnen(gruppe) {
+		var knopf = gruppe.querySelector('.npo-filter__knopf');
+		var panel = gruppe.querySelector('.npo-filter__panel');
+
+		schliessen(gruppe);
+
+		if (!knopf || !panel) {
+			return;
+		}
+
+		knopf.setAttribute('aria-expanded', 'true');
+		panel.hidden = false;
+	}
 
 	function schliessen(ausser) {
 		gruppen.forEach(function (gruppe) {
@@ -40,11 +56,30 @@
 		}
 
 		knopf.addEventListener('click', function () {
-			var offen = knopf.getAttribute('aria-expanded') === 'true';
+			if (knopf.getAttribute('aria-expanded') === 'true') {
+				schliessen(null);
 
-			schliessen(gruppe);
-			knopf.setAttribute('aria-expanded', offen ? 'false' : 'true');
-			panel.hidden = offen;
+				return;
+			}
+
+			oeffnen(gruppe);
+		});
+
+		if (!zeigermaus) {
+			return;
+		}
+
+		gruppe.addEventListener('mouseenter', function () {
+			window.clearTimeout(nachlauf);
+			oeffnen(gruppe);
+		});
+
+		// Kurzer Nachlauf, damit der Weg vom Knopf in die Liste nicht schliesst.
+		gruppe.addEventListener('mouseleave', function () {
+			window.clearTimeout(nachlauf);
+			nachlauf = window.setTimeout(function () {
+				schliessen(null);
+			}, 200);
 		});
 	});
 
