@@ -125,6 +125,21 @@ function napurelon_kategorie_felder_bearbeiten( $begriff ) {
 	</tr>
 
 	<tr class="form-field">
+		<th scope="row">Filter dieser Kategorie</th>
+		<td>
+			<?php $filter_aktiv = napurelon_kategorie_filter_aktiv( $begriff ); ?>
+			<?php foreach ( napurelon_filter_definitionen() as $filter_schluessel => $filter ) : ?>
+				<label style="display:block;margin-bottom:4px;">
+					<input type="checkbox" name="napurelon_kat_filter[]" value="<?php echo esc_attr( $filter_schluessel ); ?>" <?php checked( in_array( $filter_schluessel, $filter_aktiv, true ) ); ?>>
+					<?php echo esc_html( $filter['label'] ); ?>
+				</label>
+			<?php endforeach; ?>
+			<input type="hidden" name="napurelon_kat_filter_gesetzt" value="1">
+			<p class="description">Nicht gewählte Filter erscheinen auf der Kategorieseite ausgegraut. Die Einstellung der Hauptkategorie gilt auch für ihre Unterkategorien.</p>
+		</td>
+	</tr>
+
+	<tr class="form-field">
 		<th scope="row">Empfehlungen am Seitenende</th>
 		<td>
 			<?php for ( $i = 0; $i < 3; $i++ ) : ?>
@@ -190,6 +205,15 @@ function napurelon_kategorie_felder_speichern( $term_id ) {
 		} else {
 			update_term_meta( $term_id, NAPURELON_KAT_KURZTEXT, $kurztext );
 		}
+	}
+
+	if ( isset( $_POST['napurelon_kat_filter_gesetzt'] ) ) {
+		$erlaubt = array_keys( napurelon_filter_definitionen() );
+		$roh     = isset( $_POST['napurelon_kat_filter'] ) && is_array( $_POST['napurelon_kat_filter'] )
+			? array_map( 'sanitize_key', wp_unslash( $_POST['napurelon_kat_filter'] ) )
+			: array();
+
+		update_term_meta( $term_id, NAPURELON_KAT_FILTER, array_values( array_intersect( $erlaubt, $roh ) ) );
 	}
 
 	if ( isset( $_POST['napurelon_kat_empfehlungen'] ) && is_array( $_POST['napurelon_kat_empfehlungen'] ) ) {

@@ -1,0 +1,138 @@
+/**
+ * Filterleiste der Kategorieseite: eine ruhige Zeile mit Klappfeldern.
+ */
+
+.npo-filter {
+	margin: 0 0 1.5rem;
+	border-bottom: 1px solid #e6e2db;
+	background: #f8f6f3;
+}
+
+.npo-filter__leiste {
+	display: flex;
+	align-items: stretch;
+	gap: 0.25rem;
+	overflow-x: auto;
+	scrollbar-width: thin;
+	-webkit-overflow-scrolling: touch;
+}
+
+.npo-filter__gruppe {
+	position: relative;
+	flex: 0 0 auto;
+}
+
+.npo-filter__knopf {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.85rem 1.1rem;
+	border: 0;
+	background: transparent;
+	color: #3c3a35;
+	font-size: 0.78rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.npo-filter__knopf::after {
+	border-top: 4px solid currentColor;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	content: "";
+}
+
+.npo-filter__knopf:hover,
+.npo-filter__knopf[aria-expanded="true"] {
+	color: #7a8b5a;
+}
+
+.npo-filter__knopf.is-gewaehlt {
+	color: #7a8b5a;
+	font-weight: 600;
+}
+
+.npo-filter__gruppe.is-inaktiv .npo-filter__knopf {
+	color: #b3aea5;
+	cursor: not-allowed;
+}
+
+.npo-filter__zaehler {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1.2rem;
+	height: 1.2rem;
+	border-radius: 999px;
+	background: #7a8b5a;
+	color: #fff;
+	font-size: 0.7rem;
+}
+
+.npo-filter__panel {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 20;
+	min-width: 15rem;
+	max-height: 20rem;
+	padding: 0.75rem 1rem;
+	overflow-y: auto;
+	border: 1px solid #e6e2db;
+	background: #fff;
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.npo-filter__option {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.3rem 0;
+	color: #3c3a35;
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.npo-filter__anzahl {
+	color: #8c887f;
+}
+
+.npo-filter__aktionen {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.5rem 0 0.75rem;
+}
+
+.npo-filter__senden {
+	padding: 0.45rem 1.1rem;
+	border: 1px solid #7a8b5a;
+	border-radius: 4px;
+	background: #7a8b5a;
+	color: #fff;
+	font-size: 0.78rem;
+	letter-spacing: 0.06em;
+	cursor: pointer;
+}
+
+.npo-filter__zuruecksetzen {
+	color: #8c887f;
+	font-size: 0.78rem;
+}
+
+/* Mit Skript werden die Filter sofort angewendet; der Knopf entfällt dann. */
+.npo-filter.is-sofort .npo-filter__senden {
+	display: none;
+}
+
+@media (max-width: 782px) {
+	.npo-filter__panel {
+		position: static;
+		min-width: 0;
+		box-shadow: none;
+	}
+}

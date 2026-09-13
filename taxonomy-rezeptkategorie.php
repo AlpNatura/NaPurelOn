@@ -30,12 +30,11 @@ if ( $napurelon_vorlage ) {
 <div class="npo-kategorieseite">
 	<?php
 	echo do_shortcode( '[napurelon_kategorie_hero]' );
-	echo do_shortcode( '[napurelon_kategorie_nav]' );
 	?>
 
 	<div class="npo-kategorieseite__inhalt">
 		<?php
-		echo do_shortcode( '[napurelon_unterkategorien]' );
+		echo do_shortcode( '[napurelon_kategorie_filter]' );
 		echo do_shortcode( '[napurelon_kategorie_rezepte]' );
 		echo do_shortcode( '[napurelon_kategorie_empfehlungen]' );
 		?>
