@@ -88,6 +88,10 @@ function napurelon_kategorie_hauptkategorien( array $ausschluss = array() ) {
 			continue;
 		}
 
+		if ( ! is_admin() && napurelon_begriff_verborgen( $begriff ) ) {
+			continue;
+		}
+
 		$begriffe[] = $begriff;
 	}
 
@@ -586,7 +590,7 @@ function napurelon_kategorie_empfehlungen( WP_Term $begriff ) {
 		foreach ( $gespeichert as $term_id ) {
 			$kandidat = get_term( absint( $term_id ), 'rezeptkategorie' );
 
-			if ( $kandidat instanceof WP_Term && $kandidat->term_id !== $begriff->term_id ) {
+			if ( $kandidat instanceof WP_Term && $kandidat->term_id !== $begriff->term_id && ! napurelon_begriff_verborgen( $kandidat ) ) {
 				$empfehlungen[ $kandidat->term_id ] = $kandidat;
 			}
 		}
