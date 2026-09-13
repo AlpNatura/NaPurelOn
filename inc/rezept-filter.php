@@ -166,7 +166,8 @@ function napurelon_kategorie_filter_aktiv( WP_Term $begriff ) {
 
 	$gespeichert = get_term_meta( $quelle, NAPURELON_KAT_FILTER, true );
 
-	if ( ! is_array( $gespeichert ) ) {
+	// Ohne Auswahl gilt "alle": eine leer gespeicherte Liste sperrt nicht die ganze Zeile.
+	if ( ! is_array( $gespeichert ) || empty( $gespeichert ) ) {
 		return $erlaubt;
 	}
 
