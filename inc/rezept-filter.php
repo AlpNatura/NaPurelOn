@@ -48,7 +48,7 @@ function napurelon_filter_definitionen() {
 			'art'   => 'zeit',
 		),
 		'saison'      => array(
-			'label'     => 'Saisonalität',
+			'label'     => 'Saison',
 			'art'       => 'taxonomie',
 			'taxonomie' => 'rezept_saison',
 		),
@@ -108,12 +108,12 @@ function napurelon_filter_zeitspannen() {
  */
 function napurelon_register_filter_taxonomien() {
 	$taxonomien = array(
-		'rezept_menueart'    => array( 'Menüarten', 'Menüart' ),
-		'rezept_region'      => array( 'Regionen', 'Region' ),
-		'rezept_saison'      => array( 'Saisonalität', 'Saison' ),
-		'rezept_anlass'      => array( 'Anlässe', 'Anlass' ),
-		'rezept_temperament' => array( 'Temperament', 'Temperament' ),
-		'rezept_ernaehrung'  => array( 'Ernährungsweisen', 'Ernährungsweise' ),
+		'rezept_menueart'    => 'Menüart',
+		'rezept_region'      => 'Region',
+		'rezept_saison'      => 'Saison',
+		'rezept_anlass'      => 'Anlass',
+		'rezept_temperament' => 'Temperament',
+		'rezept_ernaehrung'  => 'Ernährungsweise',
 	);
 
 	foreach ( $taxonomien as $name => $bezeichnung ) {
@@ -122,14 +122,14 @@ function napurelon_register_filter_taxonomien() {
 			array( 'rezepte' ),
 			array(
 				'labels'            => array(
-					'name'          => $bezeichnung[0],
-					'singular_name' => $bezeichnung[1],
-					'menu_name'     => $bezeichnung[0],
+					'name'          => $bezeichnung,
+					'singular_name' => $bezeichnung,
+					'menu_name'     => $bezeichnung,
 					'all_items'     => 'Alle Einträge',
-					'edit_item'     => $bezeichnung[1] . ' bearbeiten',
-					'add_new_item'  => $bezeichnung[1] . ' hinzufügen',
+					'edit_item'     => $bezeichnung . ' bearbeiten',
+					'add_new_item'  => $bezeichnung . ' hinzufügen',
 					'new_item_name' => 'Name',
-					'search_items'  => $bezeichnung[0] . ' suchen',
+					'search_items'  => $bezeichnung . ' suchen',
 					'not_found'     => 'Keine Einträge gefunden',
 				),
 				'public'            => false,
