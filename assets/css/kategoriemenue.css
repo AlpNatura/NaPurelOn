@@ -28,8 +28,11 @@
 }
 
 .npo-katmenue__knopf:hover,
-.npo-katmenue__knopf:focus-visible {
-	background: #f9a61a;
+.npo-katmenue__knopf:focus,
+.npo-katmenue__knopf:focus-visible,
+.npo-katmenue__knopf:active,
+.npo-katmenue__knopf[aria-expanded="true"] {
+	background: #e0940f;
 	color: #ffffff;
 	transform: scale(1.05);
 }
@@ -53,6 +56,21 @@
 
 .npo-katmenue__liste[hidden] {
 	display: none;
+}
+
+.npo-katmenue__titel {
+	margin: 0;
+	padding: 6px 16px;
+	border-radius: 999px;
+	background: #e0940f;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	list-style: none;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .npo-katmenue__eintrag {
