@@ -121,6 +121,7 @@ function napurelon_sprache_zeichenketten() {
 	$texte[] = 'In dieser Kategorie nicht verwendet';
 	$texte[] = 'Zu dieser Auswahl gibt es keine Rezepte.';
 	$texte[] = 'In dieser Kategorie gibt es noch keine Rezepte.';
+	$texte[] = 'Mehr anzeigen';
 
 	foreach ( array_unique( $texte ) as $text ) {
 		pll_register_string( $text, $text, NAPURELON_SPRACHGRUPPE );

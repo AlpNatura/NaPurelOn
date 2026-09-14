@@ -22,6 +22,7 @@ const NAPURELON_KAT_KURZTEXT      = 'napurelon_kat_kurztext';
 const NAPURELON_KAT_EMPFEHLUNGEN  = 'napurelon_kat_empfehlungen';
 const NAPURELON_KAT_HOEHE_VORGABE = 280;
 const NAPURELON_KAT_REZEPTE       = 12;
+const NAPURELON_KAT_SCHRITT       = 3;
 
 /**
  * Bindet das Stylesheet der Kategorieseite ein.
@@ -43,6 +44,29 @@ function napurelon_kategorieseite_assets() {
 		get_stylesheet_directory_uri() . $css,
 		array( 'napurelon' ),
 		(string) filemtime( $dir . $css )
+	);
+
+	$js = '/assets/js/kategorierezepte.js';
+
+	if ( ! file_exists( $dir . $js ) ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'napurelon-kategorierezepte',
+		get_stylesheet_directory_uri() . $js,
+		array(),
+		(string) filemtime( $dir . $js ),
+		true
+	);
+
+	wp_localize_script(
+		'napurelon-kategorierezepte',
+		'napurelonKatRezepte',
+		array(
+			'url'   => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( 'napurelon_kat_rezepte' ),
+		)
 	);
 }
 
@@ -459,11 +483,20 @@ function napurelon_kategorie_sortierungen() {
 /**
  * Shortcode: Überschrift, Anzahl, Sortierung und Rezeptraster einer Kategorie.
  *
- * @param array $atts kategorie: Slug oder ID, anzahl: Rezepte pro Seite.
+ * @param array $atts kategorie: Slug oder ID, anzahl: Rezepte pro Seite,
+ *                    schritt: wie viele Rezepte "Mehr anzeigen" nachlädt.
  * @return string HTML des Abschnitts.
  */
 function napurelon_kategorie_rezepte_shortcode( $atts ) {
-	$atts    = shortcode_atts( array( 'kategorie' => '', 'anzahl' => NAPURELON_KAT_REZEPTE ), $atts, 'napurelon_kategorie_rezepte' );
+	$atts    = shortcode_atts(
+		array(
+			'kategorie' => '',
+			'anzahl'    => NAPURELON_KAT_REZEPTE,
+			'schritt'   => NAPURELON_KAT_SCHRITT,
+		),
+		$atts,
+		'napurelon_kategorie_rezepte'
+	);
 	$begriff = napurelon_kategorie_begriff( $atts );
 
 	if ( ! $begriff ) {
@@ -507,10 +540,21 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 
 	$abfrage = new WP_Query( $argumente );
 	$gesamt  = (int) $abfrage->found_posts;
+	$geladen = ( $seite - 1 ) * $anzahl + count( $abfrage->posts );
+	$schritt = min( 12, max( 1, absint( $atts['schritt'] ) ) );
 
 	ob_start();
 	?>
-	<section class="npo-katrezepte">
+	<section
+		class="npo-katrezepte"
+		data-npo-katrezepte="1"
+		data-kategorie="<?php echo esc_attr( (string) $begriff->term_id ); ?>"
+		data-sortierung="<?php echo esc_attr( $sortierung ); ?>"
+		data-schritt="<?php echo esc_attr( (string) $schritt ); ?>"
+		data-geladen="<?php echo esc_attr( (string) $geladen ); ?>"
+		data-gesamt="<?php echo esc_attr( (string) $gesamt ); ?>"
+		data-filter="<?php echo esc_attr( (string) wp_json_encode( $filter_parameter ) ); ?>"
+	>
 		<div class="npo-katrezepte__kopf">
 			<h2 class="npo-katrezepte__titel"><?php echo esc_html( $begriff->name . ' Rezepte' ); ?></h2>
 			<p class="npo-katrezepte__anzahl"><?php echo esc_html( sprintf( '%d %s', $gesamt, 1 === $gesamt ? 'Rezept' : 'Rezepte' ) ); ?></p>
@@ -534,7 +578,7 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 		</div>
 
 		<?php if ( $abfrage->have_posts() ) : ?>
-			<ul class="npo-rezeptkarten">
+			<ul class="npo-rezeptkarten npo-katrezepte__raster">
 				<?php foreach ( $abfrage->posts as $beitrag ) : ?>
 					<?php echo napurelon_rezeptkarte( $beitrag->ID ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Karte escaped selbst. ?>
 				<?php endforeach; ?>
@@ -553,10 +597,20 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 			);
 			?>
 
+			<?php if ( $geladen < $gesamt ) : ?>
+				<div class="npo-katrezepte__mehr">
+					<button class="npo-katrezepte__mehr-knopf" type="button" data-npo-mehr>
+						<?php echo esc_html( napurelon_text( 'Mehr anzeigen' ) ); ?>
+					</button>
+				</div>
+			<?php endif; ?>
+
 			<?php if ( $blaettern ) : ?>
-				<nav class="npo-katrezepte__blaettern" aria-label="Weitere Rezepte">
-					<?php echo wp_kses_post( $blaettern ); ?>
-				</nav>
+				<noscript>
+					<nav class="npo-katrezepte__blaettern" aria-label="Weitere Rezepte">
+						<?php echo wp_kses_post( $blaettern ); ?>
+					</nav>
+				</noscript>
 			<?php endif; ?>
 		<?php else : ?>
 			<p class="npo-katrezepte__leer">
@@ -572,6 +626,86 @@ function napurelon_kategorie_rezepte_shortcode( $atts ) {
 }
 
 add_shortcode( 'napurelon_kategorie_rezepte', 'napurelon_kategorie_rezepte_shortcode' );
+
+/**
+ * Ajax: liefert die nächsten Rezeptkarten einer Kategorie.
+ *
+ * Nur Lesezugriff auf veröffentlichte Rezepte; Sortierung, Filter und Anzahl
+ * werden gegen die erlaubten Werte geprüft.
+ */
+function napurelon_kategorie_rezepte_ajax() {
+	check_ajax_referer( 'napurelon_kat_rezepte', 'nonce' );
+
+	$begriff = get_term( isset( $_POST['kategorie'] ) ? absint( wp_unslash( $_POST['kategorie'] ) ) : 0, 'rezeptkategorie' );
+
+	if ( ! $begriff instanceof WP_Term ) {
+		wp_send_json_error( array( 'meldung' => 'Kategorie unbekannt.' ), 400 );
+	}
+
+	if ( function_exists( 'napurelon_begriff_verborgen' ) && napurelon_begriff_verborgen( $begriff ) && ! current_user_can( 'edit_posts' ) ) {
+		wp_send_json_error( array( 'meldung' => 'Kategorie unbekannt.' ), 404 );
+	}
+
+	$sortierungen = napurelon_kategorie_sortierungen();
+	$sortierung   = isset( $_POST['sortierung'] ) ? sanitize_key( wp_unslash( $_POST['sortierung'] ) ) : 'neu';
+	$sortierung   = isset( $sortierungen[ $sortierung ] ) ? $sortierung : 'neu';
+	$einstellung  = $sortierungen[ $sortierung ];
+	$versatz      = isset( $_POST['versatz'] ) ? absint( wp_unslash( $_POST['versatz'] ) ) : 0;
+	$anzahl       = isset( $_POST['anzahl'] ) ? absint( wp_unslash( $_POST['anzahl'] ) ) : NAPURELON_KAT_SCHRITT;
+	$anzahl       = min( 12, max( 1, $anzahl ) );
+
+	$argumente = array(
+		'post_type'      => 'rezepte',
+		'post_status'    => 'publish',
+		'posts_per_page' => $anzahl,
+		'offset'         => $versatz,
+		'orderby'        => $einstellung['orderby'],
+		'order'          => $einstellung['order'],
+		'tax_query'      => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+			array(
+				'taxonomy'         => 'rezeptkategorie',
+				'field'            => 'term_id',
+				'terms'            => $begriff->term_id,
+				'include_children' => true,
+			),
+		),
+	);
+
+	if ( isset( $einstellung['meta_key'] ) ) {
+		$argumente['meta_key'] = $einstellung['meta_key']; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+	}
+
+	if ( function_exists( 'napurelon_filter_abfrage' ) ) {
+		$roh       = isset( $_POST['filter'] ) && is_array( $_POST['filter'] ) ? wp_unslash( $_POST['filter'] ) : array();
+		$auswahl   = napurelon_filter_auswahl_aus_daten( $begriff, $roh );
+		$argumente = napurelon_filter_abfrage( $argumente, $begriff, $auswahl );
+	}
+
+	$abfrage = new WP_Query( $argumente );
+	$karten  = '';
+
+	foreach ( $abfrage->posts as $beitrag ) {
+		$karten .= napurelon_rezeptkarte( $beitrag->ID );
+	}
+
+	wp_reset_postdata();
+
+	// found_posts zählt ohne LIMIT, der Versatz ist darin also enthalten.
+	$gesamt  = (int) $abfrage->found_posts;
+	$geladen = $versatz + count( $abfrage->posts );
+
+	wp_send_json_success(
+		array(
+			'karten'  => $karten,
+			'geladen' => $geladen,
+			'gesamt'  => $gesamt,
+			'fertig'  => $geladen >= $gesamt,
+		)
+	);
+}
+
+add_action( 'wp_ajax_napurelon_kat_rezepte', 'napurelon_kategorie_rezepte_ajax' );
+add_action( 'wp_ajax_nopriv_napurelon_kat_rezepte', 'napurelon_kategorie_rezepte_ajax' );
 
 /**
  * Liest die redaktionell gepflegten Empfehlungen einer Kategorie.

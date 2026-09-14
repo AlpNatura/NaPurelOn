@@ -208,6 +208,52 @@ function napurelon_filter_auswahl( $schluessel ) {
 }
 
 /**
+ * Bereinigt übergebene Filterwerte einer Kategorie.
+ *
+ * Gegenstück zu napurelon_filter_auswahl_alle() für Werte, die nicht aus der
+ * Adresszeile stammen (etwa aus einer Ajax-Anfrage).
+ *
+ * @param WP_Term $begriff Kategorie.
+ * @param array   $daten   Rohwerte, Schlüssel mit oder ohne Präfix.
+ * @return array<string,string[]> Filterschlüssel mit Werten.
+ */
+function napurelon_filter_auswahl_aus_daten( WP_Term $begriff, array $daten ) {
+	$auswahl = array();
+
+	foreach ( napurelon_kategorie_filter_aktiv( $begriff ) as $schluessel ) {
+		$roh = null;
+
+		if ( isset( $daten[ NAPURELON_FILTER_PREFIX . $schluessel ] ) ) {
+			$roh = $daten[ NAPURELON_FILTER_PREFIX . $schluessel ];
+		} elseif ( isset( $daten[ $schluessel ] ) ) {
+			$roh = $daten[ $schluessel ];
+		}
+
+		if ( null === $roh ) {
+			continue;
+		}
+
+		$werte = array();
+
+		foreach ( is_array( $roh ) ? $roh : array( $roh ) as $wert ) {
+			if ( is_scalar( $wert ) ) {
+				$wert = sanitize_title( (string) $wert );
+
+				if ( '' !== $wert ) {
+					$werte[ $wert ] = $wert;
+				}
+			}
+		}
+
+		if ( ! empty( $werte ) ) {
+			$auswahl[ $schluessel ] = array_values( $werte );
+		}
+	}
+
+	return $auswahl;
+}
+
+/**
  * Liest alle gültigen Filterwerte einer Kategorie.
  *
  * @param WP_Term $begriff Kategorie.
@@ -462,12 +508,13 @@ function napurelon_filter_beschriftung( array $filter, WP_Term $begriff ) {
  * nicht als meta_query abfragen; die passenden Rezepte werden ermittelt und
  * über post__in eingeschränkt.
  *
- * @param array   $argumente WP_Query-Argumente.
- * @param WP_Term $begriff   Kategorie.
+ * @param array      $argumente WP_Query-Argumente.
+ * @param WP_Term    $begriff   Kategorie.
+ * @param array|null $auswahl   Bereits bereinigte Auswahl; ohne Angabe aus der Adresszeile.
  * @return array Ergänzte Argumente.
  */
-function napurelon_filter_abfrage( array $argumente, WP_Term $begriff ) {
-	$auswahl      = napurelon_filter_auswahl_alle( $begriff );
+function napurelon_filter_abfrage( array $argumente, WP_Term $begriff, array $auswahl = null ) {
+	$auswahl      = null === $auswahl ? napurelon_filter_auswahl_alle( $begriff ) : $auswahl;
 	$definitionen = napurelon_filter_definitionen();
 
 	if ( empty( $auswahl ) ) {
