@@ -252,6 +252,10 @@
 	cursor: default;
 }
 
+.npo-mehr-anzeigen[hidden] {
+	display: none !important;
+}
+
 .npo-katrezepte__blaettern {
 	margin-top: 2rem;
 	text-align: center;

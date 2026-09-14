@@ -21,7 +21,7 @@ const NAPURELON_KAT_HOEHE         = 'napurelon_kat_hoehe';
 const NAPURELON_KAT_KURZTEXT      = 'napurelon_kat_kurztext';
 const NAPURELON_KAT_EMPFEHLUNGEN  = 'napurelon_kat_empfehlungen';
 const NAPURELON_KAT_HOEHE_VORGABE = 280;
-const NAPURELON_KAT_REZEPTE       = 12;
+const NAPURELON_KAT_REZEPTE       = 6;
 const NAPURELON_KAT_SCHRITT       = 3;
 
 /**
