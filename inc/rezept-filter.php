@@ -336,6 +336,38 @@ function napurelon_filter_anzahlen( WP_Term $begriff ) {
 }
 
 /**
+ * Liefert die Begriffe einer Merkmals-Taxonomie.
+ *
+ * Polylang blendet Begriffe ohne zugewiesene Sprache aus. Bleibt die Liste
+ * dadurch leer, werden die Begriffe ohne Sprachfilter geholt, damit ein
+ * gepflegtes Merkmal nicht als ungenutzt erscheint.
+ *
+ * @param string $taxonomie Name der Taxonomie.
+ * @return WP_Term[] Begriffe.
+ */
+function napurelon_filter_taxonomie_begriffe( $taxonomie ) {
+	$argumente = array(
+		'taxonomy'   => $taxonomie,
+		'hide_empty' => false,
+	);
+
+	$begriffe = get_terms( $argumente );
+
+	if ( is_wp_error( $begriffe ) ) {
+		return array();
+	}
+
+	if ( ! empty( $begriffe ) || ! function_exists( 'pll_current_language' ) ) {
+		return $begriffe;
+	}
+
+	$argumente['lang'] = '';
+	$begriffe          = get_terms( $argumente );
+
+	return is_wp_error( $begriffe ) ? array() : $begriffe;
+}
+
+/**
  * Liefert die Optionen eines Filters.
  *
  * @param string  $schluessel Filterschlüssel.
@@ -387,16 +419,7 @@ function napurelon_filter_optionen( $schluessel, WP_Term $begriff ) {
 		return $optionen;
 	}
 
-	$begriffe = get_terms(
-		array(
-			'taxonomy'   => $filter['taxonomie'],
-			'hide_empty' => false,
-		)
-	);
-
-	if ( is_wp_error( $begriffe ) ) {
-		return array();
-	}
+	$begriffe = napurelon_filter_taxonomie_begriffe( $filter['taxonomie'] );
 
 	foreach ( $begriffe as $eintrag ) {
 		$optionen[] = array(
