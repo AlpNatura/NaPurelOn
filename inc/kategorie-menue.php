@@ -75,6 +75,7 @@ function napurelon_katmenue_html() {
 	?>
 	<div class="npo-katmenue" data-napurelon-katmenue>
 		<ul class="npo-katmenue__liste" id="<?php echo esc_attr( $listen_id ); ?>" hidden>
+			<li class="npo-katmenue__titel"><?php echo esc_html( $beschriftung ); ?></li>
 			<?php foreach ( $begriffe as $begriff ) : ?>
 				<?php $ist_aktiv = in_array( $begriff->term_id, $aktiv_pfad, true ); ?>
 				<li class="npo-katmenue__eintrag">
