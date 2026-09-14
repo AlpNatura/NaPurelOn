@@ -409,6 +409,30 @@ function napurelon_filter_optionen( $schluessel, WP_Term $begriff ) {
 }
 
 /**
+ * Beschriftung eines Filters in der Leiste.
+ *
+ * Der Kategoriefilter zeigt statt "Kategorie" den Namen der Kategorie, deren
+ * Unterkategorien darin stehen.
+ *
+ * @param array   $filter  Filterdefinition.
+ * @param WP_Term $begriff Kategorie.
+ * @return string Beschriftung.
+ */
+function napurelon_filter_beschriftung( array $filter, WP_Term $begriff ) {
+	if ( 'unterkategorie' !== $filter['art'] ) {
+		return napurelon_text( $filter['label'] );
+	}
+
+	$quelle = $begriff->parent ? get_term( $begriff->parent, 'rezeptkategorie' ) : $begriff;
+
+	if ( ! $quelle instanceof WP_Term ) {
+		return napurelon_text( $filter['label'] );
+	}
+
+	return $quelle->name;
+}
+
+/**
  * Ergänzt Abfrageargumente um die gewählten Filter.
  *
  * Der Zeitaufwand steht in zwei getrennten Feldern und lässt sich deshalb
@@ -613,7 +637,7 @@ function napurelon_kategorie_filter_shortcode( $atts ) {
 						<?php disabled( $benutzbar, false ); ?>
 						<?php echo $benutzbar ? '' : 'title="' . esc_attr( napurelon_text( 'In dieser Kategorie nicht verwendet' ) ) . '"'; ?>
 					>
-						<span class="npo-filter__name"><?php echo esc_html( napurelon_text( $filter['label'] ) ); ?></span>
+						<span class="npo-filter__name"><?php echo esc_html( napurelon_filter_beschriftung( $filter, $begriff ) ); ?></span>
 						<?php if ( ! empty( $gewaehlte ) ) : ?>
 							<span class="npo-filter__zaehler"><?php echo esc_html( (string) count( $gewaehlte ) ); ?></span>
 						<?php endif; ?>
