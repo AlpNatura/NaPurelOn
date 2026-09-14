@@ -114,6 +114,7 @@ function napurelon_sprache_zeichenketten() {
 		$texte[] = $spanne['label'];
 	}
 
+	$texte[] = 'Kategorien';
 	$texte[] = 'Rezepte filtern';
 	$texte[] = 'Anwenden';
 	$texte[] = 'Filter zurücksetzen';
