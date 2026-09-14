@@ -1,0 +1,94 @@
+/* Schwebender Kategoriewechsler, oberhalb des Warenkorbknopfs. */
+
+.npo-katmenue {
+	position: fixed;
+	right: 24px;
+	bottom: 104px;
+	z-index: 998;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 10px;
+}
+
+.npo-katmenue__knopf {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: #f9a61a;
+	color: #ffffff;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+
+.npo-katmenue__knopf:hover,
+.npo-katmenue__knopf:focus-visible {
+	background: #f9a61a;
+	color: #ffffff;
+	transform: scale(1.05);
+}
+
+.npo-katmenue__symbol {
+	width: 26px;
+	height: 26px;
+}
+
+.npo-katmenue__liste {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 8px;
+	max-height: 60vh;
+	overflow-y: auto;
+}
+
+.npo-katmenue__liste[hidden] {
+	display: none;
+}
+
+.npo-katmenue__eintrag {
+	margin: 0;
+	list-style: none;
+}
+
+.npo-katmenue__link {
+	display: block;
+	padding: 8px 16px;
+	border-radius: 999px;
+	background: #f9a61a;
+	color: #ffffff;
+	font-size: 14px;
+	line-height: 1.3;
+	text-decoration: none;
+	white-space: nowrap;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.npo-katmenue__link:hover,
+.npo-katmenue__link:focus-visible,
+.npo-katmenue__link.is-aktiv {
+	background: #e0940f;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+@media (max-width: 782px) {
+	.npo-katmenue {
+		right: 16px;
+		bottom: 88px;
+	}
+
+	.npo-katmenue__knopf {
+		width: 48px;
+		height: 48px;
+	}
+}

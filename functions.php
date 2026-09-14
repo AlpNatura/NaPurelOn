@@ -14,6 +14,7 @@ require_once get_stylesheet_directory() . '/inc/begriff-sichtbarkeit.php';
 require_once get_stylesheet_directory() . '/inc/kategorieseite.php';
 require_once get_stylesheet_directory() . '/inc/kategorie-felder.php';
 require_once get_stylesheet_directory() . '/inc/kategorie-vorlage.php';
+require_once get_stylesheet_directory() . '/inc/kategorie-menue.php';
 require_once get_stylesheet_directory() . '/inc/bilder.php';
 
 add_action( 'wp_enqueue_scripts', function () {
