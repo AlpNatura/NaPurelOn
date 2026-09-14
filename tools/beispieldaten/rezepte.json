@@ -1041,5 +1041,182 @@
 			"napurelon_hinweise": "Bei Geruchs-, Farb- oder Konsistenzveränderung nicht mehr verwenden.",
 			"napurelon_quellen": "Eigene Rezepturpraxis"
 		}
+	},
+	{
+		"titel": "Haferbrot mit Sonnenblumenkernen",
+		"kategorie": [ "Lebensmittel", "Brotrezepte" ],
+		"tags": [ "vegan" ],
+		"bildsuche": "oat bread",
+		"schritte": [
+			"Haferflocken mit heißem Wasser übergießen und 20 Minuten quellen lassen.",
+			"Mehl, Hefe, Salz und Sonnenblumenkerne unterkneten und 90 Minuten gehen lassen.",
+			"Den Teig in eine gefettete Kastenform füllen und weitere 30 Minuten ruhen lassen.",
+			"Bei 200 °C 50 Minuten backen und auf einem Gitter auskühlen lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Saftiges Kastenbrot mit Haferquellstück",
+			"napurelon_einleitung": "Ein mildes Alltagsbrot, das durch das Quellstück lange saftig bleibt.",
+			"napurelon_zutaten": "Quellstück:\n120 g zarte Haferflocken\n250 ml heißes Wasser\nTeig:\n400 g Weizenmehl 1050\n7 g Trockenhefe\n12 g Salz\n80 g Sonnenblumenkerne\n150 ml lauwarmes Wasser",
+			"napurelon_ausbacken": "Mit einer Schale Wasser im Ofen backen, das hält die Kruste zart.",
+			"napurelon_zubereitungszeit": 30,
+			"napurelon_kochzeit": 50,
+			"napurelon_portionen": 12,
+			"napurelon_menge": "1 Kastenbrot (ca. 900 g)",
+			"napurelon_haltbarkeit": "4 Tage im Leinenbeutel",
+			"napurelon_anwendung": "In Scheiben schneiden und süß oder herzhaft belegen.",
+			"napurelon_einsatzgebiete": "Frühstück, Pausenbrot, Abendbrot.",
+			"napurelon_tipps": "Sonnenblumenkerne vorher trocken anrösten, das vertieft das Aroma.",
+			"napurelon_vorteile": "Gelingt ohne Sauerteig und braucht wenig Handarbeit.",
+			"napurelon_nachteile": "Ohne Quellstück trocknet das Brot schnell aus.",
+			"napurelon_hinweise": "Ofen und Form sind heiß, Topflappen benutzen.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Kartoffelbrot mit Rosmarin",
+		"kategorie": [ "Lebensmittel", "Brotrezepte" ],
+		"tags": [ "vegetarisch" ],
+		"bildsuche": "potato bread",
+		"schritte": [
+			"Kartoffeln weich kochen, pellen und noch warm zerdrücken.",
+			"Mit Mehl, Hefe, Salz, Olivenöl und Rosmarin zu einem weichen Teig verkneten.",
+			"Den Teig 2 Stunden gehen lassen, bis er sich deutlich vergrößert hat.",
+			"Rund formen, einschneiden und bei 220 °C 35 Minuten backen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Weiches Brot mit gekochten Kartoffeln im Teig",
+			"napurelon_einleitung": "Die Kartoffel bringt Feuchtigkeit in den Teig und macht die Krume besonders weich.",
+			"napurelon_zutaten": "Teig:\n250 g mehligkochende Kartoffeln\n450 g Weizenmehl 550\n7 g Trockenhefe\n12 g Salz\n2 EL Olivenöl\n1 EL frischer Rosmarin, fein gehackt\n150 ml lauwarmes Wasser",
+			"napurelon_ausbacken": "Die letzten 10 Minuten ohne Dampf backen, damit die Kruste Farbe bekommt.",
+			"napurelon_zubereitungszeit": 35,
+			"napurelon_kochzeit": 35,
+			"napurelon_portionen": 10,
+			"napurelon_menge": "1 Laib (ca. 850 g)",
+			"napurelon_haltbarkeit": "3 Tage, gut zum Einfrieren",
+			"napurelon_anwendung": "Warm mit Olivenöl oder als Beilage zu Suppen servieren.",
+			"napurelon_einsatzgebiete": "Abendessen, Grillbeilage, Brotzeit.",
+			"napurelon_tipps": "Kartoffeln vom Vortag verwenden, dann nimmt der Teig weniger Wasser auf.",
+			"napurelon_vorteile": "Bleibt durch die Kartoffel mehrere Tage weich.",
+			"napurelon_nachteile": "Der Teig klebt stark und braucht bemehlte Hände.",
+			"napurelon_hinweise": "Rosmarin sparsam dosieren, er wird beim Backen intensiver.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Knäckebrot mit Leinsamen",
+		"kategorie": [ "Lebensmittel", "Brotrezepte" ],
+		"tags": [ "vegan" ],
+		"bildsuche": "crispbread seeds",
+		"schritte": [
+			"Leinsamen, Sonnenblumenkerne, Sesam und Wasser verrühren und 30 Minuten quellen lassen.",
+			"Salz unterrühren und die Masse dünn auf ein Blech mit Backpapier streichen.",
+			"Bei 150 °C 60 Minuten trocknen, nach der Hälfte der Zeit in Stücke vorritzen.",
+			"Auskühlen lassen und entlang der Ritzen brechen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Getreidefreies Knäckebrot aus reinen Saaten",
+			"napurelon_einleitung": "Ein knuspriges Knäckebrot ohne Mehl, das nur von Saaten und Wasser zusammengehalten wird.",
+			"napurelon_zutaten": "Masse:\n100 g Leinsamen\n100 g Sonnenblumenkerne\n50 g Sesam\n300 ml Wasser\n1 TL Salz",
+			"napurelon_ausbacken": "Bei Umluft trocknen, damit die Platte gleichmäßig durchhärtet.",
+			"napurelon_zubereitungszeit": 15,
+			"napurelon_kochzeit": 60,
+			"napurelon_portionen": 8,
+			"napurelon_menge": "1 Blech (ca. 20 Stücke)",
+			"napurelon_haltbarkeit": "3 Wochen luftdicht verschlossen",
+			"napurelon_anwendung": "Mit Aufstrich oder Käse belegen oder zu Suppen reichen.",
+			"napurelon_einsatzgebiete": "Snack, Frühstück, Reiseproviant.",
+			"napurelon_tipps": "Je dünner die Masse gestrichen wird, desto knuspriger das Ergebnis.",
+			"napurelon_vorteile": "Ohne Getreide, Hefe und Zucker und lange haltbar.",
+			"napurelon_nachteile": "Wird bei zu dicker Schicht in der Mitte zäh.",
+			"napurelon_hinweise": "Vollständig auskühlen lassen, sonst zieht das Knäckebrot Feuchtigkeit.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Fermentierter Rotkohl mit Apfel",
+		"kategorie": [ "Lebensmittel", "Eingelegtes & Fermentiertes" ],
+		"tags": [ "vegan" ],
+		"bildsuche": "fermented red cabbage",
+		"schritte": [
+			"Rotkohl fein hobeln, mit Salz vermengen und 15 Minuten kräftig kneten.",
+			"Apfelstifte, Kümmel und Wacholderbeeren untermischen.",
+			"Alles fest in ein Glas schichten, bis die Lake das Gemüse bedeckt.",
+			"Mit einem Gewicht beschweren und 14 Tage bei Raumtemperatur fermentieren lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Milchsauer eingelegter Rotkohl mit fruchtiger Note",
+			"napurelon_einleitung": "Der Apfel bringt Süße in die Fermentation und mildert die Säure des Rotkohls.",
+			"napurelon_zutaten": "Ansatz:\n1 kg Rotkohl\n20 g Salz\n1 säuerlicher Apfel\n1 TL Kümmel\n3 Wacholderbeeren",
+			"napurelon_zubereitungszeit": 30,
+			"napurelon_kochzeit": 0,
+			"napurelon_portionen": 8,
+			"napurelon_menge": "1 Glas (1 Liter)",
+			"napurelon_haltbarkeit": "6 Monate im Kühlschrank",
+			"napurelon_anwendung": "Als Beilage zu deftigen Gerichten oder im Salat servieren.",
+			"napurelon_einsatzgebiete": "Wintergerichte, Bowls, Brotzeit.",
+			"napurelon_tipps": "Das Gemüse muss immer unter der Lake bleiben, sonst bildet sich Schimmel.",
+			"napurelon_vorteile": "Bleibt roh und behält seine milchsauren Kulturen.",
+			"napurelon_nachteile": "Braucht zwei Wochen Zeit und einen kühlen Lagerplatz.",
+			"napurelon_hinweise": "Bei ungewohntem Geruch oder Schimmel den Ansatz entsorgen.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Eingelegte rote Zwiebeln",
+		"kategorie": [ "Lebensmittel", "Eingelegtes & Fermentiertes" ],
+		"tags": [ "vegan" ],
+		"bildsuche": "pickled onions",
+		"schritte": [
+			"Zwiebeln in feine Ringe schneiden und in ein sauberes Glas schichten.",
+			"Essig, Wasser, Zucker und Salz aufkochen, bis sich alles gelöst hat.",
+			"Den heißen Sud über die Zwiebeln gießen und das Glas verschließen.",
+			"Abkühlen lassen und mindestens 12 Stunden durchziehen lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Schnell eingelegt und nach einer Nacht fertig",
+			"napurelon_einleitung": "Ein Vorrat, der in zehn Minuten angesetzt ist und jedem Gericht Säure und Farbe gibt.",
+			"napurelon_zutaten": "Sud:\n150 ml Weißweinessig\n150 ml Wasser\n1 EL Rohrzucker\n1 TL Salz\nAußerdem:\n3 rote Zwiebeln\n1 Lorbeerblatt\n5 Pfefferkörner",
+			"napurelon_zubereitungszeit": 10,
+			"napurelon_kochzeit": 5,
+			"napurelon_portionen": 10,
+			"napurelon_menge": "1 Glas (500 ml)",
+			"napurelon_haltbarkeit": "4 Wochen im Kühlschrank",
+			"napurelon_anwendung": "Zu Brot, Salaten, Bowls und gegrilltem Gemüse reichen.",
+			"napurelon_einsatzgebiete": "Vorrat, schnelle Küche, Buffet.",
+			"napurelon_tipps": "Gläser vorher mit kochendem Wasser ausspülen, das verlängert die Haltbarkeit.",
+			"napurelon_vorteile": "Sehr schnell fertig und ohne Spezialzutaten.",
+			"napurelon_nachteile": "Nicht milchsauer fermentiert, also ohne lebende Kulturen.",
+			"napurelon_hinweise": "Heißen Sud vorsichtig umfüllen, Verbrühungsgefahr.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
+	},
+	{
+		"titel": "Kimchi aus Chinakohl",
+		"kategorie": [ "Lebensmittel", "Eingelegtes & Fermentiertes" ],
+		"tags": [ "vegan" ],
+		"bildsuche": "kimchi",
+		"schritte": [
+			"Chinakohl vierteln, salzen, 3 Stunden Wasser ziehen lassen und danach abspülen.",
+			"Chiliflocken, Knoblauch, Ingwer und Reismehlkleister zu einer Paste rühren.",
+			"Die Kohlblätter mit der Paste einreiben und mit Frühlingszwiebeln und Karotte mischen.",
+			"Fest ins Glas drücken und 5 Tage bei Raumtemperatur fermentieren lassen."
+		],
+		"felder": {
+			"napurelon_untertitel": "Würzige koreanische Fermentation ohne Fischsauce",
+			"napurelon_einleitung": "Eine vegane Kimchi-Variante, die ihre Tiefe aus Knoblauch, Ingwer und Chili zieht.",
+			"napurelon_zutaten": "Kohl:\n1 Chinakohl (ca. 1,2 kg)\n60 g Salz\nPaste:\n3 EL Chiliflocken\n5 Knoblauchzehen\n20 g Ingwer\n1 EL Reismehl\n200 ml Wasser\n1 EL Sojasauce\nAußerdem:\n4 Frühlingszwiebeln\n1 Karotte",
+			"napurelon_zubereitungszeit": 45,
+			"napurelon_kochzeit": 10,
+			"napurelon_portionen": 10,
+			"napurelon_menge": "1 Glas (1,5 Liter)",
+			"napurelon_haltbarkeit": "3 Monate im Kühlschrank",
+			"napurelon_anwendung": "Als Beilage zu Reis, in Suppen oder auf Brot.",
+			"napurelon_einsatzgebiete": "Alltagsküche, Vorrat, Fermentationsprojekte.",
+			"napurelon_tipps": "Handschuhe tragen, die Chilipaste färbt und brennt auf der Haut.",
+			"napurelon_vorteile": "Bleibt roh und wird im Kühlschrank langsam runder im Geschmack.",
+			"napurelon_nachteile": "Riecht während der Fermentation kräftig.",
+			"napurelon_hinweise": "Das Glas täglich öffnen, damit Gärgase entweichen können.",
+			"napurelon_quellen": "Eigene Küchenpraxis"
+		}
 	}
 ]
