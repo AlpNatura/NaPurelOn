@@ -10,6 +10,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
+const NAPURELON_NEUE_JS      = '/assets/js/neuerezepte.js';
+const NAPURELON_NEUE_AKTION  = 'napurelon_neue_rezepte';
+const NAPURELON_NEUE_ANZAHL  = 3;
+const NAPURELON_NEUE_SCHRITT = 3;
+
 /**
  * Bindet CSS und JavaScript der Kartenliste ein.
  *
@@ -47,6 +52,23 @@ function napurelon_register_rezeptkarten_assets() {
 		array(
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 			'nonce'   => wp_create_nonce( 'napurelon_rezept_like' ),
+		)
+	);
+
+	wp_enqueue_script(
+		'napurelon-neue-rezepte',
+		$uri . NAPURELON_NEUE_JS,
+		array(),
+		file_exists( $dir . NAPURELON_NEUE_JS ) ? (string) filemtime( $dir . NAPURELON_NEUE_JS ) : '1.0.0',
+		true
+	);
+
+	wp_localize_script(
+		'napurelon-neue-rezepte',
+		'napurelonNeueRezepte',
+		array(
+			'url'   => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( NAPURELON_NEUE_AKTION ),
 		)
 	);
 }
@@ -121,26 +143,27 @@ function napurelon_rezeptkarte( $post_id ) {
 /**
  * Shortcode: zeigt die zuletzt veröffentlichten Rezepte als Karten.
  *
- * @param array $atts anzahl: Anzahl der Karten (1–12, Vorgabe 3).
+ * @param array $atts anzahl: Anzahl der Karten (1–12, Vorgabe 3),
+ *                    schritt: wie viele Karten "Mehr anzeigen" nachlädt.
  * @return string HTML der Liste.
  */
 function napurelon_neue_rezepte_shortcode( $atts ) {
-	$atts   = shortcode_atts( array( 'anzahl' => 3 ), $atts, 'napurelon_neue_rezepte' );
-	$anzahl = min( 12, max( 1, absint( $atts['anzahl'] ) ) );
-
-	$abfrage = new WP_Query(
+	$atts    = shortcode_atts(
 		array(
-			'post_type'           => 'rezepte',
-			'post_status'         => 'publish',
-			'posts_per_page'      => $anzahl,
-			'orderby'             => 'date',
-			'order'               => 'DESC',
-			'ignore_sticky_posts' => true,
-			'no_found_rows'       => true,
-		)
+			'anzahl'  => NAPURELON_NEUE_ANZAHL,
+			'schritt' => NAPURELON_NEUE_SCHRITT,
+		),
+		$atts,
+		'napurelon_neue_rezepte'
 	);
+	$anzahl  = min( 12, max( 1, absint( $atts['anzahl'] ) ) );
+	$schritt = min( 12, max( 1, absint( $atts['schritt'] ) ) );
+
+	$abfrage = new WP_Query( napurelon_neue_rezepte_abfrage( $anzahl, 0 ) );
 
 	if ( ! $abfrage->have_posts() ) {
+		wp_reset_postdata();
+
 		return '';
 	}
 
@@ -150,7 +173,93 @@ function napurelon_neue_rezepte_shortcode( $atts ) {
 		$karten .= napurelon_rezeptkarte( $beitrag->ID );
 	}
 
-	return '<ul class="npo-rezeptkarten">' . $karten . '</ul>';
+	$gesamt  = (int) $abfrage->found_posts;
+	$geladen = count( $abfrage->posts );
+
+	wp_reset_postdata();
+
+	ob_start();
+	?>
+	<section
+		class="npo-neuerezepte"
+		data-npo-neuerezepte="1"
+		data-schritt="<?php echo esc_attr( (string) $schritt ); ?>"
+		data-geladen="<?php echo esc_attr( (string) $geladen ); ?>"
+		data-gesamt="<?php echo esc_attr( (string) $gesamt ); ?>"
+	>
+		<ul class="npo-rezeptkarten npo-neuerezepte__raster">
+			<?php echo $karten; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Karten escapen selbst. ?>
+		</ul>
+
+		<?php if ( $geladen < $gesamt ) : ?>
+			<div class="npo-neuerezepte__mehr">
+				<button class="npo-neuerezepte__mehr-knopf" type="button" data-npo-mehr-neue>
+					<?php echo esc_html( function_exists( 'napurelon_text' ) ? napurelon_text( 'Mehr anzeigen' ) : 'Mehr anzeigen' ); ?>
+				</button>
+			</div>
+		<?php endif; ?>
+	</section>
+	<?php
+
+	return (string) ob_get_clean();
 }
 
 add_shortcode( 'napurelon_neue_rezepte', 'napurelon_neue_rezepte_shortcode' );
+
+/**
+ * Abfrageargumente für die zuletzt veröffentlichten Rezepte.
+ *
+ * @param int $anzahl  Anzahl der Karten.
+ * @param int $versatz Bereits geladene Karten.
+ * @return array Argumente für WP_Query.
+ */
+function napurelon_neue_rezepte_abfrage( $anzahl, $versatz ) {
+	return array(
+		'post_type'           => 'rezepte',
+		'post_status'         => 'publish',
+		'posts_per_page'      => $anzahl,
+		'offset'              => $versatz,
+		'orderby'             => 'date',
+		'order'               => 'DESC',
+		'ignore_sticky_posts' => true,
+	);
+}
+
+/**
+ * Ajax: liefert die nächsten Karten der zuletzt veröffentlichten Rezepte.
+ *
+ * Nur Lesezugriff auf veröffentlichte Rezepte; Versatz und Anzahl werden
+ * gegen feste Grenzen geprüft.
+ */
+function napurelon_neue_rezepte_ajax() {
+	check_ajax_referer( NAPURELON_NEUE_AKTION, 'nonce' );
+
+	$versatz = isset( $_POST['versatz'] ) ? absint( wp_unslash( $_POST['versatz'] ) ) : 0;
+	$anzahl  = isset( $_POST['anzahl'] ) ? absint( wp_unslash( $_POST['anzahl'] ) ) : NAPURELON_NEUE_SCHRITT;
+	$anzahl  = min( 12, max( 1, $anzahl ) );
+
+	$abfrage = new WP_Query( napurelon_neue_rezepte_abfrage( $anzahl, $versatz ) );
+	$karten  = '';
+
+	foreach ( $abfrage->posts as $beitrag ) {
+		$karten .= napurelon_rezeptkarte( $beitrag->ID );
+	}
+
+	wp_reset_postdata();
+
+	// found_posts zählt ohne LIMIT, der Versatz ist darin also enthalten.
+	$gesamt  = (int) $abfrage->found_posts;
+	$geladen = $versatz + count( $abfrage->posts );
+
+	wp_send_json_success(
+		array(
+			'karten'  => $karten,
+			'geladen' => $geladen,
+			'gesamt'  => $gesamt,
+			'fertig'  => $geladen >= $gesamt,
+		)
+	);
+}
+
+add_action( 'wp_ajax_' . NAPURELON_NEUE_AKTION, 'napurelon_neue_rezepte_ajax' );
+add_action( 'wp_ajax_nopriv_' . NAPURELON_NEUE_AKTION, 'napurelon_neue_rezepte_ajax' );
