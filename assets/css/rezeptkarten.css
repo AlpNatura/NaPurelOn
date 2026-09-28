@@ -59,7 +59,7 @@
 	padding: 0.75rem 1.5rem;
 	border: 0;
 	border-radius: 4px;
-	background-color: #8cc63f;
+	background-color: #6a9738;
 	font-size: 0.8125rem;
 	font-weight: 500;
 	letter-spacing: 0.06em;
@@ -72,7 +72,7 @@
 
 .npo-rezeptsuche__button:hover,
 .npo-rezeptsuche__button:focus {
-	background-color: #6a9738;
+	background-color: #8cc63f;
 	color: #ffffff;
 }
 
