@@ -6,15 +6,21 @@
 
 	var config = window.napurelonRezeptSuche || {};
 	var suchen = document.querySelectorAll( '.npo-rezeptsuche' );
+	// Steht die Trefferliste als eigener Shortcode im Inhaltsbereich, hat sie Vorrang.
+	var eigen = document.querySelector( '[data-napurelon-suchtreffer="eigen"]' );
 
 	Array.prototype.forEach.call( suchen, function ( suche ) {
 		var feld = suche.querySelector( '.npo-rezeptsuche__feld' );
-		// Der Trefferbereich darf auch als eigener Shortcode weiter unten stehen.
-		var treffer = suche.querySelector( '[data-napurelon-suchtreffer]' ) ||
-			document.querySelector( '[data-napurelon-suchtreffer]' );
+		var innen = suche.querySelector( '[data-napurelon-suchtreffer]' );
+		var treffer = eigen || innen;
+
 		var status = suche.querySelector( '.npo-rezeptsuche__status' );
 		var timer = null;
 		var laufend = null;
+
+		if ( eigen && innen ) {
+			innen.parentNode.removeChild( innen );
+		}
 
 		if ( ! feld || ! treffer ) {
 			return;
