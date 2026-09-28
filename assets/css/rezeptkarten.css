@@ -53,14 +53,18 @@
 	box-shadow: 0 0 0 3px rgba(122, 154, 63, 0.18);
 }
 
+/* Gleiches Aussehen wie der Elementor-Knopf "Rezept hinzufügen" daneben. */
 .npo-rezeptsuche__button {
 	flex: 0 0 auto;
-	padding: 0.45rem 1.25rem;
+	padding: 0.75rem 1.5rem;
 	border: 0;
-	border-radius: 8px;
-	background-color: #7a9a3f;
-	font-size: 0.95rem;
-	line-height: 1.4;
+	border-radius: 4px;
+	background-color: #8cc63f;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	line-height: 1.2;
+	text-transform: uppercase;
 	color: #ffffff;
 	cursor: pointer;
 	transition: background-color 200ms ease;
@@ -68,14 +72,8 @@
 
 .npo-rezeptsuche__button:hover,
 .npo-rezeptsuche__button:focus {
-	background-color: #6a8737;
-}
-
-/* Die Elementor-Klassen am Knopf lassen die globalen Button-Stile greifen. */
-.npo-rezeptsuche__button .elementor-button-content-wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	background-color: #6a9738;
+	color: #ffffff;
 }
 
 .npo-rezeptsuche__status,

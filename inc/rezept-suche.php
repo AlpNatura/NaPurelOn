@@ -161,11 +161,7 @@ function napurelon_rezept_suche_shortcode() {
 				placeholder="Rezepte, Zutaten, …"
 				autocomplete="off"
 			>
-			<button type="submit" class="npo-rezeptsuche__button elementor-button elementor-button-link elementor-size-sm">
-				<span class="elementor-button-content-wrapper">
-					<span class="elementor-button-text">Suchen</span>
-				</span>
-			</button>
+			<button type="submit" class="npo-rezeptsuche__button">Suchen</button>
 		</form>
 
 		<p class="npo-rezeptsuche__status" role="status" aria-live="polite"></p>
