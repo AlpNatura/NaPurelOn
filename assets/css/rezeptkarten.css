@@ -71,6 +71,13 @@
 	background-color: #6a8737;
 }
 
+/* Die Elementor-Klassen am Knopf lassen die globalen Button-Stile greifen. */
+.npo-rezeptsuche__button .elementor-button-content-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .npo-rezeptsuche__status,
 .npo-rezeptsuche__leer {
 	margin: 0.75rem 0 0;
