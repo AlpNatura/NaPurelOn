@@ -92,6 +92,11 @@
 	margin-top: 1.5rem;
 }
 
+/* Abschnitt mit Überschrift, Zähler und Treffern: erst nach einer Suche sichtbar. */
+.npo-suchergebnisse:not(.npo-suchergebnisse--sichtbar) {
+	display: none !important;
+}
+
 @media (max-width: 640px) {
 	.npo-rezeptsuche__form {
 		flex-direction: column;
