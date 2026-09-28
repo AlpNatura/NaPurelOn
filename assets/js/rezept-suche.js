@@ -9,7 +9,9 @@
 
 	Array.prototype.forEach.call( suchen, function ( suche ) {
 		var feld = suche.querySelector( '.npo-rezeptsuche__feld' );
-		var treffer = suche.querySelector( '[data-napurelon-suchtreffer]' );
+		// Der Trefferbereich darf auch als eigener Shortcode weiter unten stehen.
+		var treffer = suche.querySelector( '[data-napurelon-suchtreffer]' ) ||
+			document.querySelector( '[data-napurelon-suchtreffer]' );
 		var status = suche.querySelector( '.npo-rezeptsuche__status' );
 		var timer = null;
 		var laufend = null;

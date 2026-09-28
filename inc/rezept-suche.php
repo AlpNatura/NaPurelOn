@@ -142,10 +142,8 @@ add_action( 'wp_ajax_nopriv_napurelon_rezept_suche', 'napurelon_ajax_rezept_such
  * @return string HTML der Suche.
  */
 function napurelon_rezept_suche_shortcode() {
-	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Lesende Suche ohne Statusaenderung.
-	$begriff = isset( $_GET['rezept_suche'] ) ? sanitize_text_field( wp_unslash( $_GET['rezept_suche'] ) ) : '';
-	$begriff = trim( mb_substr( $begriff, 0, 80 ) );
-	$treffer = ( mb_strlen( $begriff ) >= 2 ) ? napurelon_rezept_suchergebnis( $begriff ) : '';
+	$begriff = napurelon_rezept_suchbegriff();
+	$eigen   = napurelon_rezept_treffer_eigenstaendig();
 
 	ob_start();
 	?>
@@ -166,15 +164,9 @@ function napurelon_rezept_suche_shortcode() {
 
 		<p class="npo-rezeptsuche__status" role="status" aria-live="polite"></p>
 
-		<div class="npo-rezeptsuche__treffer" data-napurelon-suchtreffer>
-			<?php
-			if ( '' !== $treffer ) {
-				echo $treffer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Karten sind bereits escaped.
-			} elseif ( mb_strlen( $begriff ) >= 2 ) {
-				echo '<p class="npo-rezeptsuche__leer">Keine Rezepte gefunden.</p>';
-			}
-			?>
-		</div>
+		<?php if ( ! $eigen ) : ?>
+			<?php echo napurelon_rezept_trefferbereich( $begriff ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Karten sind bereits escaped. ?>
+		<?php endif; ?>
 	</div>
 	<?php
 
@@ -182,3 +174,71 @@ function napurelon_rezept_suche_shortcode() {
 }
 
 add_shortcode( 'napurelon_rezept_suche', 'napurelon_rezept_suche_shortcode' );
+
+/**
+ * Shortcode: nur die Trefferliste, gedacht für den Inhaltsbereich der Seite.
+ *
+ * So kann das Suchfeld im Kopfbereich stehen, während die Treffer weiter
+ * unten in einem eigenen Abschnitt erscheinen.
+ *
+ * @return string HTML des Trefferbereichs.
+ */
+function napurelon_rezept_treffer_shortcode() {
+	return napurelon_rezept_trefferbereich( napurelon_rezept_suchbegriff() );
+}
+
+add_shortcode( 'napurelon_rezept_treffer', 'napurelon_rezept_treffer_shortcode' );
+
+/**
+ * Liefert den Behälter der Trefferliste inklusive serverseitiger Treffer.
+ *
+ * @param string $begriff Geprüfter Suchbegriff.
+ * @return string HTML des Behälters.
+ */
+function napurelon_rezept_trefferbereich( $begriff ) {
+	$treffer = ( mb_strlen( $begriff ) >= 2 ) ? napurelon_rezept_suchergebnis( $begriff ) : '';
+
+	ob_start();
+	?>
+	<div class="npo-rezeptsuche__treffer" data-napurelon-suchtreffer>
+		<?php
+		if ( '' !== $treffer ) {
+			echo $treffer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Karten sind bereits escaped.
+		} elseif ( mb_strlen( $begriff ) >= 2 ) {
+			echo '<p class="npo-rezeptsuche__leer">Keine Rezepte gefunden.</p>';
+		}
+		?>
+	</div>
+	<?php
+
+	return (string) ob_get_clean();
+}
+
+/**
+ * Liest den Suchbegriff aus der Adresszeile.
+ *
+ * @return string Suchbegriff, auf 80 Zeichen begrenzt.
+ */
+function napurelon_rezept_suchbegriff() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Lesende Suche ohne Statusaenderung.
+	$begriff = isset( $_GET['rezept_suche'] ) ? sanitize_text_field( wp_unslash( $_GET['rezept_suche'] ) ) : '';
+
+	return trim( mb_substr( $begriff, 0, 80 ) );
+}
+
+/**
+ * Steht die Trefferliste als eigener Shortcode auf der Seite?
+ *
+ * @return bool True, wenn [napurelon_rezept_treffer] im Seiteninhalt steht.
+ */
+function napurelon_rezept_treffer_eigenstaendig() {
+	$inhalt = get_post_field( 'post_content', get_the_ID() );
+
+	if ( is_string( $inhalt ) && has_shortcode( $inhalt, 'napurelon_rezept_treffer' ) ) {
+		return true;
+	}
+
+	$elementor = get_post_meta( get_the_ID(), '_elementor_data', true );
+
+	return is_string( $elementor ) && false !== strpos( $elementor, 'napurelon_rezept_treffer' );
+}
