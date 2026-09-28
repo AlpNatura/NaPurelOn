@@ -88,16 +88,8 @@
 	margin: 0;
 }
 
-/*
- * Die Treffer verlassen die schmale Elementor-Spalte des Suchfelds und
- * stehen mittig über die Inhaltsbreite der Seite.
- */
 .npo-rezeptsuche__treffer:not(:empty) {
-	position: relative;
-	left: 50%;
-	width: min(1200px, 92vw);
 	margin-top: 1.5rem;
-	transform: translateX(-50%);
 }
 
 @media (max-width: 640px) {
