@@ -58,28 +58,60 @@ add_action( 'wp_enqueue_scripts', 'napurelon_enqueue_rezept_suche_assets' );
  * @return string HTML der Trefferliste oder leerer String ohne Treffer.
  */
 function napurelon_rezept_suchergebnis( $begriff ) {
-	$abfrage = new WP_Query(
-		array(
-			'post_type'           => 'rezepte',
-			'post_status'         => 'publish',
-			's'                   => $begriff,
-			'posts_per_page'      => NAPURELON_SUCHE_TREFFER,
-			'ignore_sticky_posts' => true,
-			'no_found_rows'       => true,
-		)
-	);
+	$ids = napurelon_rezept_such_ids( $begriff );
 
-	if ( ! $abfrage->have_posts() ) {
+	if ( empty( $ids ) ) {
 		return '';
 	}
 
 	$karten = '';
 
-	foreach ( $abfrage->posts as $beitrag ) {
-		$karten .= napurelon_rezeptkarte( $beitrag->ID );
+	foreach ( $ids as $id ) {
+		$karten .= napurelon_rezeptkarte( $id );
 	}
 
 	return '<ul class="npo-rezeptkarten">' . $karten . '</ul>';
+}
+
+/**
+ * Sammelt die IDs der Treffer aus Rezepttexten und aus dem Zutatenfeld.
+ *
+ * Zuerst die Volltexttreffer (Titel, Einleitung, Zubereitung), danach die
+ * Rezepte, deren Zutatenliste den Begriff enthält.
+ *
+ * @param string $begriff Suchbegriff.
+ * @return int[] Beitrags-IDs, höchstens NAPURELON_SUCHE_TREFFER Stück.
+ */
+function napurelon_rezept_such_ids( $begriff ) {
+	$grund = array(
+		'post_type'           => 'rezepte',
+		'post_status'         => 'publish',
+		'posts_per_page'      => NAPURELON_SUCHE_TREFFER,
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+		'fields'              => 'ids',
+	);
+
+	$volltext = new WP_Query( array_merge( $grund, array( 's' => $begriff ) ) );
+
+	$zutaten = new WP_Query(
+		array_merge(
+			$grund,
+			array(
+				'meta_query' => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query -- Suche über die Zutatenliste.
+					array(
+						'key'     => 'napurelon_zutaten',
+						'value'   => $begriff,
+						'compare' => 'LIKE',
+					),
+				),
+			)
+		)
+	);
+
+	$ids = array_unique( array_merge( $volltext->posts, $zutaten->posts ) );
+
+	return array_slice( array_map( 'absint', $ids ), 0, NAPURELON_SUCHE_TREFFER );
 }
 
 /**
@@ -119,17 +151,21 @@ function napurelon_rezept_suche_shortcode() {
 	?>
 	<div class="npo-rezeptsuche">
 		<form class="npo-rezeptsuche__form" role="search" method="get" action="<?php echo esc_url( get_permalink() ); ?>">
-			<label class="screen-reader-text" for="npo-rezeptsuche-feld">Rezept suchen</label>
+			<label class="screen-reader-text" for="npo-rezeptsuche-feld">Rezepte und Zutaten durchsuchen</label>
 			<input
 				type="search"
 				id="npo-rezeptsuche-feld"
 				class="npo-rezeptsuche__feld"
 				name="rezept_suche"
 				value="<?php echo esc_attr( $begriff ); ?>"
-				placeholder="Rezept suchen…"
+				placeholder="Rezepte, Zutaten, …"
 				autocomplete="off"
 			>
-			<button type="submit" class="npo-rezeptsuche__button">Suchen</button>
+			<button type="submit" class="npo-rezeptsuche__button elementor-button elementor-button-link elementor-size-sm">
+				<span class="elementor-button-content-wrapper">
+					<span class="elementor-button-text">Suchen</span>
+				</span>
+			</button>
 		</form>
 
 		<p class="npo-rezeptsuche__status" role="status" aria-live="polite"></p>
