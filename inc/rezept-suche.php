@@ -44,6 +44,8 @@ function napurelon_enqueue_rezept_suche_assets() {
 			'i18n'    => array(
 				'keineTreffer' => 'Keine Rezepte gefunden.',
 				'suchtGerade'  => 'Suche läuft …',
+				'einTreffer'   => '1 Rezept gefunden',
+				'vieleTreffer' => '%d Rezepte gefunden',
 			),
 		)
 	);
@@ -58,8 +60,16 @@ add_action( 'wp_enqueue_scripts', 'napurelon_enqueue_rezept_suche_assets' );
  * @return string HTML der Trefferliste oder leerer String ohne Treffer.
  */
 function napurelon_rezept_suchergebnis( $begriff ) {
-	$ids = napurelon_rezept_such_ids( $begriff );
+	return napurelon_rezept_karten( napurelon_rezept_such_ids( $begriff ) );
+}
 
+/**
+ * Baut die Kartenliste zu den gefundenen Beiträgen.
+ *
+ * @param int[] $ids Beitrags-IDs.
+ * @return string HTML der Liste oder leerer String.
+ */
+function napurelon_rezept_karten( $ids ) {
 	if ( empty( $ids ) ) {
 		return '';
 	}
@@ -71,6 +81,24 @@ function napurelon_rezept_suchergebnis( $begriff ) {
 	}
 
 	return '<ul class="npo-rezeptkarten">' . $karten . '</ul>';
+}
+
+/**
+ * Beschriftung zur Trefferzahl.
+ *
+ * @param int $anzahl Anzahl der Treffer.
+ * @return string Text für den Zähler.
+ */
+function napurelon_rezept_anzahl_text( $anzahl ) {
+	if ( $anzahl < 1 ) {
+		return 'Keine Rezepte gefunden.';
+	}
+
+	if ( 1 === $anzahl ) {
+		return '1 Rezept gefunden';
+	}
+
+	return sprintf( '%d Rezepte gefunden', $anzahl );
 }
 
 /**
@@ -124,10 +152,22 @@ function napurelon_ajax_rezept_suche() {
 	$begriff = trim( mb_substr( $begriff, 0, 80 ) );
 
 	if ( mb_strlen( $begriff ) < 2 ) {
-		wp_send_json_success( array( 'html' => '' ) );
+		wp_send_json_success(
+			array(
+				'html'   => '',
+				'anzahl' => 0,
+			)
+		);
 	}
 
-	wp_send_json_success( array( 'html' => napurelon_rezept_suchergebnis( $begriff ) ) );
+	$ids = napurelon_rezept_such_ids( $begriff );
+
+	wp_send_json_success(
+		array(
+			'html'   => napurelon_rezept_karten( $ids ),
+			'anzahl' => count( $ids ),
+		)
+	);
 }
 
 add_action( 'wp_ajax_napurelon_rezept_suche', 'napurelon_ajax_rezept_suche' );
@@ -184,24 +224,39 @@ add_shortcode( 'napurelon_rezept_suche', 'napurelon_rezept_suche_shortcode' );
  * @return string HTML des Trefferbereichs.
  */
 function napurelon_rezept_treffer_shortcode() {
-	return napurelon_rezept_trefferbereich( napurelon_rezept_suchbegriff(), 'eigen' );
+	return napurelon_rezept_trefferbereich( napurelon_rezept_suchbegriff() );
 }
 
 add_shortcode( 'napurelon_rezept_treffer', 'napurelon_rezept_treffer_shortcode' );
 
 /**
+ * Shortcode: Anzahl der gefundenen Rezepte.
+ *
+ * @return string HTML des Zählers.
+ */
+function napurelon_rezept_anzahl_shortcode() {
+	$begriff = napurelon_rezept_suchbegriff();
+	$text    = ( mb_strlen( $begriff ) >= 2 )
+		? napurelon_rezept_anzahl_text( count( napurelon_rezept_such_ids( $begriff ) ) )
+		: '';
+
+	return '<p class="npo-rezeptsuche__anzahl" data-napurelon-suchanzahl>' . esc_html( $text ) . '</p>';
+}
+
+add_shortcode( 'napurelon_rezept_anzahl', 'napurelon_rezept_anzahl_shortcode' );
+
+/**
  * Liefert den Behälter der Trefferliste inklusive serverseitiger Treffer.
  *
  * @param string $begriff Geprüfter Suchbegriff.
- * @param string $art     'eigen' für den Behälter im Inhaltsbereich, sonst leer.
  * @return string HTML des Behälters.
  */
-function napurelon_rezept_trefferbereich( $begriff, $art = '' ) {
+function napurelon_rezept_trefferbereich( $begriff ) {
 	$treffer = ( mb_strlen( $begriff ) >= 2 ) ? napurelon_rezept_suchergebnis( $begriff ) : '';
 
 	ob_start();
 	?>
-	<div class="npo-rezeptsuche__treffer" data-napurelon-suchtreffer="<?php echo esc_attr( $art ); ?>">
+	<div class="npo-rezeptsuche__treffer" data-napurelon-suchtreffer>
 		<?php
 		if ( '' !== $treffer ) {
 			echo $treffer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Karten sind bereits escaped.
