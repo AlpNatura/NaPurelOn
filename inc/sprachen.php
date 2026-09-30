@@ -122,6 +122,78 @@ function napurelon_sprache_zeichenketten() {
 	$texte[] = 'Zu dieser Auswahl gibt es keine Rezepte.';
 	$texte[] = 'In dieser Kategorie gibt es noch keine Rezepte.';
 	$texte[] = 'Mehr anzeigen';
+	$texte   = array_merge(
+		$texte,
+		array(
+			'Grunddaten',
+			'Zutaten & Zubereitung',
+			'Details',
+			'Gut zu wissen',
+			'Merkmale',
+			'Tags',
+			'Bilder',
+			'Bestätigung',
+			'Rezept einreichen',
+			'Rezepttitel',
+			'Zubereitungszeit (Minuten)',
+			'Kochzeit (Minuten)',
+			'Eine Zutat pro Zeile. Eine Zeile, die mit „:“ endet, wird zur Zwischenüberschrift (z. B. „Teig:“). Zutaten sind erforderlich, außer in „Grundlagen & Wissen“.',
+			'Pflichtfeld',
+			'Wird gesendet…',
+			'Dein Rezept wird vor der Veröffentlichung geprüft.',
+			'Bitte melde dich an, um ein Rezept einzureichen.',
+			'Anmelden',
+			'Registrieren',
+			'Weiteres Rezept einreichen',
+			'Danke! Dein Rezept wurde eingereicht und wird vor der Veröffentlichung geprüft.',
+			'Hauptkategorie',
+			'Unterkategorie',
+			'Hauptbild',
+			'Galeriebilder',
+			'Deine Website',
+			'— keine —',
+			'Bitte wählen',
+			'Zubereitung',
+			'Eine Zutat pro Zeile. Eine Zeile, die mit „:“ endet, wird zur Zwischenüberschrift (z. B. „Teig:“).',
+			'JPG, PNG oder WebP, höchstens 5 MB pro Bild, bis zu 5 Galeriebilder.',
+			'Ich habe die Fotos selbst aufgenommen oder besitze die Rechte, sie hier veröffentlichen zu lassen.',
+			'Ich habe die ',
+			'Datenschutzerklärung',
+			' gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.',
+			'Bitte bestätige die Bildrechte.',
+			'Bitte bestätige die Datenschutzerklärung.',
+			'Bitte gib einen Rezepttitel ein.',
+			'Der Titel darf höchstens 120 Zeichen lang sein.',
+			'Bitte wähle eine gültige Hauptkategorie.',
+			'Bitte wähle eine gültige Unterkategorie.',
+			'Bitte beschreibe die Zubereitung.',
+			'Die Zubereitung darf höchstens 20.000 Zeichen lang sein.',
+			'Bitte gib die Zutaten an.',
+			'Dieses Feld darf höchstens 200 Zeichen enthalten.',
+			'Dieses Feld darf höchstens 5.000 Zeichen enthalten.',
+			'Bitte gib eine gültige HTTP- oder HTTPS-URL ein.',
+			'Bitte wähle gültige Merkmale für diese Kategorie.',
+			'Bitte wähle gültige Rezept-Tags.',
+			'Bitte lade ein Hauptbild hoch.',
+			'Bitte lade höchstens 5 Galeriebilder hoch.',
+			'Die Dateien müssen JPG, PNG oder WebP sein.',
+			'Ein Bild darf höchstens 5 MB groß sein.',
+			'Ein Bild konnte nicht gelesen werden.',
+			'Der Datei-Upload ist fehlgeschlagen.',
+			'Die Dateien sind zu groß. Bitte verkleinere die Bilder.',
+			'Die Sitzung ist abgelaufen. Bitte lade die Seite neu.',
+			'Du hast in der letzten Stunde bereits drei Rezepte eingereicht. Bitte versuche es später erneut.',
+			'Die Bilder konnten nicht gespeichert werden.',
+			'Das Rezept konnte nicht gespeichert werden.',
+			'Zutaten sind erforderlich, außer in „Grundlagen & Wissen“.',
+		)
+	);
+
+	foreach ( napurelon_get_rezept_fields() as $key => $field ) {
+		if ( '_napurelon_interne_notiz' !== $key ) {
+			$texte[] = $field['label'];
+		}
+	}
 
 	foreach ( array_unique( $texte ) as $text ) {
 		pll_register_string( $text, $text, NAPURELON_SPRACHGRUPPE );
