@@ -6,8 +6,10 @@
 
 	var config = window.napurelonRezeptSuche || {};
 	var suchen = document.querySelectorAll( '.npo-rezeptsuche' );
-	// Steht die Trefferliste als eigener Shortcode im Inhaltsbereich, hat sie Vorrang.
-	var eigen = document.querySelector( '[data-napurelon-suchtreffer="eigen"]' );
+	// Steht die Trefferliste als eigener Shortcode im Inhaltsbereich, hat sie Vorrang,
+	// bevorzugt die im Ergebnisabschnitt.
+	var eigen = document.querySelector( '.npo-suchergebnisse [data-napurelon-suchtreffer="eigen"]' ) ||
+		document.querySelector( '[data-napurelon-suchtreffer="eigen"]' );
 	var zaehler = document.querySelectorAll( '[data-napurelon-suchanzahl]' );
 	var bereiche = document.querySelectorAll( '.npo-suchergebnisse' );
 
