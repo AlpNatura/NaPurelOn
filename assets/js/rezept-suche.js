@@ -90,6 +90,9 @@
 						treffer.dispatchEvent(
 							new CustomEvent( 'napurelon:karten-geladen', { bubbles: true } )
 						);
+					} else if ( zaehler.length ) {
+						// Der Zähler meldet bereits "Keine Rezepte gefunden."
+						treffer.innerHTML = '';
 					} else {
 						treffer.innerHTML = '<p class="npo-rezeptsuche__leer">' +
 							( config.i18n ? config.i18n.keineTreffer : '' ) + '</p>';
@@ -122,8 +125,14 @@
 			}, 300 );
 		} );
 
+		if ( zaehler.length ) {
+			Array.prototype.forEach.call( treffer.querySelectorAll( '.npo-rezeptsuche__leer' ), function ( leer ) {
+				leer.parentNode.removeChild( leer );
+			} );
+		}
+
 		// Serverseitig gelieferte Treffer (Suche ohne JavaScript) bleiben sichtbar.
-		if ( treffer.innerHTML.trim() ) {
+		if ( treffer.innerHTML.trim() || ( zaehler.length && zaehler[ 0 ].textContent.trim() ) ) {
 			Array.prototype.forEach.call( bereiche, function ( bereich ) {
 				bereich.classList.add( 'npo-suchergebnisse--sichtbar' );
 			} );
