@@ -9,6 +9,19 @@
 	background-color: #ffffff;
 }
 
+/* Mit Elementor-Vorlage bestimmt allein Elementor die Breite. */
+body.npo-kategorie-vorlage .site-content > .ast-container {
+	max-width: none;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+body.npo-kategorie-vorlage #primary {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 .npo-kategorieseite__inhalt {
 	max-width: 1200px;
 	margin: 0 auto;

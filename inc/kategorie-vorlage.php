@@ -161,3 +161,53 @@ function napurelon_kategorie_vorlage_inhalt( $seiten_id ) {
 
 	return (string) apply_filters( 'the_content', $seite->post_content );
 }
+
+/**
+ * Wird die aktuelle Kategorieseite über die Vorlagenseite ausgegeben?
+ *
+ * @return bool True auf Rezeptkategorien mit gewählter Vorlage.
+ */
+function napurelon_kategorie_vorlage_aktiv() {
+	return ! is_admin() && is_tax( 'rezeptkategorie' ) && napurelon_kategorie_vorlage_id() > 0;
+}
+
+/**
+ * Astra: Kategorieseiten mit Vorlage ohne Seitenleiste.
+ *
+ * @param string $layout Layout laut Astra.
+ * @return string Layout.
+ */
+function napurelon_kategorie_vorlage_seitenleiste( $layout ) {
+	return napurelon_kategorie_vorlage_aktiv() ? 'no-sidebar' : $layout;
+}
+
+add_filter( 'astra_page_layout', 'napurelon_kategorie_vorlage_seitenleiste' );
+
+/**
+ * Astra: Kategorieseiten mit Vorlage über die volle Breite, damit die
+ * Breiteneinstellungen der Elementor-Container greifen.
+ *
+ * @param string $layout Inhaltslayout laut Astra.
+ * @return string Inhaltslayout.
+ */
+function napurelon_kategorie_vorlage_inhaltslayout( $layout ) {
+	return napurelon_kategorie_vorlage_aktiv() ? 'page-builder' : $layout;
+}
+
+add_filter( 'astra_get_content_layout', 'napurelon_kategorie_vorlage_inhaltslayout' );
+
+/**
+ * Markiert Kategorieseiten mit Vorlage für das Stylesheet.
+ *
+ * @param string[] $klassen Body-Klassen.
+ * @return string[] Body-Klassen.
+ */
+function napurelon_kategorie_vorlage_body_klasse( $klassen ) {
+	if ( napurelon_kategorie_vorlage_aktiv() ) {
+		$klassen[] = 'npo-kategorie-vorlage';
+	}
+
+	return $klassen;
+}
+
+add_filter( 'body_class', 'napurelon_kategorie_vorlage_body_klasse' );
