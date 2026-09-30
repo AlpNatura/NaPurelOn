@@ -224,7 +224,7 @@ add_shortcode( 'napurelon_rezept_suche', 'napurelon_rezept_suche_shortcode' );
  * @return string HTML des Trefferbereichs.
  */
 function napurelon_rezept_treffer_shortcode() {
-	return napurelon_rezept_trefferbereich( napurelon_rezept_suchbegriff() );
+	return napurelon_rezept_trefferbereich( napurelon_rezept_suchbegriff(), 'eigen' );
 }
 
 add_shortcode( 'napurelon_rezept_treffer', 'napurelon_rezept_treffer_shortcode' );
@@ -249,14 +249,15 @@ add_shortcode( 'napurelon_rezept_anzahl', 'napurelon_rezept_anzahl_shortcode' );
  * Liefert den Behälter der Trefferliste inklusive serverseitiger Treffer.
  *
  * @param string $begriff Geprüfter Suchbegriff.
+ * @param string $art     'eigen' für den Behälter im Inhaltsbereich, sonst leer.
  * @return string HTML des Behälters.
  */
-function napurelon_rezept_trefferbereich( $begriff ) {
+function napurelon_rezept_trefferbereich( $begriff, $art = '' ) {
 	$treffer = ( mb_strlen( $begriff ) >= 2 ) ? napurelon_rezept_suchergebnis( $begriff ) : '';
 
 	ob_start();
 	?>
-	<div class="npo-rezeptsuche__treffer" data-napurelon-suchtreffer>
+	<div class="npo-rezeptsuche__treffer" data-napurelon-suchtreffer="<?php echo esc_attr( $art ); ?>">
 		<?php
 		if ( '' !== $treffer ) {
 			echo $treffer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Karten sind bereits escaped.
