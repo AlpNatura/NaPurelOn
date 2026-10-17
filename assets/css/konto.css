@@ -1,0 +1,33 @@
+.npo-konto__honeypot {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.npo-konto__datenschutz label {
+	display: flex;
+	gap: 8px;
+	align-items: flex-start;
+}
+
+.npo-konto__datenschutz input[type="checkbox"] {
+	margin-top: 4px;
+}
+
+.npo-konto-status {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 3px;
+	font-size: 0.875em;
+	background: #f0f0f0;
+}
+
+.npo-konto-status--publish {
+	background: #e6f4d7;
+}
+
+.npo-konto-status--pending {
+	background: #fdf0d5;
+}
