@@ -186,6 +186,19 @@ function napurelon_sprache_zeichenketten() {
 			'Die Bilder konnten nicht gespeichert werden.',
 			'Das Rezept konnte nicht gespeichert werden.',
 			'Zutaten sind erforderlich, außer in „Grundlagen & Wissen“.',
+			'Meine Rezepte',
+			'Du hast noch keine Rezepte eingereicht.',
+			'Rezept',
+			'Status',
+			'Eingereicht am',
+			'Veröffentlicht',
+			'Wird geprüft',
+			'Geplant',
+			'Entwurf',
+			'Privat',
+			'Hier siehst du deine <a href="%1$s">eingereichten Rezepte</a> und kannst dein <a href="%2$s">Passwort und deine Kontodetails</a> bearbeiten.',
+			' gelesen.',
+			'Die Registrierung konnte nicht abgeschlossen werden. Bitte versuche es erneut.',
 		)
 	);
 

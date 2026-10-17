@@ -945,9 +945,10 @@ function napurelon_rezeptformular_shortcode() {
 		?>
 		<div class="npo-rezeptformular__hinweis">
 			<p><?php echo esc_html( napurelon_text( 'Bitte melde dich an, um ein Rezept einzureichen.' ) ); ?></p>
-			<p><a href="<?php echo esc_url( wp_login_url( $permalink ) ); ?>"><?php echo esc_html( napurelon_text( 'Anmelden' ) ); ?></a>
-			<?php if ( get_option( 'users_can_register' ) ) : ?>
-				| <a href="<?php echo esc_url( wp_registration_url() ); ?>"><?php echo esc_html( napurelon_text( 'Registrieren' ) ); ?></a>
+			<?php $registrier_url = napurelon_konto_registrier_url( $permalink ); ?>
+			<p><a href="<?php echo esc_url( napurelon_konto_anmelde_url( $permalink ) ); ?>"><?php echo esc_html( napurelon_text( 'Anmelden' ) ); ?></a>
+			<?php if ( '' !== $registrier_url ) : ?>
+				| <a href="<?php echo esc_url( $registrier_url ); ?>"><?php echo esc_html( napurelon_text( 'Registrieren' ) ); ?></a>
 			<?php endif; ?>
 			</p>
 		</div>
