@@ -1335,28 +1335,34 @@ function napurelon_rezeptformular_shortcode() {
 				<div class="npo-rezeptformular__gruppe">
 					<label class="npo-rezeptformular__zustimmung" for="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-bildrechte' ); ?>">
 						<input type="checkbox" id="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-bildrechte' ); ?>" name="napurelon_bildrechte" value="1" required <?php checked( $bildrechte ); ?><?php echo isset( $fehler['napurelon_bildrechte'] ) ? ' class="npo-rezeptformular__feld--fehler" aria-invalid="true"' : ''; ?>>
-						<?php echo esc_html( napurelon_text( 'Ich habe die Fotos selbst aufgenommen oder besitze die Rechte, sie hier veröffentlichen zu lassen.' ) ); ?>
-						<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
+						<span class="npo-rezeptformular__zustimmungstext">
+							<?php echo esc_html( napurelon_text( 'Ich habe die Fotos selbst aufgenommen oder besitze die Rechte, sie hier veröffentlichen zu lassen.' ) ); ?>
+							<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
+						</span>
 					</label>
 				</div>
 				<div class="npo-rezeptformular__gruppe">
 					<label class="npo-rezeptformular__zustimmung" for="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-nutzungsrecht' ); ?>">
 						<input type="checkbox" id="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-nutzungsrecht' ); ?>" name="napurelon_nutzungsrecht" value="1" required <?php checked( $nutzungsrecht ); ?><?php echo isset( $fehler['napurelon_nutzungsrecht'] ) ? ' class="npo-rezeptformular__feld--fehler" aria-invalid="true"' : ''; ?>>
-						<?php echo esc_html( napurelon_text( 'Ich räume NaPurelOn das unbefristete Recht ein, mein Rezept und meine Bilder zu veröffentlichen und zu bearbeiten.' ) ); ?>
-						<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
+						<span class="npo-rezeptformular__zustimmungstext">
+							<?php echo esc_html( napurelon_text( 'Ich räume NaPurelOn das unbefristete Recht ein, mein Rezept und meine Bilder zu veröffentlichen und zu bearbeiten.' ) ); ?>
+							<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
+						</span>
 					</label>
 				</div>
 				<div class="npo-rezeptformular__gruppe">
 					<label class="npo-rezeptformular__zustimmung" for="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-datenschutz' ); ?>">
 						<input type="checkbox" id="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-datenschutz' ); ?>" name="napurelon_datenschutz" value="1" required <?php checked( $datenschutz ); ?><?php echo isset( $fehler['napurelon_datenschutz'] ) ? ' class="npo-rezeptformular__feld--fehler" aria-invalid="true"' : ''; ?>>
-						<?php echo esc_html( napurelon_text( 'Ich habe die ' ) ); ?>
-						<?php if ( get_privacy_policy_url() ) : ?>
-							<a href="<?php echo esc_url( get_privacy_policy_url() ); ?>" target="_blank" rel="noopener"><?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?></a>
-						<?php else : ?>
-							<?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?>
-						<?php endif; ?>
-						<?php echo esc_html( napurelon_text( ' gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.' ) ); ?>
-						<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
+						<span class="npo-rezeptformular__zustimmungstext">
+							<?php echo esc_html( napurelon_text( 'Ich habe die ' ) ); ?>
+							<?php if ( get_privacy_policy_url() ) : ?>
+								<a href="<?php echo esc_url( get_privacy_policy_url() ); ?>" target="_blank" rel="noopener"><?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?></a>
+							<?php else : ?>
+								<?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?>
+							<?php endif; ?>
+							<?php echo esc_html( napurelon_text( ' gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.' ) ); ?>
+							<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
+						</span>
 					</label>
 				</div>
 			</section>
