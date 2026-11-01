@@ -160,6 +160,7 @@ function napurelon_rezeptformular_ergebnis( $setzen = null ) {
 		'merkmale'  => array(),
 		'tags'      => array(),
 		'bildrechte'=> false,
+		'nutzungsrecht' => false,
 		'datenschutz' => false,
 	);
 
@@ -287,8 +288,9 @@ function napurelon_verarbeite_rezeptformular() {
 		'werte'       => array(),
 		'merkmale'    => array(),
 		'tags'        => array(),
-		'bildrechte'  => false,
-		'datenschutz' => false,
+		'bildrechte'    => false,
+		'nutzungsrecht' => false,
+		'datenschutz'   => false,
 	);
 	napurelon_rezeptformular_ergebnis( $ergebnis );
 
@@ -542,10 +544,14 @@ function napurelon_verarbeite_rezeptformular() {
 	}
 	$ergebnis['tags'] = array_values( array_unique( $ergebnis['tags'] ) );
 
-	$ergebnis['bildrechte']  = '1' === napurelon_formular_eingabe( $eingaben, 'napurelon_bildrechte' );
-	$ergebnis['datenschutz'] = '1' === napurelon_formular_eingabe( $eingaben, 'napurelon_datenschutz' );
+	$ergebnis['bildrechte']    = '1' === napurelon_formular_eingabe( $eingaben, 'napurelon_bildrechte' );
+	$ergebnis['nutzungsrecht'] = '1' === napurelon_formular_eingabe( $eingaben, 'napurelon_nutzungsrecht' );
+	$ergebnis['datenschutz']   = '1' === napurelon_formular_eingabe( $eingaben, 'napurelon_datenschutz' );
 	if ( ! $ergebnis['bildrechte'] ) {
 		napurelon_formular_fehler_hinzufuegen( $fehler, 'napurelon_bildrechte', 'Bitte bestätige die Bildrechte.' );
+	}
+	if ( ! $ergebnis['nutzungsrecht'] ) {
+		napurelon_formular_fehler_hinzufuegen( $fehler, 'napurelon_nutzungsrecht', 'Bitte bestätige das Nutzungsrecht.' );
 	}
 	if ( ! $ergebnis['datenschutz'] ) {
 		napurelon_formular_fehler_hinzufuegen( $fehler, 'napurelon_datenschutz', 'Bitte bestätige die Datenschutzerklärung.' );
@@ -710,6 +716,7 @@ function napurelon_verarbeite_rezeptformular() {
 		update_post_meta( $post_id, $schluessel, $werte[ $schluessel ] );
 	}
 	update_post_meta( $post_id, '_napurelon_eingereicht', 1 );
+	update_post_meta( $post_id, '_napurelon_nutzungsrecht_bestaetigt', time() );
 
 	if ( function_exists( 'pll_set_post_language' ) && function_exists( 'pll_current_language' ) && pll_current_language() ) {
 		pll_set_post_language( $post_id, pll_current_language() );
@@ -1004,6 +1011,7 @@ function napurelon_rezeptformular_shortcode() {
 	$merkmale_auswahl = isset( $ergebnis['merkmale'] ) && is_array( $ergebnis['merkmale'] ) ? $ergebnis['merkmale'] : array();
 	$tags_auswahl     = isset( $ergebnis['tags'] ) && is_array( $ergebnis['tags'] ) ? $ergebnis['tags'] : array();
 	$bildrechte       = ! empty( $ergebnis['bildrechte'] );
+	$nutzungsrecht    = ! empty( $ergebnis['nutzungsrecht'] );
 	$datenschutz      = ! empty( $ergebnis['datenschutz'] );
 	$zeit_formular    = time();
 
@@ -1328,6 +1336,13 @@ function napurelon_rezeptformular_shortcode() {
 					<label class="npo-rezeptformular__zustimmung" for="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-bildrechte' ); ?>">
 						<input type="checkbox" id="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-bildrechte' ); ?>" name="napurelon_bildrechte" value="1" required <?php checked( $bildrechte ); ?><?php echo isset( $fehler['napurelon_bildrechte'] ) ? ' class="npo-rezeptformular__feld--fehler" aria-invalid="true"' : ''; ?>>
 						<?php echo esc_html( napurelon_text( 'Ich habe die Fotos selbst aufgenommen oder besitze die Rechte, sie hier veröffentlichen zu lassen.' ) ); ?>
+						<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
+					</label>
+				</div>
+				<div class="npo-rezeptformular__gruppe">
+					<label class="npo-rezeptformular__zustimmung" for="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-nutzungsrecht' ); ?>">
+						<input type="checkbox" id="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-nutzungsrecht' ); ?>" name="napurelon_nutzungsrecht" value="1" required <?php checked( $nutzungsrecht ); ?><?php echo isset( $fehler['napurelon_nutzungsrecht'] ) ? ' class="npo-rezeptformular__feld--fehler" aria-invalid="true"' : ''; ?>>
+						<?php echo esc_html( napurelon_text( 'Ich räume NaPurelOn das unbefristete Recht ein, mein Rezept und meine Bilder zu veröffentlichen und zu bearbeiten.' ) ); ?>
 						<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
 					</label>
 				</div>
