@@ -31,3 +31,57 @@
 .npo-konto-status--pending {
 	background: #fdf0d5;
 }
+
+.npo-konto-loeschen {
+	margin-top: 2.5rem;
+	padding: 1.25rem 1.5rem;
+	border: 1px solid #f3c7c2;
+	border-left: 4px solid #b42318;
+	border-radius: 8px;
+	background: #fef3f2;
+	color: #1f2937;
+}
+
+.npo-konto-loeschen h3 {
+	margin: 0 0 0.75rem;
+	color: #7a271a;
+	font-size: 1.15rem;
+}
+
+.npo-konto-loeschen ul {
+	margin: 0 0 0.75rem 1.25rem;
+}
+
+.npo-konto-loeschen__details summary {
+	color: #b42318;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.npo-konto-loeschen__form {
+	margin-top: 1rem;
+}
+
+.npo-konto-loeschen__bestaetigung label {
+	display: flex;
+	gap: 8px;
+	align-items: flex-start;
+}
+
+.npo-konto-loeschen__bestaetigung input[type="checkbox"] {
+	margin-top: 4px;
+	accent-color: #b42318;
+}
+
+.npo-konto-loeschen .npo-konto-loeschen__senden,
+.npo-konto-loeschen .npo-konto-loeschen__senden:hover,
+.npo-konto-loeschen .npo-konto-loeschen__senden:focus {
+	border-color: #b42318;
+	background-color: #b42318;
+	color: #fff;
+}
+
+.npo-konto-loeschen .npo-konto-loeschen__senden:hover,
+.npo-konto-loeschen .npo-konto-loeschen__senden:focus {
+	background-color: #912018;
+}

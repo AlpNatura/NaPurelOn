@@ -218,6 +218,23 @@ function napurelon_sprache_zeichenketten() {
 			'Die Nachricht konnte nicht gesendet werden. Bitte versuche es später erneut.',
 			'Danke für deine Nachricht! Wir melden uns so bald wie möglich.',
 			'Weitere Nachricht senden',
+			'Konto löschen',
+			'Wenn du dein Konto löschst:',
+			'werden dein Konto und deine Kontodaten (Name, E-Mail-Adresse, Passwort) endgültig gelöscht,',
+			'werden deine noch nicht veröffentlichten Rezepte gelöscht,',
+			'bleiben deine veröffentlichten Rezepte auf NaPurelOn, jedoch ohne deinen Namen,',
+			'werden deine Kommentare anonymisiert.',
+			'Das Löschen kann nicht rückgängig gemacht werden.',
+			'Ich möchte mein Konto löschen',
+			'Aktuelles Passwort zur Bestätigung',
+			'Ich habe verstanden, dass mein Konto endgültig gelöscht wird.',
+			'Konto endgültig löschen',
+			'Dein Konto wurde gelöscht.',
+			'Konten mit Verwaltungsrechten können hier nicht gelöscht werden.',
+			'Zu viele Versuche. Bitte versuche es in einer Stunde erneut.',
+			'Das Passwort ist nicht korrekt.',
+			'Bitte bestätige, dass du dein Konto endgültig löschen möchtest.',
+			'Dein Konto konnte nicht gelöscht werden. Bitte kontaktiere uns.',
 		)
 	);
 
