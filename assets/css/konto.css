@@ -73,15 +73,87 @@
 	accent-color: #b42318;
 }
 
-.npo-konto-loeschen .npo-konto-loeschen__senden,
-.npo-konto-loeschen .npo-konto-loeschen__senden:hover,
-.npo-konto-loeschen .npo-konto-loeschen__senden:focus {
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__senden,
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__senden:hover,
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__senden:focus {
 	border-color: #b42318;
 	background-color: #b42318;
 	color: #fff;
 }
 
-.npo-konto-loeschen .npo-konto-loeschen__senden:hover,
-.npo-konto-loeschen .npo-konto-loeschen__senden:focus {
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__senden:hover,
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__senden:focus {
 	background-color: #912018;
+}
+
+.npo-konto-loeschen [hidden] {
+	display: none !important;
+}
+
+.npo-konto-loeschen:not(.npo-js) [data-npo-weiter],
+.npo-konto-loeschen:not(.npo-js) [data-npo-zurueck],
+.npo-konto-loeschen:not(.npo-js) [data-npo-abbrechen] {
+	display: none;
+}
+
+.npo-konto-loeschen__schritt {
+	margin: 0 0 1rem;
+	padding: 0;
+	border: 0;
+}
+
+.npo-konto-loeschen__frage,
+.npo-konto-loeschen__schritt legend {
+	margin-bottom: 0.75rem;
+	padding: 0;
+	font-weight: 600;
+}
+
+.npo-konto-loeschen__grund {
+	display: flex;
+	gap: 8px;
+	align-items: flex-start;
+	margin-bottom: 0.4rem;
+	cursor: pointer;
+}
+
+.npo-konto-loeschen__grund input[type="radio"] {
+	margin-top: 5px;
+	accent-color: #b42318;
+}
+
+.npo-konto-loeschen__sonstiges {
+	margin: 0.5rem 0 0 1.6rem;
+}
+
+.npo-konto-loeschen__sonstiges label {
+	display: block;
+	margin-bottom: 0.25rem;
+}
+
+.npo-konto-loeschen__sonstiges textarea {
+	width: 100%;
+	border: 1px solid #f3c7c2;
+	border-radius: 6px;
+	background: #fff;
+}
+
+.npo-konto-loeschen__knoepfe {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-top: 1rem;
+}
+
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__zurueck,
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__zurueck:hover,
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__zurueck:focus {
+	border: 1px solid #6a9738;
+	background-color: #fff;
+	color: #6a9738;
+}
+
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__zurueck:hover,
+.woocommerce .npo-konto-loeschen .button.npo-konto-loeschen__zurueck:focus {
+	background-color: #f8f6f3;
 }
