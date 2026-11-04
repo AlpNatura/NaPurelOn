@@ -12,6 +12,53 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'NAPURELON_LOESCHEN_FEHLVERSUCHE', 5 );
+define( 'NAPURELON_LOESCHEN_GRUND_LAENGE', 500 );
+define( 'NAPURELON_LOESCHEN_UMFRAGE_OPTION', 'napurelon_loeschgruende' );
+
+/**
+ * Antwortmöglichkeiten der Umfrage vor dem Löschen.
+ *
+ * @return array Schlüssel => Text.
+ */
+function napurelon_loeschen_gruende() {
+	return array(
+		'nicht_mehr'     => 'Ich nutze NaPurelOn nicht mehr.',
+		'nicht_gefunden' => 'Ich habe nicht die Rezepte gefunden, die ich suche.',
+		'bedienung'      => 'Die Website ist mir zu kompliziert.',
+		'datenschutz'    => 'Ich möchte meine Daten hier nicht mehr speichern.',
+		'anderes_konto'  => 'Ich habe ein anderes Konto.',
+		'sonstiges'      => 'Sonstiges',
+	);
+}
+
+/**
+ * Speichert eine Umfrageantwort anonym (ohne Bezug zum Benutzer).
+ *
+ * @param string $grund Schlüssel aus napurelon_loeschen_gruende().
+ * @param string $text  Freitext bei „Sonstiges“.
+ */
+function napurelon_loeschen_umfrage_speichern( $grund, $text ) {
+	$daten = get_option( NAPURELON_LOESCHEN_UMFRAGE_OPTION, array() );
+	$daten = is_array( $daten ) ? $daten : array();
+
+	$zaehler           = isset( $daten['zaehler'] ) && is_array( $daten['zaehler'] ) ? $daten['zaehler'] : array();
+	$zaehler[ $grund ] = ( isset( $zaehler[ $grund ] ) ? absint( $zaehler[ $grund ] ) : 0 ) + 1;
+	$daten['zaehler']  = $zaehler;
+
+	if ( '' !== $text ) {
+		$texte = isset( $daten['texte'] ) && is_array( $daten['texte'] ) ? $daten['texte'] : array();
+		array_unshift(
+			$texte,
+			array(
+				'datum' => current_time( 'Y-m-d' ),
+				'text'  => $text,
+			)
+		);
+		$daten['texte'] = array_slice( $texte, 0, 100 );
+	}
+
+	update_option( NAPURELON_LOESCHEN_UMFRAGE_OPTION, $daten, false );
+}
 
 /**
  * Darf dieses Konto sich selbst über das Frontend löschen?
@@ -92,6 +139,17 @@ function napurelon_loeschen_verarbeiten() {
 
 	if ( ! napurelon_loeschen_erlaubt( $benutzer ) ) {
 		napurelon_loeschen_fehler( 'Konten mit Verwaltungsrechten können hier nicht gelöscht werden.' );
+	}
+
+	$gruende = napurelon_loeschen_gruende();
+	$grund   = isset( $_POST['napurelon_konto_loeschen_grund'] ) && is_string( $_POST['napurelon_konto_loeschen_grund'] ) ? sanitize_key( wp_unslash( $_POST['napurelon_konto_loeschen_grund'] ) ) : '';
+	if ( ! isset( $gruende[ $grund ] ) ) {
+		napurelon_loeschen_fehler( 'Bitte wähle aus, warum du dein Konto löschen möchtest.' );
+	}
+
+	$grund_text = '';
+	if ( 'sonstiges' === $grund && isset( $_POST['napurelon_konto_loeschen_sonstiges'] ) && is_string( $_POST['napurelon_konto_loeschen_sonstiges'] ) ) {
+		$grund_text = trim( mb_substr( sanitize_textarea_field( wp_unslash( $_POST['napurelon_konto_loeschen_sonstiges'] ) ), 0, NAPURELON_LOESCHEN_GRUND_LAENGE ) );
 	}
 
 	$versuche = get_user_meta( $id, '_napurelon_loeschen_fehlversuche', true );
@@ -188,6 +246,8 @@ function napurelon_loeschen_verarbeiten() {
 	wp_clear_auth_cookie();
 	wp_set_current_user( 0 );
 
+	napurelon_loeschen_umfrage_speichern( $grund, $grund_text );
+
 	$seitenname = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 	wp_mail(
 		$email,
@@ -197,7 +257,7 @@ function napurelon_loeschen_verarbeiten() {
 	wp_mail(
 		get_option( 'admin_email' ),
 		'[' . $seitenname . '] Ein Benutzerkonto wurde gelöscht',
-		"Ein Benutzer hat sein Konto über Mein Konto gelöscht.\nNicht veröffentlichte Rezepte: " . count( $offene_rezepte ) . " gelöscht.\nVeröffentlichte Rezepte wurden dem Administrator (ID " . $nachfolger . ') übertragen.'
+		"Ein Benutzer hat sein Konto über Mein Konto gelöscht.\nNicht veröffentlichte Rezepte: " . count( $offene_rezepte ) . " gelöscht.\nVeröffentlichte Rezepte wurden dem Administrator (ID " . $nachfolger . ") übertragen.\nGrund: " . $gruende[ $grund ] . ( '' !== $grund_text ? "\n\n" . $grund_text : '' )
 	);
 
 	$ziel = napurelon_konto_seite_url();
@@ -231,19 +291,49 @@ function napurelon_loeschen_formular() {
 			<form method="post" class="npo-konto-loeschen__form" action="<?php echo esc_url( napurelon_loeschen_kontodetails_url() ); ?>">
 				<?php wp_nonce_field( 'napurelon_konto_loeschen_' . $benutzer->ID, 'napurelon_konto_loeschen_nonce' ); ?>
 				<input type="hidden" name="napurelon_konto_loeschen_aktion" value="1">
-				<p class="woocommerce-form-row form-row">
-					<label for="npo-konto-loeschen-passwort"><?php echo esc_html( napurelon_text( 'Aktuelles Passwort zur Bestätigung' ) ); ?>&nbsp;<span class="required" aria-hidden="true">*</span></label>
-					<input type="password" class="woocommerce-Input input-text" id="npo-konto-loeschen-passwort" name="napurelon_konto_loeschen_passwort" autocomplete="current-password" required>
-				</p>
-				<p class="form-row npo-konto-loeschen__bestaetigung">
-					<label>
-						<input type="checkbox" name="napurelon_konto_loeschen_bestaetigung" value="1" required>
-						<span><?php echo esc_html( napurelon_text( 'Ich habe verstanden, dass mein Konto endgültig gelöscht wird.' ) ); ?></span>
-					</label>
-				</p>
-				<p>
-					<button type="submit" class="button npo-konto-loeschen__senden"><?php echo esc_html( napurelon_text( 'Konto endgültig löschen' ) ); ?></button>
-				</p>
+
+				<div class="npo-konto-loeschen__schritt" data-schritt="1">
+					<p class="npo-konto-loeschen__frage"><?php echo esc_html( napurelon_text( 'Möchtest du dein Konto wirklich löschen?' ) ); ?></p>
+					<p class="npo-konto-loeschen__knoepfe">
+						<button type="button" class="button npo-konto-loeschen__senden" data-npo-weiter><?php echo esc_html( napurelon_text( 'Ja, weiter' ) ); ?></button>
+						<button type="button" class="button npo-konto-loeschen__zurueck" data-npo-abbrechen><?php echo esc_html( napurelon_text( 'Nein, Konto behalten' ) ); ?></button>
+					</p>
+				</div>
+
+				<fieldset class="npo-konto-loeschen__schritt" data-schritt="2">
+					<legend><?php echo esc_html( napurelon_text( 'Warum möchtest du dein Konto löschen?' ) ); ?>&nbsp;<span class="required" aria-hidden="true">*</span></legend>
+					<?php foreach ( napurelon_loeschen_gruende() as $schluessel => $text ) : ?>
+						<label class="npo-konto-loeschen__grund">
+							<input type="radio" name="napurelon_konto_loeschen_grund" value="<?php echo esc_attr( $schluessel ); ?>" required>
+							<span><?php echo esc_html( napurelon_text( $text ) ); ?></span>
+						</label>
+					<?php endforeach; ?>
+					<p class="npo-konto-loeschen__sonstiges">
+						<label for="npo-konto-loeschen-sonstiges"><?php echo esc_html( napurelon_text( 'Magst du uns mehr erzählen? (optional)' ) ); ?></label>
+						<textarea id="npo-konto-loeschen-sonstiges" name="napurelon_konto_loeschen_sonstiges" rows="3" maxlength="<?php echo esc_attr( NAPURELON_LOESCHEN_GRUND_LAENGE ); ?>"></textarea>
+					</p>
+					<p class="npo-konto-loeschen__knoepfe">
+						<button type="button" class="button npo-konto-loeschen__senden" data-npo-weiter><?php echo esc_html( napurelon_text( 'Weiter' ) ); ?></button>
+						<button type="button" class="button npo-konto-loeschen__zurueck" data-npo-zurueck><?php echo esc_html( napurelon_text( 'Zurück' ) ); ?></button>
+					</p>
+				</fieldset>
+
+				<div class="npo-konto-loeschen__schritt" data-schritt="3">
+					<p class="woocommerce-form-row form-row">
+						<label for="npo-konto-loeschen-passwort"><?php echo esc_html( napurelon_text( 'Aktuelles Passwort zur Bestätigung' ) ); ?>&nbsp;<span class="required" aria-hidden="true">*</span></label>
+						<input type="password" class="woocommerce-Input input-text" id="npo-konto-loeschen-passwort" name="napurelon_konto_loeschen_passwort" autocomplete="current-password" required>
+					</p>
+					<p class="form-row npo-konto-loeschen__bestaetigung">
+						<label>
+							<input type="checkbox" name="napurelon_konto_loeschen_bestaetigung" value="1" required>
+							<span><?php echo esc_html( napurelon_text( 'Ich habe verstanden, dass mein Konto endgültig gelöscht wird.' ) ); ?></span>
+						</label>
+					</p>
+					<p class="npo-konto-loeschen__knoepfe">
+						<button type="submit" class="button npo-konto-loeschen__senden"><?php echo esc_html( napurelon_text( 'Konto endgültig löschen' ) ); ?></button>
+						<button type="button" class="button npo-konto-loeschen__zurueck" data-npo-zurueck><?php echo esc_html( napurelon_text( 'Zurück' ) ); ?></button>
+					</p>
+				</div>
 			</form>
 		</details>
 	</section>
@@ -260,3 +350,82 @@ function napurelon_loeschen_bestaetigung() {
 	}
 }
 add_action( 'woocommerce_before_customer_login_form', 'napurelon_loeschen_bestaetigung' );
+
+/**
+ * Schrittweise Abfrage (Bestätigung → Umfrage → Passwort) auf den Kontodetails.
+ */
+function napurelon_loeschen_assets() {
+	if ( ! function_exists( 'is_wc_endpoint_url' ) || ! is_wc_endpoint_url( 'edit-account' ) || ! is_user_logged_in() ) {
+		return;
+	}
+
+	$js = '/assets/js/konto-loeschen.js';
+	wp_enqueue_script(
+		'napurelon-konto-loeschen',
+		get_stylesheet_directory_uri() . $js,
+		array(),
+		file_exists( get_stylesheet_directory() . $js ) ? (string) filemtime( get_stylesheet_directory() . $js ) : '1.0.0',
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'napurelon_loeschen_assets' );
+
+/**
+ * Admin-Seite Benutzer → Löschgründe.
+ */
+function napurelon_loeschen_admin_menue() {
+	add_users_page( 'Löschgründe', 'Löschgründe', 'manage_options', 'napurelon-loeschgruende', 'napurelon_loeschen_admin_seite' );
+}
+add_action( 'admin_menu', 'napurelon_loeschen_admin_menue' );
+
+/**
+ * Zeigt die anonym gespeicherten Umfrageantworten.
+ */
+function napurelon_loeschen_admin_seite() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	$daten   = get_option( NAPURELON_LOESCHEN_UMFRAGE_OPTION, array() );
+	$zaehler = isset( $daten['zaehler'] ) && is_array( $daten['zaehler'] ) ? $daten['zaehler'] : array();
+	$texte   = isset( $daten['texte'] ) && is_array( $daten['texte'] ) ? $daten['texte'] : array();
+	?>
+	<div class="wrap">
+		<h1>Löschgründe</h1>
+		<p>Antworten aus der Umfrage beim Löschen eines Kontos. Gespeichert werden nur Grund, Datum und Freitext, ohne Bezug zum gelöschten Konto.</p>
+		<table class="widefat striped" style="max-width:640px">
+			<thead><tr><th>Grund</th><th>Anzahl</th></tr></thead>
+			<tbody>
+				<?php foreach ( napurelon_loeschen_gruende() as $schluessel => $text ) : ?>
+					<tr>
+						<td><?php echo esc_html( $text ); ?></td>
+						<td><?php echo esc_html( (string) ( isset( $zaehler[ $schluessel ] ) ? absint( $zaehler[ $schluessel ] ) : 0 ) ); ?></td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+
+		<h2>Sonstiges (letzte 100)</h2>
+		<?php if ( empty( $texte ) ) : ?>
+			<p>Noch keine Angaben.</p>
+		<?php else : ?>
+			<table class="widefat striped" style="max-width:900px">
+				<thead><tr><th style="width:110px">Datum</th><th>Text</th></tr></thead>
+				<tbody>
+					<?php foreach ( $texte as $eintrag ) : ?>
+						<?php
+						if ( ! is_array( $eintrag ) ) {
+							continue;
+						}
+						?>
+						<tr>
+							<td><?php echo esc_html( isset( $eintrag['datum'] ) ? (string) $eintrag['datum'] : '' ); ?></td>
+							<td><?php echo nl2br( esc_html( isset( $eintrag['text'] ) ? (string) $eintrag['text'] : '' ) ); ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+	</div>
+	<?php
+}

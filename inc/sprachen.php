@@ -235,6 +235,20 @@ function napurelon_sprache_zeichenketten() {
 			'Das Passwort ist nicht korrekt.',
 			'Bitte bestätige, dass du dein Konto endgültig löschen möchtest.',
 			'Dein Konto konnte nicht gelöscht werden. Bitte kontaktiere uns.',
+			'Möchtest du dein Konto wirklich löschen?',
+			'Ja, weiter',
+			'Nein, Konto behalten',
+			'Warum möchtest du dein Konto löschen?',
+			'Ich nutze NaPurelOn nicht mehr.',
+			'Ich habe nicht die Rezepte gefunden, die ich suche.',
+			'Die Website ist mir zu kompliziert.',
+			'Ich möchte meine Daten hier nicht mehr speichern.',
+			'Ich habe ein anderes Konto.',
+			'Sonstiges',
+			'Magst du uns mehr erzählen? (optional)',
+			'Weiter',
+			'Zurück',
+			'Bitte wähle aus, warum du dein Konto löschen möchtest.',
 		)
 	);
 
