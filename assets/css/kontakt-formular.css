@@ -1,0 +1,181 @@
+.npo-kontaktformular {
+	max-width: 880px;
+	margin: 0 auto;
+	color: #1f2937;
+	scroll-margin-top: 120px;
+}
+
+.npo-kontaktformular__form {
+	position: relative;
+	padding: 1.5rem;
+	border: 1px solid #e5e1dc;
+	border-top: 3px solid #f9a61a;
+	border-radius: 8px;
+	background: #f8f6f3;
+}
+
+.npo-kontaktformular__raster {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0 1rem;
+}
+
+.npo-kontaktformular__gruppe {
+	min-width: 0;
+	margin: 0 0 1rem;
+}
+
+.npo-kontaktformular__gruppe > label:not(.npo-kontaktformular__zustimmung) {
+	display: block;
+	margin-bottom: 0.4rem;
+	font-weight: 600;
+}
+
+.npo-kontaktformular__stern {
+	color: #f9a61a;
+	font-weight: 700;
+}
+
+.npo-kontaktformular__feld {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 44px;
+	padding: 10px 12px;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	background-color: #fff;
+	color: #1f2937;
+	font: inherit;
+}
+
+.npo-kontaktformular textarea.npo-kontaktformular__feld {
+	min-height: 160px;
+	resize: vertical;
+}
+
+.npo-kontaktformular__feld:focus,
+.npo-kontaktformular__zustimmung input:focus {
+	outline: 3px solid rgba(106, 151, 56, 0.28);
+	outline-offset: 2px;
+	border-color: #6a9738;
+}
+
+.npo-kontaktformular__feld--fehler {
+	border-color: #b42318 !important;
+}
+
+.npo-kontaktformular__feldfehler {
+	margin: 0.4rem 0 0;
+	color: #b42318;
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.npo-kontaktformular__zustimmung {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	line-height: 1.5;
+	cursor: pointer;
+}
+
+.npo-kontaktformular__zustimmung input {
+	flex: 0 0 auto;
+	margin-top: 0.25rem;
+	accent-color: #6a9738;
+}
+
+.npo-kontaktformular__zustimmung a {
+	color: #6a9738;
+	text-decoration: underline;
+}
+
+.npo-kontaktformular__abschluss {
+	text-align: center;
+}
+
+.npo-kontaktformular__senden {
+	padding: 0.75rem 1.5rem;
+	border: 0;
+	border-radius: 4px;
+	background-color: #6a9738;
+	color: #fff;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	line-height: 1.2;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 200ms ease;
+}
+
+.npo-kontaktformular__senden:hover,
+.npo-kontaktformular__senden:focus {
+	background-color: #8cc63f;
+	color: #fff;
+}
+
+.npo-kontaktformular__senden:focus {
+	outline: 3px solid rgba(106, 151, 56, 0.35);
+	outline-offset: 3px;
+}
+
+.npo-kontaktformular__hilfe {
+	margin: 0.75rem 0 0;
+	color: #4b5563;
+	font-size: 0.9rem;
+}
+
+.npo-kontaktformular__fehler,
+.npo-kontaktformular__danke {
+	margin: 0 0 1.25rem;
+	padding: 1rem 1.25rem;
+	border: 1px solid;
+	border-radius: 8px;
+}
+
+.npo-kontaktformular__fehler p,
+.npo-kontaktformular__danke p {
+	margin: 0;
+}
+
+.npo-kontaktformular__fehler {
+	border-color: #b42318;
+	background: #fef3f2;
+	color: #7a271a;
+}
+
+.npo-kontaktformular__danke {
+	border-color: #6a9738;
+	background: #edf5e8;
+}
+
+.npo-kontaktformular__danke a {
+	display: inline-block;
+	margin-top: 0.5rem;
+	color: #6a9738;
+	font-weight: 600;
+}
+
+.npo-kontaktformular__honeypot {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+@media (max-width: 767px) {
+	.npo-kontaktformular__form {
+		padding: 1rem;
+	}
+
+	.npo-kontaktformular__raster {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.npo-kontaktformular__senden {
+		width: 100%;
+	}
+}

@@ -201,6 +201,23 @@ function napurelon_sprache_zeichenketten() {
 			'Hier siehst du deine <a href="%1$s">eingereichten Rezepte</a> und kannst dein <a href="%2$s">Passwort und deine Kontodetails</a> bearbeiten.',
 			' gelesen.',
 			'Die Registrierung konnte nicht abgeschlossen werden. Bitte versuche es erneut.',
+			'Name',
+			'E-Mail',
+			'Betreff',
+			'Nachricht',
+			'Nachricht senden',
+			'Bitte prüfe die markierten Felder.',
+			'Bitte gib deinen Namen ein.',
+			'Der Name darf höchstens 100 Zeichen lang sein.',
+			'Bitte gib eine gültige E-Mail-Adresse ein.',
+			'Der Betreff darf höchstens 150 Zeichen lang sein.',
+			'Bitte schreibe eine Nachricht (mindestens 10 Zeichen).',
+			'Die Nachricht darf höchstens 5.000 Zeichen lang sein.',
+			'Bitte füge höchstens drei Links ein.',
+			'Es wurden zu viele Nachrichten gesendet. Bitte versuche es später erneut.',
+			'Die Nachricht konnte nicht gesendet werden. Bitte versuche es später erneut.',
+			'Danke für deine Nachricht! Wir melden uns so bald wie möglich.',
+			'Weitere Nachricht senden',
 		)
 	);
 
