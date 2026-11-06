@@ -135,6 +135,7 @@ function napurelon_sprache_zeichenketten() {
 			'Bestätigung',
 			'Rezept einreichen',
 			'Rezept hinzufügen',
+			'Mein Konto',
 			'Rezepttitel',
 			'Zubereitungszeit (Minuten)',
 			'Kochzeit (Minuten)',

@@ -88,3 +88,34 @@ body a.npo-rezeptknopf:focus-visible .npo-rezeptknopf__symbol {
 		border: 0;
 	}
 }
+
+/* Profilsymbol [napurelon_konto_knopf], übernimmt die Farbe des Headers. */
+
+body a.npo-kontoknopf {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	color: inherit;
+	text-decoration: none;
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+body a.npo-kontoknopf:hover,
+body a.npo-kontoknopf:focus-visible,
+body a.npo-kontoknopf[aria-current="page"] {
+	color: #f9a61a;
+	background: rgba(249, 166, 26, 0.12);
+}
+
+body a.npo-kontoknopf:focus-visible {
+	outline: 2px solid #e0940f;
+	outline-offset: 2px;
+}
+
+.npo-kontoknopf__symbol {
+	width: 24px;
+	height: 24px;
+}
