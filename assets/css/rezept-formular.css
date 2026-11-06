@@ -239,3 +239,8 @@
 		width: 100%;
 	}
 }
+
+.npo-rezeptformular__zustimmungstext {
+	flex: 1 1 auto;
+	min-width: 0;
+}
