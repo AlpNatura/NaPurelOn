@@ -1,0 +1,191 @@
+/* Suchergebnisseite. */
+
+.npo-suche {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 32px 0 56px;
+}
+
+.npo-suche__kopf {
+	margin-bottom: 32px;
+}
+
+.npo-suche__titel {
+	margin: 0 0 16px;
+	font-size: clamp(24px, 4vw, 34px);
+	line-height: 1.2;
+	overflow-wrap: anywhere;
+}
+
+.npo-suche__formular {
+	display: flex;
+	gap: 8px;
+	max-width: 560px;
+}
+
+body .npo-suche__feld {
+	flex: 1 1 auto;
+	min-width: 0;
+	height: 48px;
+	padding: 0 16px;
+	border: 1px solid #d0d0d0;
+	border-radius: 999px;
+	font-size: 16px;
+}
+
+body .npo-suche__feld:focus {
+	border-color: #f9a61a;
+	outline: 2px solid rgba(249, 166, 26, 0.35);
+	outline-offset: 0;
+}
+
+body .npo-suche__senden {
+	flex: none;
+	height: 48px;
+	padding: 0 22px;
+	border: 0;
+	border-radius: 999px;
+	background: #f9a61a;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+body .npo-suche__senden:hover,
+body .npo-suche__senden:focus-visible {
+	background: #e0940f;
+	color: #ffffff;
+}
+
+.npo-suche__abschnitt + .npo-suche__abschnitt {
+	margin-top: 48px;
+}
+
+.npo-suche__ueberschrift {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 20px;
+	font-size: 22px;
+}
+
+.npo-suche__anzahl {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 28px;
+	height: 28px;
+	padding: 0 8px;
+	border-radius: 999px;
+	background: rgba(249, 166, 26, 0.15);
+	color: #b86f00;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.npo-suche__hinweis,
+.npo-suche__leer {
+	margin: 0;
+	color: #666666;
+}
+
+ul.npo-suche__liste {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid #eeeeee;
+}
+
+.npo-suche__eintrag {
+	margin: 0;
+	border-bottom: 1px solid #eeeeee;
+}
+
+body a.npo-suche__link {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-height: 48px;
+	padding: 14px 8px;
+	color: inherit;
+	text-decoration: none;
+	transition: background-color 0.15s ease;
+}
+
+body a.npo-suche__link:hover,
+body a.npo-suche__link:focus-visible {
+	background: rgba(249, 166, 26, 0.08);
+	color: inherit;
+}
+
+.npo-suche__typ {
+	color: #b86f00;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.npo-suche__eintragstitel {
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.npo-suche__auszug {
+	color: #666666;
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.npo-suche__seiten {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-top: 24px;
+}
+
+.npo-suche__seiten .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	height: 44px;
+	padding: 0 12px;
+	border-radius: 999px;
+	color: inherit;
+	text-decoration: none;
+}
+
+.npo-suche__seiten .page-numbers.current,
+.npo-suche__seiten a.page-numbers:hover {
+	background: #f9a61a;
+	color: #ffffff;
+}
+
+@media (max-width: 640px) {
+	.npo-suche {
+		padding: 20px 0 40px;
+	}
+
+	.npo-suche__kopf {
+		margin-bottom: 24px;
+	}
+
+	.npo-suche__formular {
+		max-width: none;
+	}
+
+	body .npo-suche__senden {
+		padding: 0 18px;
+	}
+
+	.npo-suche__abschnitt + .npo-suche__abschnitt {
+		margin-top: 36px;
+	}
+
+	.npo-suche__ueberschrift {
+		font-size: 20px;
+	}
+}

@@ -8,6 +8,7 @@ require_once get_stylesheet_directory() . '/inc/rezept-galerie.php';
 require_once get_stylesheet_directory() . '/inc/rezept-ansicht.php';
 require_once get_stylesheet_directory() . '/inc/rezept-liste.php';
 require_once get_stylesheet_directory() . '/inc/rezept-suche.php';
+require_once get_stylesheet_directory() . '/inc/suchseite.php';
 require_once get_stylesheet_directory() . '/inc/rezept-formular.php';
 require_once get_stylesheet_directory() . '/inc/rezept-knopf.php';
 require_once get_stylesheet_directory() . '/inc/konto.php';
