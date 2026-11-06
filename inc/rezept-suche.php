@@ -102,19 +102,21 @@ function napurelon_rezept_anzahl_text( $anzahl ) {
 }
 
 /**
- * Sammelt die IDs der Treffer aus Rezepttexten und aus dem Zutatenfeld.
+ * Sammelt die IDs der Treffer aus Rezepttexten, Zutaten, Kategorien und Tags.
  *
- * Zuerst die Volltexttreffer (Titel, Einleitung, Zubereitung), danach die
- * Rezepte, deren Zutatenliste den Begriff enthält.
+ * Reihenfolge: Volltext (Titel, Einleitung, Zubereitung), Zutatenliste,
+ * danach Rezepte aus Kategorien bzw. Rezept-Tags, deren Name passt.
  *
  * @param string $begriff Suchbegriff.
- * @return int[] Beitrags-IDs, höchstens NAPURELON_SUCHE_TREFFER Stück.
+ * @param int    $anzahl  Höchstzahl der Treffer.
+ * @return int[] Beitrags-IDs.
  */
-function napurelon_rezept_such_ids( $begriff ) {
-	$grund = array(
+function napurelon_rezept_such_ids( $begriff, $anzahl = NAPURELON_SUCHE_TREFFER ) {
+	$anzahl = max( 1, (int) $anzahl );
+	$grund  = array(
 		'post_type'           => 'rezepte',
 		'post_status'         => 'publish',
-		'posts_per_page'      => NAPURELON_SUCHE_TREFFER,
+		'posts_per_page'      => $anzahl,
 		'ignore_sticky_posts' => true,
 		'no_found_rows'       => true,
 		'fields'              => 'ids',
@@ -137,9 +139,35 @@ function napurelon_rezept_such_ids( $begriff ) {
 		)
 	);
 
-	$ids = array_unique( array_merge( $volltext->posts, $zutaten->posts ) );
+	$ids = array_merge( $volltext->posts, $zutaten->posts );
 
-	return array_slice( array_map( 'absint', $ids ), 0, NAPURELON_SUCHE_TREFFER );
+	$tax_query = array( 'relation' => 'OR' );
+	foreach ( array( 'rezeptkategorie', 'rezepttag' ) as $taxonomie ) {
+		$begriffe = get_terms(
+			array(
+				'taxonomy'   => $taxonomie,
+				'search'     => $begriff,
+				'fields'     => 'ids',
+				'hide_empty' => true,
+				'number'     => 20,
+			)
+		);
+
+		if ( is_array( $begriffe ) && ! empty( $begriffe ) ) {
+			$tax_query[] = array(
+				'taxonomy' => $taxonomie,
+				'field'    => 'term_id',
+				'terms'    => array_map( 'absint', $begriffe ),
+			);
+		}
+	}
+
+	if ( count( $tax_query ) > 1 ) {
+		$zuordnung = new WP_Query( array_merge( $grund, array( 'tax_query' => $tax_query ) ) ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query -- Suche über Kategorien und Tags.
+		$ids       = array_merge( $ids, $zuordnung->posts );
+	}
+
+	return array_slice( array_values( array_unique( array_map( 'absint', $ids ) ) ), 0, $anzahl );
 }
 
 /**
