@@ -1,6 +1,7 @@
 <?php
 /**
- * Knopf „Rezept hinzufügen“ [napurelon_rezept_knopf], z. B. im Astra-Header (HTML-Element).
+ * Header-Knöpfe für Astra-HTML-Elemente: „Rezept hinzufügen“ [napurelon_rezept_knopf]
+ * und Profilsymbol [napurelon_konto_knopf] (Astra free bietet „Konto“ mobil nicht an).
  *
  * Angemeldete gehen direkt zum Einreichungsformular, alle anderen zuerst zur
  * Anmeldung und danach zurück zum Formular.
@@ -40,6 +41,34 @@ function napurelon_rezept_knopf_shortcode() {
 	return (string) ob_get_clean();
 }
 add_shortcode( 'napurelon_rezept_knopf', 'napurelon_rezept_knopf_shortcode' );
+
+/**
+ * Profilsymbol, das zu „Mein Konto“ führt.
+ *
+ * @return string
+ */
+function napurelon_konto_knopf_shortcode() {
+	if ( ! function_exists( 'napurelon_konto_seite_url' ) ) {
+		return '';
+	}
+
+	$konto = napurelon_konto_seite_url();
+	if ( '' === $konto ) {
+		return '';
+	}
+
+	$text  = napurelon_text( is_user_logged_in() ? 'Mein Konto' : 'Anmelden' );
+	$aktiv = function_exists( 'is_account_page' ) && is_account_page();
+
+	ob_start();
+	?>
+	<a class="npo-kontoknopf" href="<?php echo esc_url( $konto ); ?>" title="<?php echo esc_attr( $text ); ?>" aria-label="<?php echo esc_attr( $text ); ?>"<?php echo $aktiv ? ' aria-current="page"' : ''; ?>>
+		<svg class="npo-kontoknopf__symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+	</a>
+	<?php
+	return (string) ob_get_clean();
+}
+add_shortcode( 'napurelon_konto_knopf', 'napurelon_konto_knopf_shortcode' );
 
 add_action(
 	'wp_enqueue_scripts',
