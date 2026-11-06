@@ -249,8 +249,20 @@ function napurelon_sprache_zeichenketten() {
 			'Weiter',
 			'Zurück',
 			'Bitte wähle aus, warum du dein Konto löschen möchtest.',
+			'Deine E-Mail-Adresse',
+			'Anmelden',
+			'Abmelden ist jederzeit möglich.',
+			'Die Anmeldung hat nicht geklappt. Bitte versuche es später erneut.',
+			'Bitte bestätige deine Newsletter-Anmeldung',
+			'Hallo',
+			'Du hast dich für den Newsletter von %s angemeldet. Bitte bestätige deine Anmeldung über diesen Link:',
+			'Der Link ist 7 Tage gültig. Wenn du dich nicht angemeldet hast, ignoriere diese E-Mail einfach. Du erhältst dann keine weiteren Nachrichten.',
 		)
 	);
+
+	if ( function_exists( 'napurelon_newsletter_meldungen' ) ) {
+		$texte = array_merge( $texte, array_values( napurelon_newsletter_meldungen() ) );
+	}
 
 	foreach ( napurelon_get_rezept_fields() as $key => $field ) {
 		if ( '_napurelon_interne_notiz' !== $key ) {
