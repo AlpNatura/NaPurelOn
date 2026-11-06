@@ -134,6 +134,7 @@ function napurelon_sprache_zeichenketten() {
 			'Bilder',
 			'Bestätigung',
 			'Rezept einreichen',
+			'Rezept hinzufügen',
 			'Rezepttitel',
 			'Zubereitungszeit (Minuten)',
 			'Kochzeit (Minuten)',
