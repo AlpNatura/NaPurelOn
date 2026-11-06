@@ -136,6 +136,10 @@ function napurelon_sprache_zeichenketten() {
 			'Rezept einreichen',
 			'Rezept hinzufügen',
 			'Mein Konto',
+			'Suchen …',
+			'Suchen',
+			'Suchen nach:',
+			'Suche absenden',
 			'Rezepttitel',
 			'Zubereitungszeit (Minuten)',
 			'Kochzeit (Minuten)',
@@ -278,3 +282,32 @@ function napurelon_sprache_zeichenketten() {
 }
 
 add_action( 'init', 'napurelon_sprache_zeichenketten', 20 );
+
+/**
+ * Texte des Astra-Suchfelds (Header, Off-Canvas), unabhängig vom Astra-Sprachpaket.
+ *
+ * @return array<string,string> Astra-Original => deutscher Text.
+ */
+function napurelon_astra_suchtexte() {
+	return array(
+		'Search...'     => 'Suchen …',
+		'Search'        => 'Suchen',
+		'Search for:'   => 'Suchen nach:',
+		'Search Submit' => 'Suche absenden',
+	);
+}
+
+/**
+ * Ersetzt die Suchtexte von Astra durch eigene, über Polylang übersetzbare Texte.
+ *
+ * @param string $uebersetzung Übersetzter Text.
+ * @param string $original     Originaltext.
+ * @return string
+ */
+function napurelon_astra_suchtext( $uebersetzung, $original ) {
+	$texte = napurelon_astra_suchtexte();
+
+	return isset( $texte[ $original ] ) ? napurelon_text( $texte[ $original ] ) : $uebersetzung;
+}
+add_filter( 'gettext_astra', 'napurelon_astra_suchtext', 10, 2 );
+add_filter( 'gettext_with_context_astra', 'napurelon_astra_suchtext', 10, 2 );
