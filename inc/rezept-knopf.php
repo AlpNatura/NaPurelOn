@@ -43,7 +43,8 @@ function napurelon_rezept_knopf_shortcode() {
 add_shortcode( 'napurelon_rezept_knopf', 'napurelon_rezept_knopf_shortcode' );
 
 /**
- * Profilsymbol, das zu „Mein Konto“ führt.
+ * Profilsymbol, das zu „Mein Konto“ führt. Angemeldete sehen beim Überfahren
+ * zusätzlich das Astra-Menü „Konto-Menü“ (in Astra free sonst nur in Pro).
  *
  * @return string
  */
@@ -60,11 +61,32 @@ function napurelon_konto_knopf_shortcode() {
 	$text  = napurelon_text( is_user_logged_in() ? 'Mein Konto' : 'Anmelden' );
 	$aktiv = function_exists( 'is_account_page' ) && is_account_page();
 
+	$menue = '';
+	if ( is_user_logged_in() && has_nav_menu( 'loggedin_account_menu' ) ) {
+		$menue = (string) wp_nav_menu(
+			array(
+				'theme_location' => 'loggedin_account_menu',
+				'container'      => false,
+				'menu_class'     => 'npo-kontomenue__liste',
+				'depth'          => 1,
+				'fallback_cb'    => false,
+				'echo'           => false,
+			)
+		);
+	}
+
 	ob_start();
 	?>
-	<a class="npo-kontoknopf" href="<?php echo esc_url( $konto ); ?>" title="<?php echo esc_attr( $text ); ?>" aria-label="<?php echo esc_attr( $text ); ?>"<?php echo $aktiv ? ' aria-current="page"' : ''; ?>>
-		<svg class="npo-kontoknopf__symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-	</a>
+	<div class="npo-kontomenue<?php echo '' !== $menue ? ' npo-kontomenue--mit-menue' : ''; ?>">
+		<a class="npo-kontoknopf" href="<?php echo esc_url( $konto ); ?>" title="<?php echo esc_attr( $text ); ?>" aria-label="<?php echo esc_attr( $text ); ?>"<?php echo $aktiv ? ' aria-current="page"' : ''; ?>>
+			<svg class="npo-kontoknopf__symbol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+		</a>
+		<?php if ( '' !== $menue ) : ?>
+			<nav class="npo-kontomenue__panel" aria-label="<?php echo esc_attr( $text ); ?>">
+				<?php echo $menue; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Ausgabe von wp_nav_menu(). ?>
+			</nav>
+		<?php endif; ?>
+	</div>
 	<?php
 	return (string) ob_get_clean();
 }
