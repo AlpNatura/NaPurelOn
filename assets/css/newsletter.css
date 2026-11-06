@@ -128,3 +128,19 @@
 	height: 1px;
 	overflow: hidden;
 }
+
+/* Dunkler Footer: helle Schrift für Zustimmung und Fehlerhinweise. */
+footer .npo-newsletter__zustimmung,
+.site-footer .npo-newsletter__zustimmung,
+.elementor-location-footer .npo-newsletter__zustimmung,
+footer .npo-newsletter__zustimmung a,
+.site-footer .npo-newsletter__zustimmung a,
+.elementor-location-footer .npo-newsletter__zustimmung a {
+	color: #fff;
+}
+
+footer .npo-newsletter__feldfehler,
+.site-footer .npo-newsletter__feldfehler,
+.elementor-location-footer .npo-newsletter__feldfehler {
+	color: #fda29b;
+}
