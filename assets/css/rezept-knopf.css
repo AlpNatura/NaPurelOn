@@ -6,28 +6,36 @@ body a.npo-rezeptknopf {
 	gap: 6px;
 	height: 40px;
 	padding: 0 16px 0 12px;
-	border: 2px solid #f9a61a;
+	border: 0;
 	border-radius: 999px;
-	background: transparent;
-	color: #f9a61a;
+	background: #f9a61a;
+	color: #ffffff;
 	font-size: 15px;
 	font-weight: 600;
 	line-height: 1;
 	white-space: nowrap;
 	text-decoration: none;
-	transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+	transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 body a.npo-rezeptknopf:hover,
 body a.npo-rezeptknopf:focus-visible,
 body a.npo-rezeptknopf--aktiv {
-	background: #f9a61a;
+	background: #e0940f;
 	color: #ffffff;
 	text-decoration: none;
 }
 
+body a.npo-rezeptknopf:hover,
+body a.npo-rezeptknopf:focus-visible {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(249, 166, 26, 0.45);
+}
+
 body a.npo-rezeptknopf:active {
-	transform: scale(0.97);
+	transform: translateY(0) scale(0.97);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 body a.npo-rezeptknopf:focus-visible {
@@ -39,6 +47,26 @@ body a.npo-rezeptknopf:focus-visible {
 	flex: none;
 	width: 20px;
 	height: 20px;
+	transition: transform 0.3s ease;
+}
+
+body a.npo-rezeptknopf:hover .npo-rezeptknopf__symbol,
+body a.npo-rezeptknopf:focus-visible .npo-rezeptknopf__symbol {
+	transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body a.npo-rezeptknopf,
+	.npo-rezeptknopf__symbol {
+		transition: none;
+	}
+
+	body a.npo-rezeptknopf:hover,
+	body a.npo-rezeptknopf:focus-visible,
+	body a.npo-rezeptknopf:hover .npo-rezeptknopf__symbol,
+	body a.npo-rezeptknopf:focus-visible .npo-rezeptknopf__symbol {
+		transform: none;
+	}
 }
 
 /* Tablet/Mobil (Astra-Umbruch): nur das Symbol. */
