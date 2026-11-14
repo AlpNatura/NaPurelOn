@@ -67,6 +67,10 @@
 			body.append( 'nonce', config.nonce );
 			body.append( 'begriff', begriff );
 
+			if ( config.sprache ) {
+				body.append( 'lang', config.sprache );
+			}
+
 			fetch( config.ajaxUrl, {
 				method: 'POST',
 				credentials: 'same-origin',
@@ -94,8 +98,11 @@
 						// Der Zähler meldet bereits "Keine Rezepte gefunden."
 						treffer.innerHTML = '';
 					} else {
-						treffer.innerHTML = '<p class="npo-rezeptsuche__leer">' +
-							( config.i18n ? config.i18n.keineTreffer : '' ) + '</p>';
+						var leer = document.createElement( 'p' );
+						leer.className = 'npo-rezeptsuche__leer';
+						leer.textContent = config.i18n ? config.i18n.keineTreffer : '';
+						treffer.innerHTML = '';
+						treffer.appendChild( leer );
 					}
 				} )
 				.catch( function () {

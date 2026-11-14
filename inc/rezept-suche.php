@@ -41,11 +41,12 @@ function napurelon_enqueue_rezept_suche_assets() {
 		array(
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 			'nonce'   => wp_create_nonce( 'napurelon_rezept_suche' ),
+			'sprache' => function_exists( 'pll_current_language' ) ? sanitize_key( (string) pll_current_language() ) : '',
 			'i18n'    => array(
-				'keineTreffer' => 'Keine Rezepte gefunden.',
-				'suchtGerade'  => 'Suche läuft …',
-				'einTreffer'   => '1 Rezept gefunden',
-				'vieleTreffer' => '%d Rezepte gefunden',
+				'keineTreffer' => napurelon_text( 'Keine Rezepte gefunden.' ),
+				'suchtGerade'  => napurelon_text( 'Suche läuft …' ),
+				'einTreffer'   => napurelon_text( '1 Rezept gefunden' ),
+				'vieleTreffer' => napurelon_text( '%d Rezepte gefunden' ),
 			),
 		)
 	);
@@ -91,14 +92,14 @@ function napurelon_rezept_karten( $ids ) {
  */
 function napurelon_rezept_anzahl_text( $anzahl ) {
 	if ( $anzahl < 1 ) {
-		return 'Keine Rezepte gefunden.';
+		return napurelon_text( 'Keine Rezepte gefunden.' );
 	}
 
 	if ( 1 === $anzahl ) {
-		return '1 Rezept gefunden';
+		return napurelon_text( '1 Rezept gefunden' );
 	}
 
-	return sprintf( '%d Rezepte gefunden', $anzahl );
+	return sprintf( napurelon_text( '%d Rezepte gefunden' ), $anzahl );
 }
 
 /**
@@ -217,17 +218,17 @@ function napurelon_rezept_suche_shortcode() {
 	?>
 	<div class="npo-rezeptsuche">
 		<form class="npo-rezeptsuche__form" role="search" method="get" action="<?php echo esc_url( get_permalink() ); ?>">
-			<label class="screen-reader-text" for="npo-rezeptsuche-feld">Rezepte und Zutaten durchsuchen</label>
+			<label class="screen-reader-text" for="npo-rezeptsuche-feld"><?php echo esc_html( napurelon_text( 'Rezepte, Zutaten, Kategorien und Tags durchsuchen' ) ); ?></label>
 			<input
 				type="search"
 				id="npo-rezeptsuche-feld"
 				class="npo-rezeptsuche__feld"
 				name="rezept_suche"
 				value="<?php echo esc_attr( $begriff ); ?>"
-				placeholder="Rezepte, Zutaten, …"
+				placeholder="<?php echo esc_attr( napurelon_text( 'Rezepte, Zutaten, Kategorien, Tags …' ) ); ?>"
 				autocomplete="off"
 			>
-			<button type="submit" class="npo-rezeptsuche__button">Suchen</button>
+			<button type="submit" class="npo-rezeptsuche__button"><?php echo esc_html( napurelon_text( 'Suchen' ) ); ?></button>
 		</form>
 
 		<p class="npo-rezeptsuche__status" role="status" aria-live="polite"></p>
@@ -290,7 +291,7 @@ function napurelon_rezept_trefferbereich( $begriff, $art = '' ) {
 		if ( '' !== $treffer ) {
 			echo $treffer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Karten sind bereits escaped.
 		} elseif ( mb_strlen( $begriff ) >= 2 ) {
-			echo '<p class="npo-rezeptsuche__leer">Keine Rezepte gefunden.</p>';
+			echo '<p class="npo-rezeptsuche__leer">' . esc_html( napurelon_text( 'Keine Rezepte gefunden.' ) ) . '</p>';
 		}
 		?>
 	</div>
