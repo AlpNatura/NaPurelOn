@@ -379,13 +379,7 @@ function napurelon_konto_datenschutz_feld() {
 		<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-row__label-for-checkbox">
 			<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox" name="napurelon_datenschutz" value="1" required <?php checked( $bestaetigt ); ?>>
 			<span>
-				<?php echo esc_html( napurelon_text( 'Ich habe die ' ) ); ?>
-				<?php if ( $url ) : ?>
-					<a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener"><?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?></a>
-				<?php else : ?>
-					<?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?>
-				<?php endif; ?>
-				<?php echo esc_html( napurelon_text( ' gelesen.' ) ); ?>
+				<?php echo napurelon_datenschutz_satz( 'Ich habe die %s gelesen.', $url ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- In der Funktion escaped. ?>
 			</span>
 			<span class="required" aria-hidden="true">*</span>
 		</label>

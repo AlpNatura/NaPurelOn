@@ -97,6 +97,31 @@ function napurelon_text( $text ) {
 }
 
 /**
+ * Satz zur Datenschutzerklärung mit Link als ein einziger übersetzbarer Text.
+ *
+ * Der Platzhalter %s steht für den Link, damit jede Sprache ihre eigene
+ * Wortstellung verwenden kann. Fehlt er in der Übersetzung, gilt der Ausgangstext.
+ *
+ * @param string $vorlage Ausgangstext mit genau einem %s.
+ * @param string $url     Adresse der Datenschutzerklärung oder leer.
+ * @return string Escaptes HTML.
+ */
+function napurelon_datenschutz_satz( $vorlage, $url ) {
+	$satz = napurelon_text( $vorlage );
+
+	if ( 1 !== substr_count( $satz, '%' ) || false === strpos( $satz, '%s' ) ) {
+		$satz = $vorlage;
+	}
+
+	$name = esc_html( napurelon_text( 'Datenschutzerklärung' ) );
+	$link = $url
+		? '<a href="' . esc_url( $url ) . '" target="_blank" rel="noopener">' . $name . '</a>'
+		: $name;
+
+	return sprintf( esc_html( $satz ), $link );
+}
+
+/**
  * Trägt die festen Texte der Filterzeile in Polylang ein.
  */
 function napurelon_sprache_zeichenketten() {
@@ -179,9 +204,9 @@ function napurelon_sprache_zeichenketten() {
 			'JPG, PNG oder WebP, höchstens 5 MB pro Bild, bis zu 5 Galeriebilder.',
 			'Ich habe die Fotos selbst aufgenommen oder besitze die Rechte, sie hier veröffentlichen zu lassen.',
 			'Ich räume NaPurelOn das unbefristete Recht ein, mein Rezept und meine Bilder zu veröffentlichen und zu bearbeiten.',
-			'Ich habe die ',
 			'Datenschutzerklärung',
-			' gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.',
+			'Ich habe die %s gelesen.',
+			'Ich habe die %s gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.',
 			'Bitte bestätige die Bildrechte.',
 			'Bitte bestätige das Nutzungsrecht.',
 			'Bitte bestätige die Datenschutzerklärung.',
@@ -220,7 +245,6 @@ function napurelon_sprache_zeichenketten() {
 			'Entwurf',
 			'Privat',
 			'Hier siehst du deine <a href="%1$s">eingereichten Rezepte</a> und kannst dein <a href="%2$s">Passwort und deine Kontodetails</a> bearbeiten.',
-			' gelesen.',
 			'Die Registrierung konnte nicht abgeschlossen werden. Bitte versuche es erneut.',
 			'Name',
 			'E-Mail',
