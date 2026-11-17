@@ -293,7 +293,7 @@ function napurelon_sprache_texte() {
 			'Zurück',
 			'Bitte wähle aus, warum du dein Konto löschen möchtest.',
 			'Deine E-Mail-Adresse',
-			'Anmelden',
+			'Abonnieren',
 			'Abmelden ist jederzeit möglich.',
 			'Die Anmeldung hat nicht geklappt. Bitte versuche es später erneut.',
 			'Bitte bestätige deine Newsletter-Anmeldung',
