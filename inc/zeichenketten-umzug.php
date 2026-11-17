@@ -73,6 +73,16 @@ function napurelon_zk_umzug() {
 
 	if ( $verschoben ) {
 		$mo_tr->export_to_db( $tr );
+
+		// Deutsch erst leeren, wenn die türkischen Texte nachweislich gespeichert sind.
+		$kontrolle = new PLL_MO();
+		$kontrolle->import_from_db( $tr );
+		foreach ( $verschoben as $original => $text ) {
+			if ( $kontrolle->translate_if_any( $original ) !== $text ) {
+				return;
+			}
+		}
+
 		$mo_de->export_to_db( $de );
 	}
 
