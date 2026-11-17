@@ -533,7 +533,7 @@ function napurelon_newsletter_shortcode() {
 					placeholder="<?php echo esc_attr( napurelon_text( 'Deine E-Mail-Adresse' ) ); ?>"
 					maxlength="254" autocomplete="email" required aria-required="true"
 					<?php echo isset( $fehler['email'] ) ? 'aria-invalid="true" aria-describedby="' . esc_attr( $id . '-email-fehler' ) . '"' : ''; ?>>
-				<button type="submit" class="npo-newsletter__senden"><?php echo esc_html( napurelon_text( 'Anmelden' ) ); ?></button>
+				<button type="submit" class="npo-newsletter__senden"><?php echo esc_html( napurelon_text( 'Abonnieren' ) ); ?></button>
 			</div>
 			<?php if ( isset( $fehler['email'] ) ) : ?>
 				<p class="npo-newsletter__feldfehler" id="<?php echo esc_attr( $id . '-email-fehler' ); ?>"><?php echo esc_html( napurelon_text( $fehler['email'] ) ); ?></p>

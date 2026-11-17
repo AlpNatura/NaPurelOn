@@ -17,7 +17,7 @@ require_once get_stylesheet_directory() . '/inc/kontakt-formular.php';
 require_once get_stylesheet_directory() . '/inc/newsletter.php';
 require_once get_stylesheet_directory() . '/inc/rezept-filter.php';
 require_once get_stylesheet_directory() . '/inc/sprachen.php';
-require_once get_stylesheet_directory() . '/inc/zeichenketten-umzug.php';
+require_once get_stylesheet_directory() . '/inc/zeichenketten-tr.php';
 require_once get_stylesheet_directory() . '/inc/begriff-sichtbarkeit.php';
 require_once get_stylesheet_directory() . '/inc/kategorieseite.php';
 require_once get_stylesheet_directory() . '/inc/kategorie-felder.php';
