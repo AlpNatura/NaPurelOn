@@ -122,13 +122,11 @@ function napurelon_datenschutz_satz( $vorlage, $url ) {
 }
 
 /**
- * Trägt die festen Texte der Filterzeile in Polylang ein.
+ * Alle festen Texte des Themes, die in Polylang übersetzt werden.
+ *
+ * @return string[]
  */
-function napurelon_sprache_zeichenketten() {
-	if ( ! function_exists( 'pll_register_string' ) ) {
-		return;
-	}
-
+function napurelon_sprache_texte() {
 	$texte = array();
 
 	foreach ( napurelon_filter_definitionen() as $filter ) {
@@ -315,7 +313,18 @@ function napurelon_sprache_zeichenketten() {
 		}
 	}
 
-	foreach ( array_unique( $texte ) as $text ) {
+	return array_values( array_unique( $texte ) );
+}
+
+/**
+ * Trägt die festen Texte in Polylang ein.
+ */
+function napurelon_sprache_zeichenketten() {
+	if ( ! function_exists( 'pll_register_string' ) ) {
+		return;
+	}
+
+	foreach ( napurelon_sprache_texte() as $text ) {
 		pll_register_string( $text, $text, NAPURELON_SPRACHGRUPPE );
 	}
 }
