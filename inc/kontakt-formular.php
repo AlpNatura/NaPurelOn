@@ -372,13 +372,7 @@ function napurelon_kontaktformular_shortcode() {
 				<label class="npo-kontaktformular__zustimmung">
 					<input type="checkbox" name="napurelon_kontakt_datenschutz" value="1" required <?php checked( $datenschutz ); ?><?php echo isset( $fehler['datenschutz'] ) ? ' aria-invalid="true"' : ''; ?>>
 					<span>
-						<?php echo esc_html( napurelon_text( 'Ich habe die ' ) ); ?>
-						<?php if ( $datenschutz_url ) : ?>
-							<a href="<?php echo esc_url( $datenschutz_url ); ?>" target="_blank" rel="noopener"><?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?></a>
-						<?php else : ?>
-							<?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?>
-						<?php endif; ?>
-						<?php echo esc_html( napurelon_text( ' gelesen.' ) ); ?>
+						<?php echo napurelon_datenschutz_satz( 'Ich habe die %s gelesen.', $datenschutz_url ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- In der Funktion escaped. ?>
 						<span class="npo-kontaktformular__stern" aria-hidden="true">*</span>
 					</span>
 				</label>

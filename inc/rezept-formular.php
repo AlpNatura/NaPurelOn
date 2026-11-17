@@ -1349,13 +1349,7 @@ function napurelon_rezeptformular_shortcode() {
 				<div class="npo-rezeptformular__gruppe">
 					<label class="npo-rezeptformular__zustimmung" for="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-datenschutz' ); ?>">
 						<input type="checkbox" id="<?php echo esc_attr( 'npo-rezeptformular-' . $instanz . '-napurelon-datenschutz' ); ?>" name="napurelon_datenschutz" value="1" required <?php checked( $datenschutz ); ?><?php echo isset( $fehler['napurelon_datenschutz'] ) ? ' class="npo-rezeptformular__feld--fehler" aria-invalid="true"' : ''; ?>>
-						<?php echo esc_html( napurelon_text( 'Ich habe die ' ) ); ?>
-						<?php if ( get_privacy_policy_url() ) : ?>
-							<a href="<?php echo esc_url( get_privacy_policy_url() ); ?>" target="_blank" rel="noopener"><?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?></a>
-						<?php else : ?>
-							<?php echo esc_html( napurelon_text( 'Datenschutzerklärung' ) ); ?>
-						<?php endif; ?>
-						<?php echo esc_html( napurelon_text( ' gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.' ) ); ?>
+						<?php echo napurelon_datenschutz_satz( 'Ich habe die %s gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.', get_privacy_policy_url() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- In der Funktion escaped. ?>
 						<span class="npo-rezeptformular__stern" aria-hidden="true">*</span><span class="screen-reader-text"><?php echo esc_html( napurelon_text( 'Pflichtfeld' ) ); ?></span>
 					</label>
 				</div>
