@@ -367,9 +367,8 @@ function napurelon_faq_vorlage_anlegen() {
 		)
 	);
 
-	update_option( NAPURELON_FAQ_VORLAGE_OPTION, 1, false );
-
-	if ( $vorhanden ) {
+	// add_option schlägt fehl, wenn eine parallele Anfrage schneller war.
+	if ( ! add_option( NAPURELON_FAQ_VORLAGE_OPTION, 1, '', false ) || $vorhanden ) {
 		return;
 	}
 
