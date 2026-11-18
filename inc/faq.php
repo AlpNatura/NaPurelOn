@@ -376,6 +376,9 @@ function napurelon_faq_vorlage_anlegen() {
 	$tr = ( $mit_sprachen && in_array( 'tr', $sprachen, true ) ) ? 'tr' : null;
 
 	$seite_de       = (int) get_option( 'wp_page_for_privacy_policy' );
+	if ( $seite_de && $de && function_exists( 'pll_get_post' ) ) {
+		$seite_de = (int) pll_get_post( $seite_de, 'de' ) ?: $seite_de;
+	}
 	$seite_tr       = ( $seite_de && $tr && function_exists( 'pll_get_post' ) ) ? (int) pll_get_post( $seite_de, 'tr' ) : 0;
 	$datenschutz_de = $seite_de && 'publish' === get_post_status( $seite_de ) ? get_permalink( $seite_de ) : '';
 	$datenschutz_tr = $seite_tr && 'publish' === get_post_status( $seite_tr ) ? get_permalink( $seite_tr ) : '';
