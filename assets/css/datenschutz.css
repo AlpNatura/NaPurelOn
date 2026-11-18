@@ -1,0 +1,11 @@
+.npo-datenschutz__abschnitt + .npo-datenschutz__abschnitt {
+	margin-top: 1.75rem;
+}
+
+.npo-datenschutz__titel {
+	margin: 0 0 0.75rem;
+}
+
+.npo-datenschutz__text > :last-child {
+	margin-bottom: 0;
+}

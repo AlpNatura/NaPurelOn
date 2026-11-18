@@ -20,7 +20,7 @@ const NAPURELON_SPRACHGRUPPE = 'NaPurelOn';
  * @return string[] Namen der Inhaltstypen.
  */
 function napurelon_sprache_inhaltstypen() {
-	return array( 'rezepte', NAPURELON_FAQ_TYP );
+	return array( 'rezepte', NAPURELON_FAQ_TYP, NAPURELON_DATENSCHUTZ_TYP );
 }
 
 /**
