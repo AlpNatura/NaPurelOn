@@ -194,6 +194,10 @@ function napurelon_faq_shortcode() {
 		}
 
 		foreach ( $gruppe['fragen'] as $frage ) {
+			if ( post_password_required( $frage ) ) {
+				continue;
+			}
+
 			$html .= '<details class="npo-faq__eintrag">'
 				. '<summary class="npo-faq__frage">' . esc_html( get_the_title( $frage ) ) . '</summary>'
 				. '<div class="npo-faq__antwort">' . wpautop( wptexturize( wp_kses_post( $frage->post_content ) ) ) . '</div>'
