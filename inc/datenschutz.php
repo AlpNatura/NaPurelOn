@@ -12,8 +12,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const NAPURELON_DATENSCHUTZ_TYP            = 'napurelon_datenschutz';
-const NAPURELON_DATENSCHUTZ_VORLAGE_OPTION = 'napurelon_datenschutz_vorlage_angelegt';
+// Höchstens 20 Zeichen, sonst lehnt register_post_type() den Typ ab.
+const NAPURELON_DATENSCHUTZ_TYP            = 'npo_datenschutz';
+const NAPURELON_DATENSCHUTZ_VORLAGE_OPTION = 'napurelon_datenschutz_vorlage_v2';
 const NAPURELON_DATENSCHUTZ_HINWEIS        = 'napurelon_datenschutz_hinweis';
 
 /**
