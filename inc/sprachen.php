@@ -20,7 +20,7 @@ const NAPURELON_SPRACHGRUPPE = 'NaPurelOn';
  * @return string[] Namen der Inhaltstypen.
  */
 function napurelon_sprache_inhaltstypen() {
-	return array( 'rezepte' );
+	return array( 'rezepte', NAPURELON_FAQ_TYP );
 }
 
 /**
@@ -29,7 +29,7 @@ function napurelon_sprache_inhaltstypen() {
  * @return string[] Namen der Taxonomien.
  */
 function napurelon_sprache_taxonomien() {
-	$taxonomien = array( 'rezeptkategorie', 'rezepttag' );
+	$taxonomien = array( 'rezeptkategorie', 'rezepttag', NAPURELON_FAQ_GRUPPE );
 
 	foreach ( napurelon_filter_definitionen() as $filter ) {
 		if ( isset( $filter['taxonomie'] ) ) {
